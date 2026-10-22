@@ -53,6 +53,7 @@
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  min-width: 0;
 }
 
 .home-card-icon {
@@ -89,6 +90,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: background 0.2s;
+  flex-wrap: wrap;
 }
 
 .home-status-badge:hover {
