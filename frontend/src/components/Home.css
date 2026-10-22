@@ -89,11 +89,20 @@
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
   flex-wrap: wrap;
+  /* 44px touch target on small screens */
+  min-height: 44px;
 }
 
 .home-status-badge:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.home-status-badge:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
   background: rgba(255, 255, 255, 0.2);
 }
 
