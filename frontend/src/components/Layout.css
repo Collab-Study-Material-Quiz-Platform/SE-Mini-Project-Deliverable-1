@@ -54,10 +54,17 @@
   font-weight: 700;
   font-size: clamp(0.85rem, 2vw, 1.05rem);
   line-height: 1.2;
-  max-width: 300px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+/* Small screens: show short name, hide full name */
+.logo-name-full { display: none; }
+.logo-name-short { display: inline; }
+
+@media (min-width: 768px) {
+  /* Wide screens: show full name */
+  .logo-name-full { display: inline; }
+  .logo-name-short { display: none; }
 }
 
 .layout-nav {

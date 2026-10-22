@@ -20,7 +20,7 @@ const CARDS = [
       'Create custom question sets',
       'Attempt quizzes with a timer',
       'Auto-graded answers',
-      'Multiple question formats',
+      'Multiple-choice questions (4 options)',
     ],
   },
   {
@@ -28,8 +28,8 @@ const CARDS = [
     title: 'Performance Analysis',
     features: [
       'Personal score history',
-      'Class-wide statistics',
-      'Progress over time',
+      'Quiz statistics for teachers',
+      'Topic-wise scores',
       'Identify weak topics',
     ],
   },

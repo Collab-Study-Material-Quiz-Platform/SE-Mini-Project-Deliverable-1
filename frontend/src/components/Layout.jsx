@@ -31,7 +31,8 @@ export default function Layout({ children, currentHash }) {
             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
           </svg>
           <span className="layout-logo-name">
-            Collaborative Study Material &amp; Quiz Platform
+            <span className="logo-name-short">Study &amp; Quiz Platform</span>
+            <span className="logo-name-full">Collaborative Study Material &amp; Quiz Platform</span>
           </span>
         </a>
         <nav className="layout-nav" aria-label="Main navigation">
