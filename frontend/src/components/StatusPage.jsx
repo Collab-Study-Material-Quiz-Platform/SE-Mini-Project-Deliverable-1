@@ -176,6 +176,7 @@ export default function StatusPage() {
               />
             ))}
           </div>
+          <p className="status-note">Measured while this page is open. The monthly 99% figure comes from the uptime monitor on the deployed site.</p>
         </section>
 
         <p className="sp-footer-note">

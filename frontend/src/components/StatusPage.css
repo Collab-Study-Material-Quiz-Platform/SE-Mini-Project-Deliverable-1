@@ -236,3 +236,11 @@
     padding: 40px 32px;
   }
 }
+
+/* Added for branding pass */
+.status-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #6c757d);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
