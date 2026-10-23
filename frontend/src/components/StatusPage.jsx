@@ -38,7 +38,7 @@ export default function StatusPage() {
     const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
     const start = Date.now();
     try {
-      const res = await fetch('/health', { signal: controller.signal });
+      const res = await fetch('/api/health', { signal: controller.signal });
       const elapsed = Date.now() - start;
       clearTimeout(timeout);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);

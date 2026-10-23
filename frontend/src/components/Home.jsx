@@ -44,7 +44,7 @@ export default function Home() {
       try {
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), 5000);
-        const res = await fetch('/health', { signal: controller.signal });
+        const res = await fetch('/api/health', { signal: controller.signal });
         clearTimeout(timer);
         if (!cancelled) setStatusOk(res.ok);
       } catch {
