@@ -1,0 +1,246 @@
+/* StatusPage.css — mobile-first, 360px to 1920px */
+
+:root {
+  --sp-bg: #f8f9fa;
+  --sp-surface: #ffffff;
+  --sp-border: #dee2e6;
+  --sp-text: #212529;
+  --sp-text-muted: #6c757d;
+  --sp-green: #198754;
+  --sp-green-bg: #d1e7dd;
+  --sp-red: #dc3545;
+  --sp-red-bg: #f8d7da;
+  --sp-blue: #0d6efd;
+  --sp-radius: 8px;
+  --sp-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sp-page {
+  min-height: 100vh;
+  background: var(--sp-bg);
+  color: var(--sp-text);
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 0 0 48px;
+}
+
+.sp-header {
+  background: var(--sp-surface);
+  border-bottom: 1px solid var(--sp-border);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sp-header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.sp-check-btn {
+  background: var(--sp-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--sp-radius);
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sp-check-btn:hover {
+  opacity: 0.85;
+}
+
+.sp-check-btn:focus-visible {
+  outline: 2px solid var(--sp-blue);
+  outline-offset: 2px;
+}
+
+.sp-check-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sp-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Banner */
+.sp-banner {
+  border-radius: var(--sp-radius);
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  border: 1px solid transparent;
+}
+
+.sp-banner.sp-ok {
+  background: var(--sp-green-bg);
+  border-color: #a3cfbb;
+  color: #0a3622;
+}
+
+.sp-banner.sp-fail {
+  background: var(--sp-red-bg);
+  border-color: #f1aeb5;
+  color: #58151c;
+}
+
+.sp-banner.sp-loading {
+  background: #e9ecef;
+  border-color: var(--sp-border);
+  color: var(--sp-text-muted);
+}
+
+.sp-banner-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  /* aria-hidden set in JSX */
+}
+
+.sp-banner-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Cards */
+.sp-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 640px) {
+  .sp-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sp-card {
+  background: var(--sp-surface);
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius);
+  padding: 16px;
+  box-shadow: var(--sp-shadow);
+}
+
+.sp-card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sp-text-muted);
+  margin-bottom: 6px;
+}
+
+.sp-card-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.sp-db-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.sp-db-connected { background: var(--sp-green); }
+.sp-db-disconnected { background: var(--sp-red); }
+.sp-db-connecting { background: #fd7e14; }
+.sp-db-disconnecting { background: #fd7e14; }
+
+/* Availability section */
+.sp-availability {
+  background: var(--sp-surface);
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius);
+  padding: 20px;
+  box-shadow: var(--sp-shadow);
+  margin-bottom: 24px;
+}
+
+.sp-availability h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.sp-avail-stat {
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+  color: var(--sp-text);
+}
+
+.sp-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 8px;
+}
+
+.sp-sq {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sp-sq.sp-sq-ok {
+  background: var(--sp-green);
+}
+
+.sp-sq.sp-sq-fail {
+  background: var(--sp-red);
+}
+
+/* Footer note */
+.sp-footer-note {
+  font-size: 0.82rem;
+  color: var(--sp-text-muted);
+  text-align: center;
+  margin-top: 8px;
+}
+
+@media (min-width: 768px) {
+  .sp-content {
+    padding: 32px 24px;
+  }
+  .sp-header {
+    padding: 20px 32px;
+  }
+  .sp-banner-text {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .sp-content {
+    padding: 40px 32px;
+  }
+}
+
+/* Added for branding pass */
+.status-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #6c757d);
+  margin-top: 0.5rem;
+  font-style: italic;
+}

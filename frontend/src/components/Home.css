@@ -1,0 +1,108 @@
+/* Home.css — hero + feature cards, mobile-first 360px to 1920px */
+
+.home {
+  padding: 0;
+}
+
+.home-hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.home-hero h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin: 0 0 1.25rem;
+  color: #ffffff;
+}
+
+.home-hero p {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 1.65;
+  opacity: 0.88;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .home-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .home-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border, #dee2e6);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.home-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.home-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--color-primary, #1a1a2e);
+}
+
+.home-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--color-text-muted, #6c757d);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.home-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.home-status-badge:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.home-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #28a745;
+  flex-shrink: 0;
+}
+
+.home-status-dot.down {
+  background: #dc3545;
+}
