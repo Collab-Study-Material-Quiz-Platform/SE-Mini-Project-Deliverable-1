@@ -72,3 +72,13 @@ test('rejects an absent or non-object request body', () => {
   assert.equal(validateRegistrationInput(null).error, 'Request body is required');
   assert.equal(validateRegistrationInput([]).error, 'Request body is required');
 });
+
+test('rejects passwords longer than bcrypt supports without truncating them', () => {
+  const result = validateRegistrationInput({
+    name: 'Alex',
+    email: 'alex@example.com',
+    password: 'a'.repeat(73),
+  });
+
+  assert.equal(result.error, 'Password must not exceed 72 UTF-8 bytes');
+});
