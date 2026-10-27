@@ -19,6 +19,7 @@ function testEmail() {
 test.before(async () => {
   if (!canUseDatabase) return;
   await mongoose.connect(process.env.MONGO_URI);
+  await User.init(); // Ensure the unique-email index exists before duplicate-email tests.
   server = app.listen(0);
   await new Promise((resolve, reject) => {
     server.once('listening', resolve);
