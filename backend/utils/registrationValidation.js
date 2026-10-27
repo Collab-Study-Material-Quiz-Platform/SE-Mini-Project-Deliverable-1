@@ -25,6 +25,11 @@ function validateRegistrationInput(body) {
     return { error: 'Password is required' };
   }
 
+  // bcrypt considers at most 72 UTF-8 bytes; reject longer inputs rather than silently truncating them.
+  if (Buffer.byteLength(password, 'utf8') > 72) {
+    return { error: 'Password must not exceed 72 UTF-8 bytes' };
+  }
+
   // Public registration may create students or contributors, never administrators.
   if (!ALLOWED_ROLES.has(rawRole)) {
     return { error: 'Role must be Student or Contributor' };
