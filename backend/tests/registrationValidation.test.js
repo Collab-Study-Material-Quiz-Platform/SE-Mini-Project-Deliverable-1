@@ -68,6 +68,13 @@ test('does not allow public registration as an administrator', () => {
   assert.equal(result.error, 'Role must be Student or Contributor');
 });
 
+test('does not allow an administrator role through public registration', () => {
+  const result = validateRegistrationInput({
+    name: 'Alex Admin', email: 'admin@example.com', password: 'ExamplePassword1!', role: 'ADMIN',
+  });
+  assert.equal(result.error, 'Role must be Student or Contributor');
+});
+
 test('rejects an absent or non-object request body', () => {
   assert.equal(validateRegistrationInput(null).error, 'Request body is required');
   assert.equal(validateRegistrationInput([]).error, 'Request body is required');
