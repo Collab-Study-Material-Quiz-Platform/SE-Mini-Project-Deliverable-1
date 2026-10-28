@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import Home from './components/Home'
 import StatusPage from './components/StatusPage'
 import RegistrationPage from './RegistrationPage'
+import LoginPage from './LoginPage'
 
 function getHash() {
   const h = window.location.hash
@@ -20,7 +21,8 @@ export default function App() {
   }, [])
 
   let page
-  if (hash === '#/status') page = <StatusPage />
+  if (hash === '#/login') page = <LoginPage />
+  else if (hash === '#/status') page = <StatusPage />
   else if (hash === '#/register') page = <RegistrationPage />
   else page = <Home />
 

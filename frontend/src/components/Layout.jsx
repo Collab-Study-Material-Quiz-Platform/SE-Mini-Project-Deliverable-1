@@ -4,6 +4,7 @@ import './Layout.css';
 const NAV_LINKS = [
   { href: '#/', label: 'Home' },
   { href: '#/register', label: 'Create account' },
+  { href: '#/login', label: 'Log in' },
   { href: '#/status', label: 'System Status' },
 ];
 
