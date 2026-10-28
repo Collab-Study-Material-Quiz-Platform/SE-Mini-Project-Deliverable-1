@@ -73,7 +73,126 @@
 
 .materials-button.secondary:hover:not(:disabled) { background: #dbe6f4; }
 
+a.materials-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.materials-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.materials-search {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.materials-search-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.materials-search-actions .materials-button { flex: 1; }
+
+.materials-empty,
+.materials-count {
+  margin: 0;
+  color: var(--color-text-muted, #6c757d);
+}
+
+.materials-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.materials-count { margin-bottom: 0.75rem; font-size: 0.9rem; }
+
+.materials-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.material-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.material-type {
+  display: grid;
+  place-items: center;
+  flex: 0 0 52px;
+  height: 52px;
+  border-radius: 10px;
+  color: #315c8c;
+  background: #eaf0f8;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.material-details {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.material-details h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.02rem;
+  color: var(--color-primary, #1a1a2e);
+  overflow-wrap: anywhere;
+}
+
+.material-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.35rem;
+}
+
+.material-tags span {
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: #f1f3f5;
+  color: #495057;
+  font-size: 0.78rem;
+}
+
+.material-meta {
+  margin: 0;
+  color: var(--color-text-muted, #6c757d);
+  font-size: 0.82rem;
+}
+
+.materials-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
 @media (min-width: 640px) {
   .materials-form-row { grid-template-columns: repeat(2, 1fr); }
   .materials-card { padding: 1.5rem; }
+  .materials-search { grid-template-columns: repeat(2, 1fr); }
+  .material-item { padding: 1rem 1.25rem; }
+}
+
+@media (min-width: 900px) {
+  .materials-search { grid-template-columns: 2fr 1fr 1fr auto; }
 }

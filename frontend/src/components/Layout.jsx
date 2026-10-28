@@ -11,6 +11,7 @@ const NAV_LINKS = [
 
 // Feature links are shown only to the roles allowed to use them (SRS Table 1).
 const ROLE_LINKS = [
+  { href: '#/materials', label: 'Materials', roles: ['student', 'contributor', 'admin'] },
   { href: '#/materials/upload', label: 'Upload material', roles: ['contributor'] },
 ];
 
