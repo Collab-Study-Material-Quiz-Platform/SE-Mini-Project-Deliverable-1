@@ -89,3 +89,11 @@ test('rejects passwords longer than bcrypt supports without truncating them', ()
 
   assert.equal(result.error, 'Password must not exceed 72 UTF-8 bytes');
 });
+
+test('rejects passwords that are shorter than 8 characters, lack a digit, or lack a letter', () => {
+  const base = { name: 'Alex', email: 'alex@example.com' };
+  assert.equal(validateRegistrationInput({ ...base, password: 'abc12' }).error, 'Password too weak');
+  assert.equal(validateRegistrationInput({ ...base, password: 'abcdefgh' }).error, 'Password too weak');
+  assert.equal(validateRegistrationInput({ ...base, password: '12345678' }).error, 'Password too weak');
+  assert.equal(validateRegistrationInput({ ...base, password: 'abcdef12' }).error, undefined);
+});

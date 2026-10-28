@@ -32,6 +32,11 @@ function RegistrationPage() {
       return
     }
 
+    if (form.password.length < 8 || !/[A-Za-z]/.test(form.password) || !/\d/.test(form.password)) {
+      setStatus({ type: 'error', message: 'Password too weak' })
+      return
+    }
+
     setIsSubmitting(true)
     try {
       const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
@@ -141,7 +146,7 @@ function RegistrationPage() {
               onChange={handleChange}
               required
             />
-            <span className="field-hint">Use a password you do not use elsewhere.</span>
+            <span className="field-hint">At least 8 characters, including one letter and one digit.</span>
           </div>
 
           <fieldset className="role-field">
