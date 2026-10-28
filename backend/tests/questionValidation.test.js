@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { validateQuestionInput, normalizeDifficulty } = require('../utils/questionValidation');
+const { validateQuestionInput, normalizeDifficulty, parseQuestionFilter } = require('../utils/questionValidation');
 
 const valid = {
   text: 'What is 2 + 2?',
@@ -77,4 +77,13 @@ test('normalizes difficulty spelling', () => {
 test('rejects a missing or non-object body', () => {
   assert.equal(validateQuestionInput(null).error, 'Request body is required');
   assert.equal(validateQuestionInput([]).error, 'Request body is required');
+});
+
+test('builds topic, difficulty and combined question filters', () => {
+  assert.deepEqual(parseQuestionFilter({}).value, {});
+  assert.deepEqual(parseQuestionFilter({ topic: ' Algebra ' }).value, { topicKey: 'algebra' });
+  assert.deepEqual(parseQuestionFilter({ difficulty: 'easy' }).value, { difficulty: 'Easy' });
+  assert.deepEqual(parseQuestionFilter({ topic: 'Algebra', difficulty: 'Easy' }).value, { topicKey: 'algebra', difficulty: 'Easy' });
+  assert.equal(parseQuestionFilter({ difficulty: 'Expert' }).error, 'Difficulty must be Easy, Medium or Hard');
+  assert.deepEqual(parseQuestionFilter({ topic: { $ne: null } }).value, {});
 });

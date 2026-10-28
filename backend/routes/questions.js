@@ -4,7 +4,7 @@ const Question = require('../models/Question');
 const { requireAuth } = require('../utils/authToken');
 const { requireRoles } = require('../middleware/authorization');
 const { requireDatabase } = require('../middleware/database');
-const { validateQuestionInput } = require('../utils/questionValidation');
+const { validateQuestionInput, parseQuestionFilter } = require('../utils/questionValidation');
 const { isQuestionInPublishedQuiz } = require('../utils/questionUsage');
 
 const router = express.Router();
@@ -73,7 +73,9 @@ router.get('/', async (req, res) => {
   const limit = parsePositiveInteger(req.query.limit, DEFAULT_PAGE_SIZE);
   if (!page || !limit) return res.status(400).json({ message: 'Page and limit must be positive whole numbers' });
   const pageSize = Math.min(limit, MAX_PAGE_SIZE);
-  const filter = {};
+  const parsed = parseQuestionFilter(req.query);
+  if (parsed.error) return res.status(400).json({ message: parsed.error });
+  const filter = parsed.value;
 
   try {
     const [questions, total] = await Promise.all([

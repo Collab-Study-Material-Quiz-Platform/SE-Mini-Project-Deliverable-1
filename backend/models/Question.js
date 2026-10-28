@@ -26,4 +26,9 @@ questionSchema.pre('validate', function setTopicKey() {
   if (typeof this.topic === 'string') this.topicKey = this.topic.trim().toLowerCase();
 });
 
+// Filtering by topic, difficulty or both (CSQ-F-022), newest first; ownerId supports ownership lookups.
+questionSchema.index({ topicKey: 1, difficulty: 1, createdAt: -1 });
+questionSchema.index({ difficulty: 1, createdAt: -1 });
+questionSchema.index({ ownerId: 1 });
+
 module.exports = mongoose.model('Question', questionSchema);
