@@ -8,11 +8,13 @@ const { requireAuth } = require('../utils/authToken');
 const { requireRoles } = require('../middleware/authorization');
 const { requireDatabase } = require('../middleware/database');
 const { MAX_FILE_SIZE_BYTES, validateUploadedFile } = require('../utils/fileValidation');
-const { validateMaterialInput } = require('../utils/materialValidation');
+const { validateMaterialInput, parseMaterialSearch } = require('../utils/materialValidation');
 const { getUploadDir, removeStoredFile } = require('../utils/fileStorage');
 
 const router = express.Router();
 const INVALID_FILE = 'Invalid file';
+const PAGE_SIZE = 10;
+const LIST_FIELDS = 'title subject topic originalName mimeType sizeBytes downloadCount ownerId createdAt';
 
 // Files are streamed straight to disk under a random name; multer stops reading once 20 MB is exceeded.
 const upload = multer({
@@ -54,6 +56,37 @@ function toMaterialResponse(material) {
     createdAt: material.createdAt,
   };
 }
+
+router.get('/', requireAuth, requireRoles('student', 'contributor', 'admin'), requireDatabase, async (req, res) => {
+  const search = parseMaterialSearch(req.query);
+  if (search.error) return res.status(400).json({ message: search.error });
+
+  const { filter, page } = search.value;
+  try {
+    // Lean queries with a list-only projection keep the newest-first page fast (CSQ-NF-001).
+    const [materials, total] = await Promise.all([
+      Material.find(filter)
+        .sort({ createdAt: -1, _id: -1 })
+        .skip((page - 1) * PAGE_SIZE)
+        .limit(PAGE_SIZE)
+        .select(LIST_FIELDS)
+        .lean(),
+      Material.countDocuments(filter),
+    ]);
+
+    return res.json({
+      materials: materials.map(toMaterialResponse),
+      page,
+      pageSize: PAGE_SIZE,
+      total,
+      totalPages: Math.ceil(total / PAGE_SIZE),
+      ...(total === 0 ? { message: 'No materials found' } : {}),
+    });
+  } catch (error) {
+    console.error('Material search failed:', error.message);
+    return res.status(500).json({ message: 'Unable to search materials' });
+  }
+});
 
 router.post('/', requireAuth, requireRoles('contributor'), requireDatabase, receiveFile, async (req, res) => {
   const file = req.file;
