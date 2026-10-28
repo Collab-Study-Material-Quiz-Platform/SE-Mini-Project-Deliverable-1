@@ -1,4 +1,5 @@
-// QuestionBankPage.jsx — Contributors add, edit and delete multiple-choice questions (CSQ-F-020, CSQ-F-021)
+// QuestionBankPage.jsx — Contributors add, edit, delete and filter multiple-choice questions
+// (CSQ-F-020, CSQ-F-021, CSQ-F-022)
 import { useEffect, useState } from 'react'
 import { apiRequest, getAuthUser, readJson } from '../api'
 import './QuestionBank.css'
@@ -7,6 +8,7 @@ const DIFFICULTIES = ['Easy', 'Medium', 'Hard']
 const OPTION_LABELS = ['A', 'B', 'C', 'D']
 const EMPTY_QUESTION = { text: '', options: ['', '', '', ''], correctIndex: 0, topic: '', difficulty: 'Easy' }
 const PAGE_SIZE = 20
+const NO_FILTERS = { topic: '', difficulty: '' }
 
 function toFormValues(question) {
   if (!question) return EMPTY_QUESTION
@@ -127,14 +129,20 @@ export default function QuestionBankPage() {
   const [notice, setNotice] = useState({ type: '', message: '' })
   const [editing, setEditing] = useState(null)
   const [deletingId, setDeletingId] = useState(null)
+  const [filterForm, setFilterForm] = useState(NO_FILTERS)
+  const [filters, setFilters] = useState(NO_FILTERS)
   const isContributor = user?.role === 'contributor'
+  const isFiltered = Boolean(filters.topic.trim() || filters.difficulty)
 
   useEffect(() => {
     if (!isContributor) return undefined
     let cancelled = false
+    const params = new URLSearchParams({ page: String(page), limit: String(PAGE_SIZE) })
+    if (filters.topic.trim()) params.set('topic', filters.topic.trim())
+    if (filters.difficulty) params.set('difficulty', filters.difficulty)
     ;(async () => {
       try {
-        const response = await apiRequest(`/api/questions?page=${page}&limit=${PAGE_SIZE}`)
+        const response = await apiRequest(`/api/questions?${params}`)
         const data = await readJson(response)
         if (cancelled) return
         if (response.ok) {
@@ -148,7 +156,7 @@ export default function QuestionBankPage() {
       }
     })()
     return () => { cancelled = true }
-  }, [isContributor, page, reloadKey])
+  }, [isContributor, page, reloadKey, filters])
 
   if (!isContributor) {
     return (
@@ -166,6 +174,18 @@ export default function QuestionBankPage() {
       setPage(1)
     }
     setReloadKey((key) => key + 1)
+  }
+
+  function applyFilters(event) {
+    event.preventDefault()
+    setFilters({ ...filterForm })
+    setPage(1)
+  }
+
+  function clearFilters() {
+    setFilterForm(NO_FILTERS)
+    setFilters({ ...NO_FILTERS })
+    setPage(1)
   }
 
   function handleEdit(question) {
@@ -211,8 +231,38 @@ export default function QuestionBankPage() {
 
       <section aria-labelledby="qb-list-title">
         <h2 id="qb-list-title" className="qb-list-title">
-          Questions {results ? <span className="qb-count">({results.total})</span> : null}
+          Questions {results ? <span className="qb-count">({results.total}{isFiltered ? ' matching' : ''})</span> : null}
         </h2>
+
+        <form className="qb-card qb-filters" onSubmit={applyFilters} aria-label="Filter questions">
+          <div className="form-field">
+            <label htmlFor="qb-filter-topic">Topic</label>
+            <input
+              id="qb-filter-topic"
+              type="text"
+              maxLength={100}
+              placeholder="Any topic"
+              value={filterForm.topic}
+              onChange={(e) => setFilterForm({ ...filterForm, topic: e.target.value })}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="qb-filter-difficulty">Difficulty</label>
+            <select
+              id="qb-filter-difficulty"
+              value={filterForm.difficulty}
+              onChange={(e) => setFilterForm({ ...filterForm, difficulty: e.target.value })}
+            >
+              <option value="">Any difficulty</option>
+              {DIFFICULTIES.map((difficulty) => <option key={difficulty} value={difficulty}>{difficulty}</option>)}
+            </select>
+          </div>
+          <div className="qb-actions qb-filter-actions">
+            <button className="qb-button" type="submit">Filter</button>
+            <button className="qb-button secondary" type="button" onClick={clearFilters}>Clear</button>
+          </div>
+        </form>
+
         {results && results.total === 0 && <p className="qb-empty">No questions found</p>}
         <ol className="qb-list">
           {results?.questions.map((question) => {
