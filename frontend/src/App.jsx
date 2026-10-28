@@ -21,7 +21,9 @@ export default function App() {
   }, [])
 
   let page
-  if (hash === '#/login') page = <LoginPage />
+  const protectedRoute = ['#/materials', '#/questions', '#/quizzes', '#/performance', '#/admin'].some((route) => hash.startsWith(route))
+  if (protectedRoute && !localStorage.getItem('authToken')) page = <LoginPage />
+  else if (hash === '#/login') page = <LoginPage />
   else if (hash === '#/status') page = <StatusPage />
   else if (hash === '#/register') page = <RegistrationPage />
   else page = <Home />

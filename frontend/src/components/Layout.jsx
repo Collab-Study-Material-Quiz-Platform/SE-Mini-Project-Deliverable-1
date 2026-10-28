@@ -15,6 +15,18 @@ export default function Layout({ children, currentHash }) {
       ? '#/'
       : currentHash;
 
+  async function handleLogout() {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/logout`, {
+        method: 'POST', headers: { Authorization: `Bearer ${token}` },
+      }).catch(() => {});
+    }
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('authUser');
+    window.location.hash = '#/login';
+  }
+
   return (
     <div className="layout">
       <header className="layout-header">
@@ -48,6 +60,9 @@ export default function Layout({ children, currentHash }) {
               {link.label}
             </a>
           ))}
+          {localStorage.getItem('authToken') && (
+            <button type="button" onClick={handleLogout}>Log out</button>
+          )}
         </nav>
       </header>
       <main className="layout-main">{children}</main>
