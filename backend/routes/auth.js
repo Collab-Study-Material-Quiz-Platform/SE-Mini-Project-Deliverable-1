@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const { validateRegistrationInput } = require('../utils/registrationValidation');
-const { signToken, requireAuth } = require('../utils/authToken');
+const { signToken, revokeToken, requireAuth } = require('../utils/authToken');
 
 const router = express.Router();
 
@@ -77,6 +77,11 @@ router.get('/me', requireAuth, async (req, res) => {
   const user = await User.findById(req.auth.sub);
   if (!user) return res.status(401).json({ message: 'Unauthorized' });
   return res.json({ user: { id: user._id, name: user.name, email: user.email, role: user.role } });
+});
+
+router.post('/logout', requireAuth, (req, res) => {
+  revokeToken(req.authToken);
+  return res.status(200).json({ message: 'Logout successful' });
 });
 
 module.exports = router;
