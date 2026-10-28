@@ -30,6 +30,10 @@ function validateRegistrationInput(body) {
     return { error: 'Password must not exceed 72 UTF-8 bytes' };
   }
 
+  if (password.length < 8 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) {
+    return { error: 'Password too weak' };
+  }
+
   // Public registration may create students or contributors, never administrators.
   if (!ALLOWED_ROLES.has(rawRole)) {
     return { error: 'Role must be Student or Contributor' };
