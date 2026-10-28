@@ -1,4 +1,4 @@
-// QuestionBankPage.jsx — Contributors add multiple-choice questions to the shared question bank (CSQ-F-020)
+// QuestionBankPage.jsx — Contributors add, edit and delete multiple-choice questions (CSQ-F-020, CSQ-F-021)
 import { useEffect, useState } from 'react'
 import { apiRequest, getAuthUser, readJson } from '../api'
 import './QuestionBank.css'
@@ -8,8 +8,16 @@ const OPTION_LABELS = ['A', 'B', 'C', 'D']
 const EMPTY_QUESTION = { text: '', options: ['', '', '', ''], correctIndex: 0, topic: '', difficulty: 'Easy' }
 const PAGE_SIZE = 20
 
-function QuestionForm({ onSaved }) {
-  const [form, setForm] = useState(EMPTY_QUESTION)
+function toFormValues(question) {
+  if (!question) return EMPTY_QUESTION
+  const { text, options, correctIndex, topic, difficulty } = question
+  return { text, options: [...options], correctIndex, topic, difficulty }
+}
+
+// Adds a new question, or edits `question` when one is given.
+function QuestionForm({ question, onSaved, onCancel }) {
+  const isEditing = Boolean(question)
+  const [form, setForm] = useState(() => toFormValues(question))
   const [status, setStatus] = useState({ type: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -27,8 +35,8 @@ function QuestionForm({ onSaved }) {
     setIsSubmitting(true)
     setStatus({ type: '', message: '' })
     try {
-      const response = await apiRequest('/api/questions', {
-        method: 'POST',
+      const response = await apiRequest(isEditing ? `/api/questions/${question.id}` : '/api/questions', {
+        method: isEditing ? 'PUT' : 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
@@ -37,9 +45,11 @@ function QuestionForm({ onSaved }) {
         setStatus({ type: 'error', message: data.message || 'The question could not be saved.' })
         return
       }
-      setForm(EMPTY_QUESTION)
-      setStatus({ type: 'success', message: 'Question saved to the question bank.' })
-      onSaved()
+      if (!isEditing) {
+        setForm(EMPTY_QUESTION)
+        setStatus({ type: 'success', message: 'Question saved to the question bank.' })
+      }
+      onSaved(isEditing ? 'Question updated.' : '')
     } catch {
       setStatus({ type: 'error', message: 'Could not reach the server. Make sure the backend is running and try again.' })
     } finally {
@@ -48,8 +58,8 @@ function QuestionForm({ onSaved }) {
   }
 
   return (
-    <form className="qb-card qb-form" onSubmit={handleSubmit} aria-labelledby="qb-form-title">
-      <h2 id="qb-form-title">Add a question</h2>
+    <form className={`qb-card qb-form${isEditing ? ' editing' : ''}`} onSubmit={handleSubmit} aria-labelledby="qb-form-title">
+      <h2 id="qb-form-title">{isEditing ? 'Edit question' : 'Add a question'}</h2>
       <div className="form-field">
         <label htmlFor="qb-text">Question text</label>
         <textarea id="qb-text" rows={3} maxLength={500} value={form.text} onChange={(e) => update({ text: e.target.value })} required />
@@ -98,7 +108,12 @@ function QuestionForm({ onSaved }) {
         <div className={`status-message ${status.type}`} role={status.type === 'error' ? 'alert' : 'status'}>{status.message}</div>
       )}
 
-      <button className="qb-button" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Saving…' : 'Save question'}</button>
+      <div className="qb-actions">
+        <button className="qb-button" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Saving…' : isEditing ? 'Save changes' : 'Save question'}
+        </button>
+        {isEditing && <button className="qb-button secondary" type="button" onClick={onCancel} disabled={isSubmitting}>Cancel</button>}
+      </div>
     </form>
   )
 }
@@ -109,6 +124,9 @@ export default function QuestionBankPage() {
   const [reloadKey, setReloadKey] = useState(0)
   const [results, setResults] = useState(null)
   const [error, setError] = useState('')
+  const [notice, setNotice] = useState({ type: '', message: '' })
+  const [editing, setEditing] = useState(null)
+  const [deletingId, setDeletingId] = useState(null)
   const isContributor = user?.role === 'contributor'
 
   useEffect(() => {
@@ -140,9 +158,41 @@ export default function QuestionBankPage() {
     )
   }
 
-  function handleSaved() {
-    setPage(1)
+  function handleSaved(message) {
+    setNotice({ type: message ? 'success' : '', message })
+    if (editing) {
+      setEditing(null)
+    } else {
+      setPage(1)
+    }
     setReloadKey((key) => key + 1)
+  }
+
+  function handleEdit(question) {
+    setNotice({ type: '', message: '' })
+    setEditing(question)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  async function handleDelete(question) {
+    if (!window.confirm('Delete this question? This cannot be undone.')) return
+    setDeletingId(question.id)
+    setNotice({ type: '', message: '' })
+    try {
+      const response = await apiRequest(`/api/questions/${question.id}`, { method: 'DELETE' })
+      const data = await readJson(response)
+      if (!response.ok) {
+        setNotice({ type: 'error', message: data.message || 'The question could not be deleted.' })
+        return
+      }
+      setNotice({ type: 'success', message: 'Question deleted.' })
+      if (editing?.id === question.id) setEditing(null)
+      setReloadKey((key) => key + 1)
+    } catch {
+      setNotice({ type: 'error', message: 'Could not reach the server. Make sure the backend is running and try again.' })
+    } finally {
+      setDeletingId(null)
+    }
   }
 
   return (
@@ -152,9 +202,12 @@ export default function QuestionBankPage() {
         <p>Build a shared bank of multiple-choice questions with four options and one correct answer.</p>
       </header>
 
-      <QuestionForm onSaved={handleSaved} />
+      <QuestionForm key={editing?.id || 'new'} question={editing} onSaved={handleSaved} onCancel={() => setEditing(null)} />
 
       {error && <div className="status-message error" role="alert">{error}</div>}
+      {notice.message && (
+        <div className={`status-message ${notice.type}`} role={notice.type === 'error' ? 'alert' : 'status'}>{notice.message}</div>
+      )}
 
       <section aria-labelledby="qb-list-title">
         <h2 id="qb-list-title" className="qb-list-title">
@@ -162,24 +215,43 @@ export default function QuestionBankPage() {
         </h2>
         {results && results.total === 0 && <p className="qb-empty">No questions found</p>}
         <ol className="qb-list">
-          {results?.questions.map((question) => (
-            <li className="qb-card qb-item" key={question.id}>
-              <p className="qb-item-text">{question.text}</p>
-              <ul className="qb-item-options">
-                {question.options.map((option, index) => (
-                  <li key={OPTION_LABELS[index]} className={index === question.correctIndex ? 'correct' : ''}>
-                    <span className="qb-option-label">{OPTION_LABELS[index]}</span> {option}
-                    {index === question.correctIndex && <span className="visually-hidden"> (correct answer)</span>}
-                  </li>
-                ))}
-              </ul>
-              <p className="qb-item-tags">
-                <span className="qb-tag">{question.topic}</span>
-                <span className={`qb-tag difficulty-${question.difficulty.toLowerCase()}`}>{question.difficulty}</span>
-                {question.ownerId === user.id && <span className="qb-tag own">Yours</span>}
-              </p>
-            </li>
-          ))}
+          {results?.questions.map((question) => {
+            const isOwn = question.ownerId === user.id
+            return (
+              <li className="qb-card qb-item" key={question.id}>
+                <p className="qb-item-text">{question.text}</p>
+                <ul className="qb-item-options">
+                  {question.options.map((option, index) => (
+                    <li key={OPTION_LABELS[index]} className={index === question.correctIndex ? 'correct' : ''}>
+                      <span className="qb-option-label">{OPTION_LABELS[index]}</span> {option}
+                      {index === question.correctIndex && <span className="visually-hidden"> (correct answer)</span>}
+                    </li>
+                  ))}
+                </ul>
+                <div className="qb-item-footer">
+                  <p className="qb-item-tags">
+                    <span className="qb-tag">{question.topic}</span>
+                    <span className={`qb-tag difficulty-${question.difficulty.toLowerCase()}`}>{question.difficulty}</span>
+                    {isOwn && <span className="qb-tag own">Yours</span>}
+                  </p>
+                  {/* Only the author may change a question; the server enforces this too. */}
+                  {isOwn && (
+                    <div className="qb-actions">
+                      <button className="qb-button secondary" type="button" onClick={() => handleEdit(question)}>Edit</button>
+                      <button
+                        className="qb-button danger"
+                        type="button"
+                        onClick={() => handleDelete(question)}
+                        disabled={deletingId === question.id}
+                      >
+                        {deletingId === question.id ? 'Deleting…' : 'Delete'}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </li>
+            )
+          })}
         </ol>
         {results && results.totalPages > 1 && (
           <nav className="qb-pagination" aria-label="Question bank pages">
