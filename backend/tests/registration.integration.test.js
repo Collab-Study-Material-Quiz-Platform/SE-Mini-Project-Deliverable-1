@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const app = require('../app');
 const User = require('../models/User');
+const { signToken } = require('../utils/authToken');
 
 const canUseDatabase = Boolean(process.env.MONGO_URI);
 let server;
@@ -116,4 +117,47 @@ test('rejects invalid input before attempting persistence', { skip: !canUseDatab
 
   assert.equal(response.status, 400);
   assert.equal((await response.json()).message, 'Name must be between 2 and 50 characters');
+});
+
+test('logs in with valid credentials and returns a token without a password hash', { skip: !canUseDatabase }, async () => {
+  const email = testEmail();
+  await User.create({ name: 'Login Student', email, passwordHash: await bcrypt.hash('ExamplePassword1!', 10), role: 'student' });
+  const response = await fetch(`${baseUrl}/api/auth/login`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email.toUpperCase(), password: 'ExamplePassword1!' }),
+  });
+  const body = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(body.user.role, 'student');
+  assert.ok(body.token);
+  assert.equal(Object.hasOwn(body.user, 'passwordHash'), false);
+  const protectedResponse = await fetch(`${baseUrl}/api/auth/me`, { headers: { Authorization: `Bearer ${body.token}` } });
+  assert.equal(protectedResponse.status, 200);
+});
+
+test('rejects incorrect passwords and unknown emails with the same message and no token', { skip: !canUseDatabase }, async () => {
+  const email = testEmail();
+  await User.create({ name: 'Login Student', email, passwordHash: await bcrypt.hash('ExamplePassword1!', 10), role: 'student' });
+  for (const credentials of [
+    { email, password: 'WrongPassword1!' },
+    { email: testEmail(), password: 'ExamplePassword1!' },
+  ]) {
+    const response = await fetch(`${baseUrl}/api/auth/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(credentials) });
+    const body = await response.json();
+    assert.equal(response.status, 401);
+    assert.equal(body.message, 'Invalid email or password');
+    assert.equal(Object.hasOwn(body, 'token'), false);
+  }
+});
+
+test('rejects missing, altered and expired authentication tokens with HTTP 401', { skip: !canUseDatabase }, async () => {
+  const noToken = await fetch(`${baseUrl}/api/auth/me`);
+  assert.equal(noToken.status, 401);
+  const email = testEmail();
+  const user = await User.create({ name: 'Token Student', email, passwordHash: await bcrypt.hash('ExamplePassword1!', 10), role: 'student' });
+  const token = signToken({ sub: user._id.toString(), role: user.role });
+  const altered = `${token.slice(0, -1)}${token.endsWith('a') ? 'b' : 'a'}`;
+  assert.equal((await fetch(`${baseUrl}/api/auth/me`, { headers: { Authorization: `Bearer ${altered}` } })).status, 401);
+  const expired = signToken({ sub: user._id.toString(), role: user.role }, Math.floor(Date.now() / 1000) - (31 * 60));
+  assert.equal((await fetch(`${baseUrl}/api/auth/me`, { headers: { Authorization: `Bearer ${expired}` } })).status, 401);
 });
