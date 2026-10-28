@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const mongoose = require('mongoose');
 const Material = require('../models/Material');
 const { requireAuth } = require('../utils/authToken');
 const { requireRoles } = require('../middleware/authorization');
@@ -85,6 +86,33 @@ router.get('/', requireAuth, requireRoles('student', 'contributor', 'admin'), re
   } catch (error) {
     console.error('Material search failed:', error.message);
     return res.status(500).json({ message: 'Unable to search materials' });
+  }
+});
+
+router.get('/:id/download', requireAuth, requireRoles('student', 'contributor', 'admin'), requireDatabase, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Material not found' });
+
+  try {
+    const material = await Material.findById(req.params.id).select('+storagePath').lean();
+    if (!material) return res.status(404).json({ message: 'Material not found' });
+
+    const filePath = path.join(getUploadDir(), path.basename(material.storagePath));
+    try {
+      await fs.promises.access(filePath, fs.constants.R_OK);
+    } catch {
+      console.error('Stored file missing for material', material._id.toString());
+      return res.status(404).json({ message: 'Material file not found' });
+    }
+
+    // Atomic increment, so concurrent downloads are each counted exactly once.
+    await Material.updateOne({ _id: material._id }, { $inc: { downloadCount: 1 } });
+
+    return res.download(filePath, material.originalName, { headers: { 'Content-Type': material.mimeType } }, (error) => {
+      if (error && !res.headersSent) res.status(500).json({ message: 'Unable to download material' });
+    });
+  } catch (error) {
+    console.error('Download failed:', error.message);
+    return res.status(500).json({ message: 'Unable to download material' });
   }
 });
 
