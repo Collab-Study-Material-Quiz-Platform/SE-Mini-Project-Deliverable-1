@@ -1,0 +1,223 @@
+/* QuestionBank.css — question bank page, mobile-first 360px to 1920px.
+   Form fields and status messages reuse the shared styles from RegistrationPage.css. */
+
+.qb-page {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.qb-header h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--color-primary, #1a1a2e);
+}
+
+.qb-header p {
+  margin: 0;
+  color: var(--color-text-muted, #6c757d);
+}
+
+.qb-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #dee2e6);
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  min-width: 0;
+}
+
+.qb-form h2,
+.qb-list-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-primary, #1a1a2e);
+}
+
+.qb-list-title { margin-bottom: 0.75rem; }
+.qb-count { color: var(--color-text-muted, #6c757d); font-weight: 400; }
+
+.form-field textarea,
+.form-field select,
+.qb-option input[type='text'] {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #d4dce7;
+  border-radius: 9px;
+  color: #1d2e45;
+  background: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+}
+
+.form-field textarea { resize: vertical; }
+
+.form-field textarea:focus,
+.form-field select:focus,
+.qb-option input[type='text']:focus {
+  outline: none;
+  border-color: #426b9b;
+  box-shadow: 0 0 0 3px rgba(66, 107, 155, 0.13);
+}
+
+.qb-options {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.qb-options legend {
+  margin-bottom: 0.4rem;
+  padding: 0;
+  color: #293a51;
+  font-size: 0.87rem;
+  font-weight: 700;
+}
+
+.qb-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qb-option input[type='radio'] {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #2f7a4f;
+}
+
+.qb-option-label {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #eaf0f8;
+  color: #315c8c;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.qb-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.qb-button {
+  min-height: 44px;
+  padding: 0.6rem 1.1rem;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #244a78;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qb-button:hover:not(:disabled) { background: #193a64; }
+.qb-button:focus-visible { outline: 3px solid #9db8da; outline-offset: 2px; }
+.qb-button:disabled { opacity: 0.65; cursor: not-allowed; }
+.qb-button.secondary { color: #244a78; background: #eaf0f8; }
+.qb-button.secondary:hover:not(:disabled) { background: #dbe6f4; }
+
+.qb-empty {
+  padding: 2rem 1rem;
+  margin: 0;
+  text-align: center;
+  color: var(--color-text-muted, #6c757d);
+  font-weight: 600;
+}
+
+.qb-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.qb-item-text {
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary, #1a1a2e);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.qb-item-options {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.qb-item-options li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+
+.qb-item-options li.correct {
+  background: #edf9f2;
+  color: #1f5c3d;
+  font-weight: 600;
+}
+
+.qb-item-options li.correct .qb-option-label { background: #cdeedb; color: #1f5c3d; }
+
+.qb-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.qb-tag {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: #f1f3f5;
+  color: #495057;
+  font-size: 0.78rem;
+}
+
+.qb-tag.difficulty-easy { background: #e7f6ec; color: #1f6b3e; }
+.qb-tag.difficulty-medium { background: #fff4dc; color: #7a5300; }
+.qb-tag.difficulty-hard { background: #fde8e8; color: #9f2929; }
+.qb-tag.own { background: #eaf0f8; color: #244a78; font-weight: 600; }
+
+.qb-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .qb-card { padding: 1.5rem; }
+  .qb-form-row { grid-template-columns: repeat(2, 1fr); }
+}
