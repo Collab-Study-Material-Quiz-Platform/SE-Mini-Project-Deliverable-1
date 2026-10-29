@@ -24,4 +24,10 @@ materialSchema.pre('validate', function setFilterKeys() {
   if (typeof this.topic === 'string') this.topicKey = this.topic.trim().toLowerCase();
 });
 
+// Search indexes (CSQ-F-011, CSQ-NF-001): keyword text search plus newest-first listing and exact filters.
+materialSchema.index({ title: 'text', subject: 'text', topic: 'text' }, { name: 'material_text_search' });
+materialSchema.index({ createdAt: -1, _id: -1 });
+materialSchema.index({ subjectKey: 1, createdAt: -1 });
+materialSchema.index({ topicKey: 1, createdAt: -1 });
+
 module.exports = mongoose.model('Material', materialSchema);

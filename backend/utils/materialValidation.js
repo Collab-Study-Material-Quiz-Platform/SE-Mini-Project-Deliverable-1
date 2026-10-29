@@ -24,4 +24,26 @@ function validateMaterialInput(body) {
   return { value: { title, subject, topic } };
 }
 
-module.exports = { MAX_TITLE_LENGTH, MAX_LABEL_LENGTH, validateMaterialInput };
+// Turns ?q=&subject=&topic=&page= into a MongoDB filter. Subject and topic match exactly, ignoring case.
+function parseMaterialSearch(query = {}) {
+  const keyword = textField(query.q);
+  const subject = textField(query.subject);
+  const topic = textField(query.topic);
+  const rawPage = query.page == null || query.page === '' ? '1' : query.page;
+
+  if (typeof rawPage !== 'string' || !/^\d+$/.test(rawPage) || Number(rawPage) < 1) {
+    return { error: 'Page must be a positive whole number' };
+  }
+  if (keyword.length > 200 || subject.length > MAX_LABEL_LENGTH || topic.length > MAX_LABEL_LENGTH) {
+    return { error: 'Search terms are too long' };
+  }
+
+  const filter = {};
+  if (keyword) filter.$text = { $search: keyword };
+  if (subject) filter.subjectKey = subject.toLowerCase();
+  if (topic) filter.topicKey = topic.toLowerCase();
+
+  return { value: { filter, page: Number(rawPage) } };
+}
+
+module.exports = { MAX_TITLE_LENGTH, MAX_LABEL_LENGTH, validateMaterialInput, parseMaterialSearch };

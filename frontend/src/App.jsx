@@ -6,6 +6,7 @@ import StatusPage from './components/StatusPage'
 import RegistrationPage from './RegistrationPage'
 import LoginPage from './LoginPage'
 import UploadMaterialPage from './components/UploadMaterialPage'
+import MaterialsPage from './components/MaterialsPage'
 
 function getHash() {
   const h = window.location.hash
@@ -28,6 +29,7 @@ export default function App() {
   else if (hash === '#/status') page = <StatusPage />
   else if (hash === '#/register') page = <RegistrationPage />
   else if (hash === '#/materials/upload') page = <UploadMaterialPage />
+  else if (hash === '#/materials') page = <MaterialsPage />
   else page = <Home />
 
   return <Layout currentHash={hash}>{page}</Layout>
