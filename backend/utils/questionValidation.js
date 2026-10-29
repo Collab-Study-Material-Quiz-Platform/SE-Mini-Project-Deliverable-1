@@ -64,4 +64,22 @@ function validateQuestionInput(body) {
   return { value: { text, ...options.value, topic, difficulty } };
 }
 
-module.exports = { MAX_TEXT_LENGTH, OPTION_COUNT, DIFFICULTIES, normalizeDifficulty, validateQuestionInput };
+// Turns ?topic=&difficulty= into a MongoDB filter; either, both or neither may be given.
+function parseQuestionFilter(query = {}) {
+  const topic = textField(query.topic);
+  const rawDifficulty = textField(query.difficulty);
+  const filter = {};
+
+  if (topic.length > MAX_TOPIC_LENGTH) return { error: 'Topic must not exceed 100 characters' };
+  if (topic) filter.topicKey = topic.toLowerCase();
+
+  if (rawDifficulty) {
+    const difficulty = normalizeDifficulty(rawDifficulty);
+    if (!difficulty) return { error: 'Difficulty must be Easy, Medium or Hard' };
+    filter.difficulty = difficulty;
+  }
+
+  return { value: filter };
+}
+
+module.exports = { MAX_TEXT_LENGTH, OPTION_COUNT, DIFFICULTIES, normalizeDifficulty, validateQuestionInput, parseQuestionFilter };

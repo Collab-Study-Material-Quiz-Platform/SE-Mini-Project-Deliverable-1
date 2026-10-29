@@ -137,6 +137,21 @@
   gap: 0.5rem;
 }
 
+.qb-filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.qb-filter-actions { align-items: flex-end; }
+.qb-filter-actions .qb-button { flex: 1; }
+
+@media (min-width: 640px) {
+  .qb-filters { grid-template-columns: 2fr 1fr auto; padding: 1rem 1.25rem; }
+}
+
 .qb-form.editing { border-color: #557aa8; box-shadow: 0 0 0 3px rgba(66, 107, 155, 0.13); }
 
 .qb-item-footer {
