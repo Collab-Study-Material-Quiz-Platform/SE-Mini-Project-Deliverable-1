@@ -8,7 +8,6 @@ const authorized = (...roles) => [requireAuth, requireRoles(...roles)];
 // These endpoints establish the server-side authorization boundary for the feature modules.
 // Feature-specific persistence and business logic will be added by their respective issues.
 router.get('/materials', ...authorized('student', 'contributor', 'admin'), (req, res) => res.json({ message: 'Authorized', role: req.auth.role }));
-router.post('/materials', ...authorized('contributor'), (req, res) => res.json({ message: 'Authorized', role: req.auth.role }));
 router.get('/questions', ...authorized('student', 'contributor', 'admin'), (req, res) => res.json({ message: 'Authorized', role: req.auth.role }));
 router.post('/questions', ...authorized('contributor'), (req, res) => res.json({ message: 'Authorized', role: req.auth.role }));
 router.get('/quizzes', ...authorized('student', 'contributor', 'admin'), (req, res) => res.json({ message: 'Authorized', role: req.auth.role }));

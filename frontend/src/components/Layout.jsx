@@ -1,4 +1,5 @@
 // Layout.jsx — App shell: sticky header, main content area, footer
+import { getAuthUser } from '../api';
 import './Layout.css';
 
 const NAV_LINKS = [
@@ -8,12 +9,20 @@ const NAV_LINKS = [
   { href: '#/status', label: 'System Status' },
 ];
 
+// Feature links are shown only to the roles allowed to use them (SRS Table 1).
+const ROLE_LINKS = [
+  { href: '#/materials/upload', label: 'Upload material', roles: ['contributor'] },
+];
+
 export default function Layout({ children, currentHash }) {
   // Normalize: treat "", "#", "#/" all as "#/"
   const activeHash =
     !currentHash || currentHash === '#' || currentHash === '#/'
       ? '#/'
       : currentHash;
+  const isLoggedIn = Boolean(localStorage.getItem('authToken'));
+  const role = isLoggedIn ? getAuthUser()?.role : null;
+  const navLinks = [...NAV_LINKS, ...ROLE_LINKS.filter((link) => link.roles.includes(role))];
 
   async function handleLogout() {
     const token = localStorage.getItem('authToken');
@@ -50,7 +59,7 @@ export default function Layout({ children, currentHash }) {
           </span>
         </a>
         <nav className="layout-nav" aria-label="Main navigation">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -60,7 +69,7 @@ export default function Layout({ children, currentHash }) {
               {link.label}
             </a>
           ))}
-          {localStorage.getItem('authToken') && (
+          {isLoggedIn && (
             <button type="button" onClick={handleLogout}>Log out</button>
           )}
         </nav>
