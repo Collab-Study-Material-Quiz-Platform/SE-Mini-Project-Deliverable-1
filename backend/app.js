@@ -5,6 +5,7 @@ const healthRoutes = require('./routes/health');
 const materialRoutes = require('./routes/materials');
 const questionRoutes = require('./routes/questions');
 const protectedFeatureRoutes = require('./routes/protectedFeatures');
+const quizRoutes = require('./routes/quizzes');
 
 const app = express();
 app.use(cors());
@@ -14,6 +15,7 @@ app.get('/', (req, res) => res.json({ message: 'Study Platform API running' }));
 app.use('/api/auth', authRoutes);
 app.use('/api/materials', materialRoutes);
 app.use('/api/questions', questionRoutes);
+app.use('/api/quizzes', quizRoutes);
 app.use('/api', protectedFeatureRoutes);
 app.use('/', healthRoutes);
 
