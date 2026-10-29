@@ -13,6 +13,10 @@ Prerequisites: Node.js/npm and a running MongoDB instance.
 
 Routes: Home (`#/`), Create account (`#/register`) and System Status (`#/status`). Vite proxies `/api` and `/health` requests to the local backend.
 
+## Search performance (CSQ-NF-001)
+
+Run `npm run perf:search` in `backend` (MongoDB must be running) to load 10,000 materials and time 200 searches. See [the TC-Perf-01 report](docs/tc-perf-01-search-performance.md) for the method and recorded result.
+
 ## Availability (CSQ-NF-003)
 
 The backend exposes `GET /api/health` and the `/health` alias. Health instrumentation is not proof of 99% monthly availability; deployment-level monitoring and maintenance records are still needed.
