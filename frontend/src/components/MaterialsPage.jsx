@@ -23,6 +23,7 @@ export default function MaterialsPage() {
   const [results, setResults] = useState(null)
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const [downloadingId, setDownloadingId] = useState(null)
 
   useEffect(() => {
     let cancelled = false
@@ -78,6 +79,38 @@ export default function MaterialsPage() {
     showPage(EMPTY_CRITERIA, 1)
   }
 
+  // The download needs the bearer token, so fetch the file and hand it to the browser as a blob (CSQ-F-012).
+  async function handleDownload(material) {
+    setDownloadingId(material.id)
+    setError('')
+    try {
+      const response = await apiRequest(`/api/materials/${material.id}/download`)
+      if (!response.ok) {
+        const data = await readJson(response)
+        setError(data.message || 'Download failed. Please try again.')
+        return
+      }
+      const url = URL.createObjectURL(await response.blob())
+      const link = document.createElement('a')
+      link.href = url
+      link.download = material.originalName
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+      setTimeout(() => URL.revokeObjectURL(url), 1000)
+      setResults((current) => ({
+        ...current,
+        materials: current.materials.map((item) => (
+          item.id === material.id ? { ...item, downloadCount: item.downloadCount + 1 } : item
+        )),
+      }))
+    } catch {
+      setError('Could not reach the server. Make sure the backend is running and try again.')
+    } finally {
+      setDownloadingId(null)
+    }
+  }
+
   return (
     <section className="materials-page" aria-labelledby="materials-title">
       <header className="materials-header materials-header-row">
@@ -131,6 +164,15 @@ export default function MaterialsPage() {
                       {formatSize(material.sizeBytes)} · Uploaded {new Date(material.createdAt).toLocaleDateString()} · {material.downloadCount} download{material.downloadCount === 1 ? '' : 's'}
                     </p>
                   </div>
+                  <button
+                    className="materials-button"
+                    type="button"
+                    onClick={() => handleDownload(material)}
+                    disabled={downloadingId === material.id}
+                    aria-label={`Download ${material.title}`}
+                  >
+                    {downloadingId === material.id ? 'Downloading…' : 'Download'}
+                  </button>
                 </li>
               ))}
             </ul>
