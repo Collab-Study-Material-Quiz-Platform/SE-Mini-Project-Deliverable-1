@@ -14,6 +14,7 @@ const ROLE_LINKS = [
   { href: '#/materials', label: 'Materials', roles: ['student', 'contributor', 'admin'] },
   { href: '#/materials/upload', label: 'Upload material', roles: ['contributor'] },
   { href: '#/questions', label: 'Question bank', roles: ['contributor'] },
+  { href: '#/quizzes', label: 'Quizzes', roles: ['student'] },
 ];
 
 export default function Layout({ children, currentHash }) {
