@@ -72,6 +72,21 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.post('/refresh', requireAuth, async (req, res) => {
+  if (mongoose.connection.readyState !== 1) return res.status(503).json({ message: 'Database unavailable' });
+  try {
+    const user = await User.findById(req.auth.sub);
+    if (!user) return res.status(401).json({ message: 'Unauthorized' });
+
+    const token = signToken({ sub: user._id.toString(), role: user.role });
+    await revokeToken(req.authToken, new Date(req.auth.exp * 1000));
+    return res.json({ token, user: { id: user._id, name: user.name, email: user.email, role: user.role } });
+  } catch (error) {
+    console.error('Refreshing session failed:', error.message);
+    return res.status(503).json({ message: 'Unable to refresh session' });
+  }
+});
+
 router.get('/me', requireAuth, async (req, res) => {
   if (mongoose.connection.readyState !== 1) return res.status(503).json({ message: 'Database unavailable' });
   const user = await User.findById(req.auth.sub);
