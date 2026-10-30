@@ -79,9 +79,14 @@ router.get('/me', requireAuth, async (req, res) => {
   return res.json({ user: { id: user._id, name: user.name, email: user.email, role: user.role } });
 });
 
-router.post('/logout', requireAuth, (req, res) => {
-  revokeToken(req.authToken);
-  return res.status(200).json({ message: 'Logout successful' });
+router.post('/logout', requireAuth, async (req, res) => {
+  try {
+    await revokeToken(req.authToken, new Date(req.auth.exp * 1000));
+    return res.status(200).json({ message: 'Logout successful' });
+  } catch (error) {
+    console.error('Logout failed:', error.message);
+    return res.status(503).json({ message: 'Unable to end session' });
+  }
 });
 
 module.exports = router;
