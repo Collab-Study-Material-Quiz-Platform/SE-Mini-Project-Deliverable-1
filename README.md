@@ -6,8 +6,8 @@ This prototype supports collaborative study resources and quizzes. The current i
 
 Prerequisites: Node.js/npm and a running MongoDB instance.
 
-1. In `backend`, run `npm install`.
-2. Configure `MONGO_URI` for local MongoDB (and optionally `UPLOAD_DIR`, the folder for uploaded files, default `backend/uploads`), then run `npm start`.
+1. In `backend`, run `npm install` and copy `.env.example` to `.env`.
+2. Start MongoDB, then configure `MONGO_URI` in `backend/.env`. Set `NODE_ENV=development` locally. For deployed environments, set `NODE_ENV=production` and provide `JWT_SECRET` as a randomly generated value of at least 32 bytes (for example, generate one with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`). The API waits for MongoDB before listening and exits if MongoDB cannot be reached. `UPLOAD_DIR` is optional (default `backend/uploads`).
 3. In another terminal, enter `frontend`, run `npm install`, then `npm run dev`.
 4. Open the local Vite URL printed by the terminal.
 

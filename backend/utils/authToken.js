@@ -1,8 +1,17 @@
 const crypto = require('crypto');
+const mongoose = require('mongoose');
+const RevokedToken = require('../models/RevokedToken');
 
 const TOKEN_TTL_SECONDS = 30 * 60;
-const TOKEN_SECRET = process.env.JWT_SECRET || process.env.AUTH_TOKEN_SECRET || 'development-only-change-me';
-const revokedTokens = new Set();
+const configuredSecret = process.env.JWT_SECRET || process.env.AUTH_TOKEN_SECRET;
+const allowsDevelopmentSecret = ['development', 'test'].includes(process.env.NODE_ENV);
+if (!configuredSecret && !allowsDevelopmentSecret) {
+  throw new Error('JWT_SECRET must be configured outside development and test environments');
+}
+if (process.env.NODE_ENV === 'production' && Buffer.byteLength(configuredSecret) < 32) {
+  throw new Error('Set JWT_SECRET to a random value of at least 32 bytes in production');
+}
+const TOKEN_SECRET = configuredSecret || 'development-only-change-me';
 
 function tokenFingerprint(token) {
   return crypto.createHash('sha256').update(token).digest('hex');
@@ -22,7 +31,6 @@ function signToken(payload, now = Math.floor(Date.now() / 1000)) {
 
 function verifyToken(token, now = Math.floor(Date.now() / 1000)) {
   if (typeof token !== 'string') throw new Error('Invalid token');
-  if (revokedTokens.has(tokenFingerprint(token))) throw new Error('Revoked token');
   const parts = token.split('.');
   if (parts.length !== 3) throw new Error('Invalid token');
   const [header, body, signature] = parts;
@@ -42,20 +50,41 @@ function verifyToken(token, now = Math.floor(Date.now() / 1000)) {
   return payload;
 }
 
-function revokeToken(token) {
-  if (typeof token === 'string' && token) revokedTokens.add(tokenFingerprint(token));
+async function isTokenRevoked(token) {
+  if (mongoose.connection.readyState !== 1) throw new Error('Revocation store unavailable');
+  return Boolean(await RevokedToken.exists({ tokenHash: tokenFingerprint(token) }));
 }
 
-function requireAuth(req, res, next) {
+async function revokeToken(token, expiresAt) {
+  if (typeof token !== 'string' || !token) throw new Error('Invalid token');
+  if (mongoose.connection.readyState !== 1) throw new Error('Revocation store unavailable');
+  const payload = verifyToken(token);
+  await RevokedToken.updateOne(
+    { tokenHash: tokenFingerprint(token) },
+    { $setOnInsert: { tokenHash: tokenFingerprint(token), expiresAt: expiresAt || new Date(payload.exp * 1000) } },
+    { upsert: true }
+  );
+}
+
+async function requireAuth(req, res, next) {
   const authorization = req.get('authorization') || '';
   const token = authorization.startsWith('Bearer ') ? authorization.slice(7) : null;
+  let payload;
   try {
-    req.auth = verifyToken(token);
-    req.authToken = token;
-    return next();
+    payload = verifyToken(token);
   } catch {
     return res.status(401).json({ message: 'Unauthorized' });
   }
+
+  try {
+    if (await isTokenRevoked(token)) return res.status(401).json({ message: 'Unauthorized' });
+  } catch {
+    return res.status(503).json({ message: 'Database unavailable' });
+  }
+
+  req.auth = payload;
+  req.authToken = token;
+  return next();
 }
 
-module.exports = { TOKEN_TTL_SECONDS, signToken, verifyToken, revokeToken, requireAuth };
+module.exports = { TOKEN_TTL_SECONDS, signToken, verifyToken, isTokenRevoked, revokeToken, requireAuth };
