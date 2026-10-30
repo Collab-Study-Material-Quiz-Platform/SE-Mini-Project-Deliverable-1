@@ -6,10 +6,12 @@ const materialRoutes = require('./routes/materials');
 const questionRoutes = require('./routes/questions');
 const protectedFeatureRoutes = require('./routes/protectedFeatures');
 const quizRoutes = require('./routes/quizzes');
+const { rejectUnsafeInput } = require('./middleware/inputValidation');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(rejectUnsafeInput);
 
 app.get('/', (req, res) => res.json({ message: 'Study Platform API running' }));
 app.use('/api/auth', authRoutes);
