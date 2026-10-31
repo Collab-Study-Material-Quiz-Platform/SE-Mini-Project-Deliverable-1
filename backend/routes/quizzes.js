@@ -33,6 +33,17 @@ function toQuizResponse(quiz) {
   };
 }
 
+// Students see only what they need to choose a quiz, not which questions it contains.
+function toQuizListItem(quiz) {
+  return {
+    id: quiz._id,
+    title: quiz.title,
+    questionCount: quiz.questionIds.length,
+    timeLimitMinutes: quiz.timeLimitMinutes,
+    publishedAt: quiz.publishedAt,
+  };
+}
+
 router.post('/', ...contributorOnly, async (req, res) => {
   const validation = validateQuizInput(req.body);
   if (validation.error) return res.status(400).json({ message: validation.error });
@@ -66,8 +77,16 @@ router.post('/:id/publish', ...contributorOnly, async (req, res) => {
 });
 
 router.get('/published', requireAuth, requireRoles('student'), requireDatabase, async (req, res) => {
-  const quizzes = await Quiz.find(VISIBLE_TO_STUDENTS).sort({ publishedAt: -1, _id: -1 }).lean();
-  return res.json({ quizzes: quizzes.map(toQuizResponse) });
+  try {
+    const quizzes = await Quiz.find(VISIBLE_TO_STUDENTS)
+      .select('title timeLimitMinutes questionIds publishedAt')
+      .sort({ publishedAt: -1, _id: -1 })
+      .lean();
+    return res.json({ quizzes: quizzes.map(toQuizListItem) });
+  } catch (error) {
+    console.error('Listing published quizzes failed:', error.message);
+    return res.status(500).json({ message: 'Unable to list published quizzes' });
+  }
 });
 
 // Admin-only: list all quizzes that are not soft-deleted (CSQ-F-050).
