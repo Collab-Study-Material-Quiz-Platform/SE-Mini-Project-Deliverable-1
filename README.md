@@ -36,6 +36,15 @@ The real file type is checked from its content (PDF header, or the Word/PowerPoi
 
 Changing another Contributor's question returns `Access denied` (HTTP 403).
 
+## Quiz results (CSQ-F-032, CSQ-F-033)
+
+| Endpoint | Role | Purpose |
+|---|---|---|
+| `GET /api/quizzes/published` | Student | List published quizzes with title, question count and time limit |
+| `POST /api/quizzes/attempts/:attemptId/submit` | Student (own attempt) | Finish the attempt and return the graded result; a repeat returns 409 with the same result |
+
+Each correct answer earns 1 mark; wrong or unanswered questions earn 0. The result holds the score, percentage and each question's correct answer, is stored once, and does not change if a question is edited later. Attempts that run out of time are graded on the answers saved so far. Students can open their quizzes and results at `#/quizzes`.
+
 ## Search performance (CSQ-NF-001)
 
 Run `npm run perf:search` in `backend` (MongoDB must be running) to load 10,000 materials and time 200 searches. See [the TC-Perf-01 report](docs/tc-perf-01-search-performance.md) for the method and recorded result.
