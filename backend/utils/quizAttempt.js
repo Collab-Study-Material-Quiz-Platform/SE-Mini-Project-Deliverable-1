@@ -7,6 +7,8 @@ function toAttemptResponse(attempt, serverTime = new Date(), serverProcessingMs 
     submittedAt: attempt.submittedAt,
     status: attempt.status,
     answers: Object.fromEntries(attempt.answers || []),
+    // Only finished attempts are graded, so correct answers stay hidden during an attempt.
+    result: attempt.result,
     serverTime,
     serverProcessingMs,
   };
