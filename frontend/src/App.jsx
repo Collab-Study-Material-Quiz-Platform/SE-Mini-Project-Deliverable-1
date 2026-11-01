@@ -8,6 +8,7 @@ import LoginPage from './LoginPage'
 import UploadMaterialPage from './components/UploadMaterialPage'
 import MaterialsPage from './components/MaterialsPage'
 import QuestionBankPage from './components/QuestionBankPage'
+import QuizzesPage from './components/QuizzesPage'
 
 function getHash() {
   const h = window.location.hash
@@ -32,6 +33,7 @@ export default function App() {
   else if (hash === '#/materials/upload') page = <UploadMaterialPage />
   else if (hash === '#/materials') page = <MaterialsPage />
   else if (hash === '#/questions') page = <QuestionBankPage />
+  else if (hash === '#/quizzes' || hash.startsWith('#/quizzes/')) page = <QuizzesPage currentHash={hash} />
   else page = <Home />
 
   return <Layout currentHash={hash}>{page}</Layout>
