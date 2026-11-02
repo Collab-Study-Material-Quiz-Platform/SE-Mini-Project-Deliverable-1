@@ -7,11 +7,17 @@ const { requireAuth } = require('../utils/authToken');
 const { requireRoles } = require('../middleware/authorization');
 const { requireDatabase } = require('../middleware/database');
 const { validateQuizInput } = require('../utils/quizValidation');
+const { writeAudit } = require('../utils/auditService');
 
 const router = express.Router();
 const contributorOnly = [requireAuth, requireRoles('contributor'), requireDatabase];
 const studentOnly = [requireAuth, requireRoles('student'), requireDatabase];
 const { toAttemptResponse, toAttemptQuestion } = require('../utils/quizAttempt');
+
+// Shared filter that excludes soft-deleted quizzes from all student-facing queries.
+// Every endpoint that lists or fetches quizzes for Students must spread this so
+// removed quizzes never appear. (CSQ-F-034 soft delete)
+const VISIBLE_TO_STUDENTS = { status: 'published' };
 
 function toQuizResponse(quiz) {
   return {
@@ -60,7 +66,13 @@ router.post('/:id/publish', ...contributorOnly, async (req, res) => {
 });
 
 router.get('/published', requireAuth, requireRoles('student'), requireDatabase, async (req, res) => {
-  const quizzes = await Quiz.find({ status: 'published' }).sort({ publishedAt: -1, _id: -1 }).lean();
+  const quizzes = await Quiz.find(VISIBLE_TO_STUDENTS).sort({ publishedAt: -1, _id: -1 }).lean();
+  return res.json({ quizzes: quizzes.map(toQuizResponse) });
+});
+
+// Admin-only: list all quizzes that are not soft-deleted (CSQ-F-050).
+router.get('/all', requireAuth, requireRoles('admin'), requireDatabase, async (req, res) => {
+  const quizzes = await Quiz.find({ status: { $ne: 'removed' } }).sort({ createdAt: -1, _id: -1 }).lean();
   return res.json({ quizzes: quizzes.map(toQuizResponse) });
 });
 
@@ -68,7 +80,7 @@ router.post('/:id/attempts', ...studentOnly, async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Quiz not found' });
   try {
     const serverReceivedAt = Date.now();
-    const quiz = await Quiz.findOne({ _id: req.params.id, status: 'published' }).lean();
+    const quiz = await Quiz.findOne({ _id: req.params.id, ...VISIBLE_TO_STUDENTS }).lean();
     if (!quiz) return res.status(404).json({ message: 'Quiz not found' });
 
     const startedAt = new Date();
@@ -190,6 +202,29 @@ router.post('/attempts/:attemptId/submit', ...studentOnly, async (req, res) => {
   } catch (error) {
     console.error('Submitting quiz attempt failed:', error.message);
     return res.status(500).json({ message: 'Unable to submit quiz attempt' });
+  }
+});
+
+router.delete('/:id', requireAuth, requireRoles('contributor', 'admin'), requireDatabase, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Quiz not found' });
+  try {
+    const quiz = await Quiz.findById(req.params.id);
+    // A missing or already-removed quiz is treated as not found.
+    if (!quiz || quiz.status === 'removed') {
+      return res.status(404).json({ message: 'Quiz not found' });
+    }
+    // The creator or an Admin may delete the quiz (CSQ-F-050).
+    if (quiz.creatorId.toString() !== req.auth.sub && req.auth.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    quiz.status = 'removed';
+    await quiz.save();
+    await writeAudit({ userId: req.auth.sub, action: 'DELETE', targetId: quiz._id, ipAddress: req.ip });
+    return res.json({ message: 'Quiz deleted' });
+  } catch (error) {
+    console.error('Deleting quiz failed:', error.message);
+    return res.status(500).json({ message: 'Unable to delete quiz' });
   }
 });
 

@@ -6,7 +6,7 @@ const quizSchema = new mongoose.Schema(
     timeLimitMinutes: { type: Number, required: true, min: 5, max: 180, validate: Number.isInteger },
     questionIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question', required: true }],
     creatorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    status: { type: String, enum: ['draft', 'published'], default: 'draft', required: true },
+    status: { type: String, enum: ['draft', 'published', 'removed'], default: 'draft', required: true },
     publishedAt: { type: Date },
   },
   { timestamps: true }

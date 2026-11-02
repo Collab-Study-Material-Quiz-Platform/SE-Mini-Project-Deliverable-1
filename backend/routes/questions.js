@@ -6,6 +6,7 @@ const { requireRoles } = require('../middleware/authorization');
 const { requireDatabase } = require('../middleware/database');
 const { validateQuestionInput, parseQuestionFilter } = require('../utils/questionValidation');
 const { isQuestionInPublishedQuiz } = require('../utils/questionUsage');
+const { writeAudit } = require('../utils/auditService');
 
 const router = express.Router();
 const MAX_PAGE_SIZE = 50;
@@ -123,6 +124,7 @@ router.delete('/:id', async (req, res) => {
     }
 
     await Question.deleteOne({ _id: question._id });
+    await writeAudit({ userId: req.auth.sub, action: 'DELETE', targetId: question._id, ipAddress: req.ip });
     return res.json({ message: 'Question deleted' });
   } catch (error) {
     console.error('Deleting question failed:', error.message);
