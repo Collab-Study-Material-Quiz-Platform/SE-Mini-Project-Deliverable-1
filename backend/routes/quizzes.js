@@ -13,6 +13,7 @@ const router = express.Router();
 const contributorOnly = [requireAuth, requireRoles('contributor'), requireDatabase];
 const studentOnly = [requireAuth, requireRoles('student'), requireDatabase];
 const { toAttemptResponse, toAttemptQuestion } = require('../utils/quizAttempt');
+const { gradeAttempt } = require('../utils/quizGrading');
 
 // Shared filter that excludes soft-deleted quizzes from all student-facing queries.
 // Every endpoint that lists or fetches quizzes for Students must spread this so
@@ -42,6 +43,26 @@ function toQuizListItem(quiz) {
     timeLimitMinutes: quiz.timeLimitMinutes,
     publishedAt: quiz.publishedAt,
   };
+}
+
+// Grades a finished attempt once and stores the result. Returns null if the quiz no longer exists.
+// `gradedNow` is false when the attempt already had a result, including when another request just stored it.
+async function recordResult(attempt) {
+  if (attempt.result) return { attempt, gradedNow: false };
+
+  const quiz = await Quiz.findById(attempt.quizId).select('questionIds').lean();
+  if (!quiz) return null;
+  const questions = await Question.find({ _id: { $in: quiz.questionIds } })
+    .select('text options correctIndex topic')
+    .lean();
+
+  const graded = await QuizAttempt.findOneAndUpdate(
+    { _id: attempt._id, result: { $exists: false } },
+    { $set: { result: gradeAttempt(quiz.questionIds, questions, attempt.answers) } },
+    { returnDocument: 'after' }
+  );
+  if (graded) return { attempt: graded, gradedNow: true };
+  return { attempt: await QuizAttempt.findById(attempt._id), gradedNow: false };
 }
 
 router.post('/', ...contributorOnly, async (req, res) => {
@@ -146,6 +167,7 @@ router.get('/attempts/:attemptId', ...studentOnly, async (req, res) => {
 
     const quiz = await Quiz.findById(attempt.quizId).lean();
     if (!quiz) return res.status(404).json({ message: 'Quiz not found' });
+    if (attempt.status !== 'in_progress') attempt = (await recordResult(attempt)).attempt;
     const questions = await Question.find({ _id: { $in: quiz.questionIds } })
       .select('text options topic difficulty')
       .lean();
@@ -192,7 +214,8 @@ router.put('/attempts/:attemptId/answers', ...studentOnly, async (req, res) => {
           { $set: { status: 'timed_out', submittedAt: serverTime } },
           { new: true }
         );
-        return res.status(409).json({ message: 'Time is up', attempt: timedOut ? toAttemptResponse(timedOut, serverTime) : toAttemptResponse(current, serverTime) });
+        const finished = await recordResult(timedOut || current);
+        return res.status(409).json({ message: 'Time is up', attempt: toAttemptResponse(finished ? finished.attempt : current, serverTime) });
       }
       return res.status(409).json({ message: 'Quiz attempt is already submitted' });
     }
@@ -213,11 +236,18 @@ router.post('/attempts/:attemptId/submit', ...studentOnly, async (req, res) => {
         status: { $cond: [{ $lte: ['$expiresAt', serverTime] }, 'timed_out', 'submitted'] },
         submittedAt: serverTime,
       } }],
-      { new: true }
+      { returnDocument: 'after', updatePipeline: true }
     );
     if (!attempt) attempt = await QuizAttempt.findOne({ _id: req.params.attemptId, studentId: req.auth.sub });
     if (!attempt) return res.status(404).json({ message: 'Quiz attempt not found' });
-    return res.json({ message: 'Quiz attempt submitted', attempt: toAttemptResponse(attempt, serverTime) });
+
+    const graded = await recordResult(attempt);
+    if (!graded) return res.status(404).json({ message: 'Quiz not found' });
+    // The stored result comes back with the 409, so a client retrying a lost response can still show it.
+    if (!graded.gradedNow) {
+      return res.status(409).json({ message: 'Quiz attempt is already submitted', attempt: toAttemptResponse(graded.attempt, serverTime) });
+    }
+    return res.json({ message: 'Quiz attempt submitted', attempt: toAttemptResponse(graded.attempt, serverTime) });
   } catch (error) {
     console.error('Submitting quiz attempt failed:', error.message);
     return res.status(500).json({ message: 'Unable to submit quiz attempt' });

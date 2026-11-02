@@ -59,7 +59,8 @@ function useAttempt(attemptId) {
       await Promise.all([...pendingSavesRef.current.values()])
       const response = await apiRequest(`/api/quizzes/attempts/${attemptId}/submit`, { method: 'POST' })
       const result = await readJson(response)
-      if (!response.ok) throw new Error(result.message || 'Your attempt could not be submitted.')
+      // A 409 with a result means the attempt was already graded, for example after a lost response.
+      if (!response.ok && !result.attempt?.result) throw new Error(result.message || 'Your attempt could not be submitted.')
       setData(current => current ? { ...current, attempt: result.attempt } : current)
       setNotice(result.attempt.status === 'timed_out' ? 'Time is up. Your answers have been submitted.' : 'Your answers have been submitted.')
     } catch (submitError) {
@@ -179,6 +180,47 @@ function QuizList() {
   </section>
 }
 
+function answerLabel(item) {
+  if (item.selectedIndex === null) return 'Not answered'
+  return item.correct ? 'Correct' : 'Wrong'
+}
+
+function optionText(item, index) {
+  return index === null ? 'Not available' : `${OPTIONS[index]}. ${item.options[index]}`
+}
+
+// Shows the score, percentage and the correct answer to each question (CSQ-F-032).
+function QuizResult({ title, attempt }) {
+  const { score, total, percentage, questions } = attempt.result
+
+  return <section className="quizzes-page" aria-labelledby="result-title">
+    <header className="result-summary">
+      <div>
+        <p className="eyebrow">QUIZ RESULT</p>
+        <h1 id="result-title">{title}</h1>
+        {attempt.status === 'timed_out' && <p>Time ran out, so the answers you had given were submitted automatically.</p>}
+      </div>
+      <dl className="result-scores">
+        <div><dt>Score</dt><dd>{score}/{total}</dd></div>
+        <div><dt>Percentage</dt><dd>{percentage}%</dd></div>
+      </dl>
+    </header>
+
+    <ol className="result-question-list">
+      {questions.map((item, questionNumber) => (
+        <li className={`result-question ${item.correct ? 'correct' : 'incorrect'}`} key={item.questionId}>
+          <p className="result-question-heading"><span>Question {questionNumber + 1}</span><strong>{answerLabel(item)}</strong></p>
+          <p className="result-question-text">{item.text}</p>
+          <p><span className="result-label">Your answer:</span> {item.selectedIndex === null ? 'Not answered' : optionText(item, item.selectedIndex)}</p>
+          <p><span className="result-label">Correct answer:</span> {optionText(item, item.correctIndex)}</p>
+        </li>
+      ))}
+    </ol>
+
+    <a href="#/quizzes">Back to published quizzes</a>
+  </section>
+}
+
 function QuizAttempt({ attemptId }) {
   const { data, error, remaining, answers, savingQuestion, isSubmitting, notice, submitAttempt, saveAnswer } = useAttempt(attemptId)
   const student = getAuthUser()
@@ -186,6 +228,7 @@ function QuizAttempt({ attemptId }) {
   if (student?.role !== 'student') return <section className="quizzes-page"><div className="status-message error" role="alert">Access denied. Only Students can attempt quizzes.</div></section>
   if (error) return <section className="quizzes-page"><div className="status-message error" role="alert">{error}</div><a href="#/quizzes">Back to quizzes</a></section>
   if (!data) return <section className="quizzes-page"><p role="status">Loading quiz…</p></section>
+  if (data.attempt.result) return <QuizResult title={data.quiz.title} attempt={data.attempt} />
 
   const isActive = data.attempt.status === 'in_progress'
   const timeText = remaining === null ? '--:--' : formatTime(remaining)
