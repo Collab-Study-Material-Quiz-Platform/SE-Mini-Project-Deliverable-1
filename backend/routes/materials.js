@@ -153,4 +153,33 @@ router.post('/', requireAuth, requireRoles('contributor'), requireDatabase, rece
   }
 });
 
+// Delete a material and its stored file (CSQ-F-050).
+// An Admin may remove any material; a Contributor may remove their own.
+router.delete('/:id', requireAuth, requireRoles('contributor', 'admin'), requireDatabase, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Material not found' });
+
+  try {
+    const material = await Material.findById(req.params.id).select('+storagePath').lean();
+    if (!material) return res.status(404).json({ message: 'Material not found' });
+
+    // Only the owner or an Admin may delete (CSQ-F-050).
+    if (material.ownerId.toString() !== req.auth.sub && req.auth.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    // Remove the stored file; if it is already missing, continue without crashing.
+    const filePath = path.join(getUploadDir(), path.basename(material.storagePath));
+    await fs.promises.rm(filePath, { force: true });
+
+    // Delete the database record so the material no longer appears in search or download.
+    await Material.deleteOne({ _id: material._id });
+
+    await writeAudit({ userId: req.auth.sub, action: 'DELETE', targetId: material._id, ipAddress: req.ip });
+    return res.json({ message: 'Material deleted' });
+  } catch (error) {
+    console.error('Deleting material failed:', error.message);
+    return res.status(500).json({ message: 'Unable to delete material' });
+  }
+});
+
 module.exports = router;

@@ -70,6 +70,12 @@ router.get('/published', requireAuth, requireRoles('student'), requireDatabase, 
   return res.json({ quizzes: quizzes.map(toQuizResponse) });
 });
 
+// Admin-only: list all quizzes that are not soft-deleted (CSQ-F-050).
+router.get('/all', requireAuth, requireRoles('admin'), requireDatabase, async (req, res) => {
+  const quizzes = await Quiz.find({ status: { $ne: 'removed' } }).sort({ createdAt: -1, _id: -1 }).lean();
+  return res.json({ quizzes: quizzes.map(toQuizResponse) });
+});
+
 router.post('/:id/attempts', ...studentOnly, async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Quiz not found' });
   try {
@@ -199,7 +205,7 @@ router.post('/attempts/:attemptId/submit', ...studentOnly, async (req, res) => {
   }
 });
 
-router.delete('/:id', ...contributorOnly, async (req, res) => {
+router.delete('/:id', requireAuth, requireRoles('contributor', 'admin'), requireDatabase, async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Quiz not found' });
   try {
     const quiz = await Quiz.findById(req.params.id);
@@ -207,8 +213,8 @@ router.delete('/:id', ...contributorOnly, async (req, res) => {
     if (!quiz || quiz.status === 'removed') {
       return res.status(404).json({ message: 'Quiz not found' });
     }
-    // Only the Contributor who created the quiz may delete it.
-    if (quiz.creatorId.toString() !== req.auth.sub) {
+    // The creator or an Admin may delete the quiz (CSQ-F-050).
+    if (quiz.creatorId.toString() !== req.auth.sub && req.auth.role !== 'admin') {
       return res.status(403).json({ message: 'Access denied' });
     }
 
