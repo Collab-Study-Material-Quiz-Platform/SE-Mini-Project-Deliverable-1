@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const { validateRegistrationInput } = require('../utils/registrationValidation');
 const { signToken, revokeToken, requireAuth } = require('../utils/authToken');
+const { writeAudit } = require('../utils/auditService');
 
 const router = express.Router();
 
@@ -58,9 +59,15 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ email }).select('+passwordHash');
     const valid = user && password && await bcrypt.compare(password, user.passwordHash);
-    if (!valid) return res.status(401).json({ message: 'Invalid email or password' });
+    if (!valid) {
+      // userId is the matched user's id, or null if the email is unknown.
+      // The response message stays identical in both cases (security).
+      await writeAudit({ userId: user?._id ?? null, action: 'LOGIN_FAILED', ipAddress: req.ip });
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
 
     const token = signToken({ sub: user._id.toString(), role: user.role });
+    await writeAudit({ userId: user._id, action: 'LOGIN_SUCCESS', ipAddress: req.ip });
     return res.status(200).json({
       message: 'Login successful',
       token,

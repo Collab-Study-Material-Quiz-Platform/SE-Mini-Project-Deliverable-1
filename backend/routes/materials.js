@@ -11,6 +11,7 @@ const { requireDatabase } = require('../middleware/database');
 const { MAX_FILE_SIZE_BYTES, validateUploadedFile } = require('../utils/fileValidation');
 const { validateMaterialInput, parseMaterialSearch } = require('../utils/materialValidation');
 const { getUploadDir, removeStoredFile } = require('../utils/fileStorage');
+const { writeAudit } = require('../utils/auditService');
 
 const router = express.Router();
 const INVALID_FILE = 'Invalid file';
@@ -140,6 +141,7 @@ router.post('/', requireAuth, requireRoles('contributor'), requireDatabase, rece
       ownerId: req.auth.sub,
     });
 
+    await writeAudit({ userId: req.auth.sub, action: 'UPLOAD', targetId: material._id, ipAddress: req.ip });
     return res.status(201).json({ message: 'Upload successful', material: toMaterialResponse(material) });
   } catch (error) {
     await removeStoredFile(file?.path);
