@@ -1,0 +1,156 @@
+/* Performance.css — Student performance page, mobile-first 360px to 1920px */
+
+.perf-page {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.perf-header h1 {
+  margin: 0 0 0.4rem;
+  color: var(--color-primary, #1a1a2e);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+.perf-header p { margin: 0; color: var(--color-text-muted, #6c757d); }
+
+/* ── Overall average card ────────────────────────────────────────────────────── */
+.perf-avg-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--color-border, #dee2e6);
+  border-radius: 10px;
+  background: var(--color-surface, #fff);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.perf-avg-value {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #244a78;
+  line-height: 1;
+  white-space: nowrap;
+}
+.perf-avg-label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #6c757d);
+}
+
+/* ── Section titles ─────────────────────────────────────────────────────────── */
+.perf-section-title {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary, #1a1a2e);
+}
+
+/* ── Topics table ───────────────────────────────────────────────────────────── */
+.perf-topics-card {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border, #dee2e6);
+  border-radius: 10px;
+  background: var(--color-surface, #fff);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow-x: auto;
+}
+.perf-topics-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.perf-topics-table th {
+  text-align: left;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 2px solid var(--color-border, #dee2e6);
+  color: var(--color-text-muted, #6c757d);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.perf-topics-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #f0f2f5;
+  color: var(--color-text, #1a1a2e);
+  vertical-align: middle;
+}
+.perf-topics-table tr:last-child td { border-bottom: none; }
+
+/* Horizontal bar */
+.perf-bar-cell { min-width: 120px; }
+.perf-bar-track {
+  height: 10px;
+  border-radius: 5px;
+  background: #e9ecef;
+  overflow: hidden;
+}
+.perf-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: #244a78;
+  transition: width 0.4s ease;
+}
+
+/* ── Attempts table ─────────────────────────────────────────────────────────── */
+.perf-attempts-card {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border, #dee2e6);
+  border-radius: 10px;
+  background: var(--color-surface, #fff);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow-x: auto;
+}
+.perf-attempts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.perf-attempts-table th {
+  text-align: left;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 2px solid var(--color-border, #dee2e6);
+  color: var(--color-text-muted, #6c757d);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.perf-attempts-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #f0f2f5;
+  color: var(--color-text, #1a1a2e);
+}
+.perf-attempts-table tr:last-child td { border-bottom: none; }
+.perf-score-cell { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ── Empty / status messages ─────────────────────────────────────────────────── */
+.perf-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--color-text-muted, #6c757d);
+  border-radius: 10px;
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #dee2e6);
+}
+.status-message {
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+.status-message.error {
+  background: #f8d7da;
+  color: #58151c;
+  border: 1px solid #f1aeb5;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .perf-avg-card { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .perf-topics-table th:nth-child(3),
+  .perf-topics-table td:nth-child(3) { display: none; } /* hide answered col on tiny screens */
+}
