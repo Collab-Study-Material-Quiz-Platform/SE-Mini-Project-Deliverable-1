@@ -20,9 +20,9 @@ test.after(async () => {
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
-/** Insert a minimal Quiz doc directly so we don't need 5 real questions. */
+/** Insert a minimal Quiz doc directly (avoids needing 5 real Question docs). */
 async function insertQuiz(title, creatorId) {
-  const doc = await Quiz.create({
+  return Quiz.create({
     title,
     timeLimitMinutes: 10,
     questionIds: Array.from({ length: 5 }, () => new mongoose.Types.ObjectId()),
@@ -30,37 +30,37 @@ async function insertQuiz(title, creatorId) {
     status: 'published',
     publishedAt: new Date(),
   });
-  return doc;
 }
 
 /**
- * Insert a submitted QuizAttempt with a pre-built result subdoc so we can
- * control score/total/percentage and per-question topic/correct values exactly.
+ * Insert a QuizAttempt that is already graded (status: 'submitted', result subdoc
+ * fully populated).  This mirrors what the grading step writes after a real attempt.
  *
- * questions format: [{ topic, correct, selectedIndex }]
- *   selectedIndex defaults to 0 (answered); pass null to mark unanswered.
+ * questions: [{ topic, correct, selectedIndex }]
+ *   selectedIndex: number → student answered that option (0–3 are all valid answers)
+ *   selectedIndex: null   → student skipped the question (not counted in 'answered')
  */
 async function insertAttempt({ studentId, quizId, submittedAt, score, total, percentage, questions = [] }) {
-  const gradedAt = submittedAt || new Date();
+  const ts = submittedAt || new Date();
   const resultQuestions = questions.map((q, i) => ({
     questionId: new mongoose.Types.ObjectId(),
-    text: `Q${i}`,
-    options: ['A', 'B', 'C', 'D'],
+    text:        `Q${i}`,
+    options:     ['A', 'B', 'C', 'D'],
     selectedIndex: q.selectedIndex !== undefined ? q.selectedIndex : 0,
-    correctIndex: 0,
-    correct: q.correct,
-    topic: q.topic,
+    correctIndex:  0,
+    correct:       q.correct,
+    topic:         q.topic,
   }));
 
   return QuizAttempt.create({
     quizId,
     studentId,
-    startedAt: new Date(Date.now() - 60000),
-    expiresAt: new Date(Date.now() + 60000),
-    submittedAt: submittedAt || new Date(),
-    status: 'submitted',
-    answers: new Map(),
-    result: { score, total, percentage, gradedAt, questions: resultQuestions },
+    startedAt:   new Date(Date.now() - 60_000),
+    expiresAt:   new Date(Date.now() + 60_000),
+    submittedAt: ts,
+    status:      'submitted',
+    answers:     new Map(),
+    result: { score, total, percentage, gradedAt: ts, questions: resultQuestions },
   });
 }
 
@@ -69,17 +69,65 @@ async function getReport(headers) {
   return { status: res.status, body: await res.json() };
 }
 
-// ── Test: 3 attempts — overall average, per-topic, attempt list ───────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// Test: 3 submitted attempts — hand-calculated expectations
+// ─────────────────────────────────────────────────────────────────────────────
+//
+// SEEDED DATA (all for the same student, three separate attempts):
+//
+// Attempt A  — quizTitle "Algebra Quiz",  score 3/5 = 60%,  oldest
+//   Q0  topic=Algebra   correct=true   selectedIndex=0  (answered, correct)
+//   Q1  topic=Algebra   correct=true   selectedIndex=0  (answered, correct)
+//   Q2  topic=Algebra   correct=false  selectedIndex=1  (answered, wrong)
+//   Q3  topic=Calculus  correct=true   selectedIndex=0  (answered, correct)
+//   Q4  topic=Calculus  correct=false  selectedIndex=1  (answered, wrong)
+//
+// Attempt B  — quizTitle "Calculus Quiz",  score 4/5 = 80%,  middle
+//   Q0  topic=Algebra   correct=true   selectedIndex=0  (answered, correct)
+//   Q1  topic=Calculus  correct=true   selectedIndex=0  (answered, correct)
+//   Q2  topic=Calculus  correct=true   selectedIndex=0  (answered, correct)
+//   Q3  topic=Calculus  correct=true   selectedIndex=0  (answered, correct)
+//   Q4  topic=Calculus  correct=false  selectedIndex=2  (answered, wrong)
+//
+// Attempt C  — quizTitle "Algebra Quiz",  score 5/5 = 100%,  newest
+//   Q0  topic=Algebra   correct=true   selectedIndex=0  (answered, correct)
+//   Q1  topic=Algebra   correct=true   selectedIndex=0  (answered, correct)
+//   Q2  topic=Algebra   correct=true   selectedIndex=0  (answered, correct)
+//   Q3  topic=Algebra   correct=true   selectedIndex=0  (answered, correct)
+//   Q4  topic=Algebra   correct=true   selectedIndex=0  (answered, correct)
+//
+// HAND CALCULATIONS:
+//
+//   Overall average:
+//     (60 + 80 + 100) / 3 = 240 / 3 = 80.0 %
+//
+//   Algebra across all three attempts:
+//     answered = 3 (A) + 1 (B) + 5 (C) = 9
+//     correct  = 2 (A) + 1 (B) + 5 (C) = 8
+//     percentage = 8 / 9 * 100 = 88.888… → rounded to 1 dp = 88.9 %
+//
+//   Calculus across all three attempts:
+//     answered = 2 (A) + 4 (B) + 0 (C) = 6
+//     correct  = 1 (A) + 3 (B) + 0 (C) = 4
+//     percentage = 4 / 6 * 100 = 66.666… → rounded to 1 dp = 66.7 %
+//
+//   Attempts returned (last 20, newest first):
+//     [0] Attempt C  score=5  total=5  percentage=100
+//     [1] Attempt B  score=4  total=5  percentage=80
+//     [2] Attempt A  score=3  total=5  percentage=60
+//
+// ─────────────────────────────────────────────────────────────────────────────
 
 test('3 submitted attempts produce correct overall average, topics and attempt list', { skip: !canUseDatabase }, async () => {
   const student = await createUserWithToken('student');
   const contrib = await createUserWithToken('contributor');
 
-  const quiz1 = await insertQuiz('Algebra Quiz', contrib.user._id);
-  const quiz2 = await insertQuiz('Calculus Quiz', contrib.user._id);
+  const quiz1 = await insertQuiz('Algebra Quiz',   contrib.user._id);
+  const quiz2 = await insertQuiz('Calculus Quiz',  contrib.user._id);
 
   const now = Date.now();
-  // Attempt 1: 3/5 = 60%,  Algebra: 2 correct of 3 answered; Calculus: 1 of 2
+
+  // Attempt A — oldest
   await insertAttempt({
     studentId: student.user._id, quizId: quiz1._id,
     submittedAt: new Date(now - 3000),
@@ -92,7 +140,8 @@ test('3 submitted attempts produce correct overall average, topics and attempt l
       { topic: 'Calculus', correct: false, selectedIndex: 1 },
     ],
   });
-  // Attempt 2: 4/5 = 80%,  Algebra: 1 correct of 1; Calculus: 3 of 4
+
+  // Attempt B — middle
   await insertAttempt({
     studentId: student.user._id, quizId: quiz2._id,
     submittedAt: new Date(now - 2000),
@@ -105,7 +154,8 @@ test('3 submitted attempts produce correct overall average, topics and attempt l
       { topic: 'Calculus', correct: false, selectedIndex: 2 },
     ],
   });
-  // Attempt 3: 5/5 = 100%, Algebra: 2 of 2
+
+  // Attempt C — newest
   await insertAttempt({
     studentId: student.user._id, quizId: quiz1._id,
     submittedAt: new Date(now - 1000),
@@ -122,42 +172,46 @@ test('3 submitted attempts produce correct overall average, topics and attempt l
   const { status, body } = await getReport(student.headers);
   assert.equal(status, 200);
 
-  // Overall average: (60 + 80 + 100) / 3 = 80.0
+  // ── Overall average ──────────────────────────────────────────────────────
+  // (60 + 80 + 100) / 3 = 80.0
   assert.equal(body.overallAveragePercentage, 80.0, 'overall average should be 80.0');
 
-  // 3 attempts returned, newest first
-  assert.equal(body.attempts.length, 3, 'should return 3 attempts');
-  assert.equal(body.attempts[0].score, 5);
-  assert.equal(body.attempts[0].total, 5);
-  assert.equal(body.attempts[0].percentage, 100);
-  assert.equal(body.attempts[2].percentage, 60);
+  // ── Attempt list: 3 entries, newest first ────────────────────────────────
+  assert.equal(body.attempts.length, 3, 'should return exactly 3 attempts');
 
-  // Per-topic manual calculation from the data inserted above:
-  // Algebra:  attempt1=(2 correct/3 answered), attempt2=(1/1), attempt3=(5/5) → 8/9
-  // Calculus: attempt1=(1 correct/2 answered), attempt2=(3/4)                 → 4/6
-  // (selectedIndex:0 is falsy but !== null so counts as answered)
-  const algebraTopic = body.topics.find(t => t.topic === 'Algebra');
-  const calculusTopic = body.topics.find(t => t.topic === 'Calculus');
-  assert.ok(algebraTopic, 'Algebra topic should be present');
-  assert.ok(calculusTopic, 'Calculus topic should be present');
+  // [0] = Attempt C (newest)
+  assert.equal(body.attempts[0].quizTitle,   'Algebra Quiz', '[0] quiz title');
+  assert.equal(body.attempts[0].score,       5,              '[0] score');
+  assert.equal(body.attempts[0].total,       5,              '[0] total');
+  assert.equal(body.attempts[0].percentage,  100,            '[0] percentage');
 
-  // Verify the percentage matches the ratio (correct/answered)*100 rounded to 1dp
-  assert.equal(
-    algebraTopic.percentage,
-    parseFloat(((algebraTopic.correct / algebraTopic.answered) * 100).toFixed(1)),
-    'Algebra percentage should equal correct/answered'
-  );
-  assert.equal(
-    calculusTopic.percentage,
-    parseFloat(((calculusTopic.correct / calculusTopic.answered) * 100).toFixed(1)),
-    'Calculus percentage should equal correct/answered'
-  );
-  // Algebra: 3 questions in attempt1, 1 in attempt2, 5 in attempt3 = 9 answered, 2+1+5=8 correct
-  assert.equal(algebraTopic.correct, 8);
-  assert.equal(algebraTopic.answered, 9);
-  // Calculus: 2 in attempt1, 4 in attempt2 = 6 answered, 1+3=4 correct
-  assert.equal(calculusTopic.correct, 4);
-  assert.equal(calculusTopic.answered, 6);
+  // [1] = Attempt B
+  assert.equal(body.attempts[1].quizTitle,   'Calculus Quiz', '[1] quiz title');
+  assert.equal(body.attempts[1].score,       4,               '[1] score');
+  assert.equal(body.attempts[1].total,       5,               '[1] total');
+  assert.equal(body.attempts[1].percentage,  80,              '[1] percentage');
+
+  // [2] = Attempt A (oldest)
+  assert.equal(body.attempts[2].quizTitle,   'Algebra Quiz', '[2] quiz title');
+  assert.equal(body.attempts[2].score,       3,              '[2] score');
+  assert.equal(body.attempts[2].total,       5,              '[2] total');
+  assert.equal(body.attempts[2].percentage,  60,             '[2] percentage');
+
+  // ── Per-topic — all literals, no computation from server data ────────────
+  const alg = body.topics.find(t => t.topic === 'Algebra');
+  const cal = body.topics.find(t => t.topic === 'Calculus');
+  assert.ok(alg, 'Algebra topic must be present');
+  assert.ok(cal, 'Calculus topic must be present');
+
+  // Algebra: 9 answered (3+1+5), 8 correct (2+1+5) → 88.9 %
+  assert.equal(alg.answered,    9,    'Algebra answered');
+  assert.equal(alg.correct,     8,    'Algebra correct');
+  assert.equal(alg.percentage,  88.9, 'Algebra percentage = 8/9*100 = 88.9 %');
+
+  // Calculus: 6 answered (2+4), 4 correct (1+3) → 66.7 %
+  assert.equal(cal.answered,    6,    'Calculus answered');
+  assert.equal(cal.correct,     4,    'Calculus correct');
+  assert.equal(cal.percentage,  66.7, 'Calculus percentage = 4/6*100 = 66.7 %');
 });
 
 // ── Test: only the 20 newest of 25 attempts returned ─────────────────────────
@@ -167,7 +221,9 @@ test('only the 20 newest attempts are returned when there are 25', { skip: !canU
   const contrib = await createUserWithToken('contributor');
   const quiz = await insertQuiz('Pagination Quiz', contrib.user._id);
 
-  const base = Date.now() - 25000;
+  // Create 25 attempts with strictly increasing submittedAt values.
+  // The newest 20 (indices 5–24, i.e. offsets 5000 ms to 24000 ms from base) should be returned.
+  const base = Date.now() - 25_000;
   for (let i = 0; i < 25; i++) {
     await insertAttempt({
       studentId: student.user._id, quizId: quiz._id,
@@ -180,10 +236,11 @@ test('only the 20 newest attempts are returned when there are 25', { skip: !canU
   const { status, body } = await getReport(student.headers);
   assert.equal(status, 200);
   assert.equal(body.attempts.length, 20, 'should return exactly 20 attempts');
-  // Newest first: the 25th attempt (index 24) should be first
-  const newest = new Date(body.attempts[0].submittedAt).getTime();
-  const secondNewest = new Date(body.attempts[1].submittedAt).getTime();
-  assert.ok(newest >= secondNewest, 'attempts should be sorted newest first');
+
+  // Newest first: body.attempts[0].submittedAt should be later than body.attempts[1].submittedAt
+  const t0 = new Date(body.attempts[0].submittedAt).getTime();
+  const t1 = new Date(body.attempts[1].submittedAt).getTime();
+  assert.ok(t0 > t1, 'attempts should be sorted newest first');
 });
 
 // ── Test: another Student's attempts are never included ───────────────────────
@@ -191,8 +248,8 @@ test('only the 20 newest attempts are returned when there are 25', { skip: !canU
 test("another student's attempts are never included", { skip: !canUseDatabase }, async () => {
   const studentA = await createUserWithToken('student');
   const studentB = await createUserWithToken('student');
-  const contrib = await createUserWithToken('contributor');
-  const quiz = await insertQuiz('Isolation Quiz', contrib.user._id);
+  const contrib  = await createUserWithToken('contributor');
+  const quiz     = await insertQuiz('Isolation Quiz', contrib.user._id);
 
   await insertAttempt({
     studentId: studentB.user._id, quizId: quiz._id,
@@ -202,8 +259,8 @@ test("another student's attempts are never included", { skip: !canUseDatabase },
 
   const { status, body } = await getReport(studentA.headers);
   assert.equal(status, 200);
-  assert.equal(body.attempts.length, 0, 'should not see other student attempts');
-  assert.equal(body.overallAveragePercentage, 0);
+  assert.equal(body.attempts.length,          0, 'studentA should see 0 attempts');
+  assert.equal(body.overallAveragePercentage, 0, 'studentA average should be 0');
 });
 
 // ── Test: in_progress attempts are ignored ────────────────────────────────────
@@ -211,21 +268,20 @@ test("another student's attempts are never included", { skip: !canUseDatabase },
 test('in_progress attempts are ignored', { skip: !canUseDatabase }, async () => {
   const student = await createUserWithToken('student');
   const contrib = await createUserWithToken('contributor');
-  const quiz = await insertQuiz('In-progress Quiz', contrib.user._id);
+  const quiz    = await insertQuiz('In-progress Quiz', contrib.user._id);
 
-  // Insert only an in_progress attempt (no result subdoc)
   await QuizAttempt.create({
-    quizId: quiz._id,
+    quizId:    quiz._id,
     studentId: student.user._id,
     startedAt: new Date(),
-    expiresAt: new Date(Date.now() + 60000),
-    status: 'in_progress',
-    answers: new Map(),
+    expiresAt: new Date(Date.now() + 60_000),
+    status:    'in_progress',
+    answers:   new Map(),
   });
 
   const { status, body } = await getReport(student.headers);
   assert.equal(status, 200);
-  assert.equal(body.attempts.length, 0, 'in_progress attempts should not appear');
+  assert.equal(body.attempts.length,          0, 'in_progress attempt should not appear');
   assert.equal(body.overallAveragePercentage, 0);
 });
 
@@ -233,11 +289,10 @@ test('in_progress attempts are ignored', { skip: !canUseDatabase }, async () => 
 
 test('a Student with no attempts gets empty lists and 0', { skip: !canUseDatabase }, async () => {
   const student = await createUserWithToken('student');
-
   const { status, body } = await getReport(student.headers);
   assert.equal(status, 200);
   assert.equal(body.overallAveragePercentage, 0);
-  assert.deepEqual(body.topics, []);
+  assert.deepEqual(body.topics,   []);
   assert.deepEqual(body.attempts, []);
 });
 
