@@ -15,6 +15,7 @@ const ROLE_LINKS = [
   { href: '#/materials/upload', label: 'Upload material', roles: ['contributor'] },
   { href: '#/questions', label: 'Question bank', roles: ['contributor'] },
   { href: '#/quizzes', label: 'Quizzes', roles: ['student'] },
+  { href: '#/performance', label: 'Performance', roles: ['student'] },
   { href: '#/admin', label: 'Admin', roles: ['admin'] },
 ];
 

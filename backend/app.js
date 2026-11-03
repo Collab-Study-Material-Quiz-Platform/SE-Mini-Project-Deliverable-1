@@ -6,6 +6,7 @@ const materialRoutes = require('./routes/materials');
 const questionRoutes = require('./routes/questions');
 const protectedFeatureRoutes = require('./routes/protectedFeatures');
 const quizRoutes = require('./routes/quizzes');
+const reportRoutes = require('./routes/reports');
 const { rejectUnsafeInput } = require('./middleware/inputValidation');
 
 const app = express();
@@ -18,6 +19,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/materials', materialRoutes);
 app.use('/api/questions', questionRoutes);
 app.use('/api/quizzes', quizRoutes);
+app.use('/api/reports', reportRoutes);
 app.use('/api', protectedFeatureRoutes);
 app.use('/', healthRoutes);
 
