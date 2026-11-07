@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node --test",
     "start": "node server.js",
-    "perf:search": "node perf/searchPerformance.js"
+    "perf:search": "node perf/searchPerformance.js",
+    "perf:quiz-submit": "node perf/quizSubmitPerformance.js"
   },
   "keywords": [],
   "author": "",
