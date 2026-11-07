@@ -1,4 +1,4 @@
-/* Performance.css — Student performance page, mobile-first 360px to 1920px */
+/* Performance.css — Performance page (Student & Contributor), mobile-first 360px to 1920px */
 
 .perf-page {
   display: grid;
@@ -128,6 +128,160 @@
 .perf-attempts-table tr:last-child td { border-bottom: none; }
 .perf-score-cell { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
+/* ── Contributor Quiz Statistics (CSQ-F-041) ─────────────────────────────────── */
+.contrib-quizzes-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contrib-quiz-card {
+  border: 1px solid var(--color-border, #dee2e6);
+  border-radius: 10px;
+  background: var(--color-surface, #fff);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.contrib-quiz-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.contrib-quiz-title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-primary, #1a1a2e);
+}
+
+.contrib-quiz-badge {
+  background: #e8f0fe;
+  color: #1a73e8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+}
+
+.contrib-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.contrib-metric-box {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #eef0f3;
+}
+
+.contrib-metric-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #244a78;
+  line-height: 1.2;
+}
+
+.contrib-metric-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #6c757d);
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contrib-hardest-section {
+  border-top: 1px solid #f0f2f5;
+  padding-top: 1rem;
+}
+
+.contrib-hardest-heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary, #1a1a2e);
+}
+
+.contrib-no-data {
+  color: var(--color-text-muted, #6c757d);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.contrib-hardest-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contrib-hardest-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.75rem;
+  background: #fdfdfe;
+  border: 1px solid #eef0f3;
+  border-radius: 6px;
+}
+
+.contrib-hardest-rank {
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #d9381e;
+  background: #fee8e6;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.contrib-hardest-body {
+  flex: 1;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.contrib-hardest-text {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.contrib-hardest-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.contrib-bar {
+  flex: 1;
+  min-width: 100px;
+  max-width: 200px;
+}
+
+.contrib-bar-fill {
+  background: #d9381e;
+}
+
+.contrib-hardest-stat {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #6c757d);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
 /* ── Empty / status messages ─────────────────────────────────────────────────── */
 .perf-empty {
   padding: 2rem 1rem;
@@ -153,4 +307,5 @@
   .perf-avg-card { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   .perf-topics-table th:nth-child(3),
   .perf-topics-table td:nth-child(3) { display: none; } /* hide answered col on tiny screens */
+  .contrib-metrics-row { grid-template-columns: repeat(2, 1fr); }
 }
