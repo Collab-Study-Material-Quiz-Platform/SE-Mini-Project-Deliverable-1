@@ -13,12 +13,15 @@ export default function PerformancePage() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    if (user?.role !== 'student') return
+    if (user?.role !== 'student' && user?.role !== 'contributor') return
     let cancelled = false
 
     async function load() {
       try {
-        const response = await apiRequest('/api/reports/student/me')
+        const endpoint = user.role === 'contributor'
+          ? '/api/reports/contributor/quizzes'
+          : '/api/reports/student/me'
+        const response = await apiRequest(endpoint)
         const result = await readJson(response)
         if (!response.ok) throw new Error(result.message || 'Could not load performance data.')
         if (!cancelled) setData(result)
@@ -30,10 +33,12 @@ export default function PerformancePage() {
     return () => { cancelled = true }
   }, [user?.role])
 
-  if (user?.role !== 'student') {
+  if (user?.role !== 'student' && user?.role !== 'contributor') {
     return (
       <section className="perf-page">
-        <div className="status-message error" role="alert">Access denied. Only Students can view this page.</div>
+        <div className="status-message error" role="alert">
+          Access denied. Only Students and Contributors can view performance reports.
+        </div>
       </section>
     )
   }
@@ -54,12 +59,99 @@ export default function PerformancePage() {
     )
   }
 
+  // ── Contributor Performance View (CSQ-F-041) ──────────────────────────────
+  if (user.role === 'contributor') {
+    const quizzes = data.quizzes || []
+    return (
+      <section className="perf-page" aria-labelledby="perf-contrib-title">
+        <header className="perf-header">
+          <p className="eyebrow">CONTRIBUTOR ANALYTICS</p>
+          <h1 id="perf-contrib-title">Quiz Statistics</h1>
+          <p>Performance metrics, attempt scores, and hardest questions for your authored quizzes.</p>
+        </header>
+
+        {quizzes.length === 0 ? (
+          <div className="perf-empty">
+            <p>You have not created any quizzes yet.</p>
+          </div>
+        ) : (
+          <div className="contrib-quizzes-grid">
+            {quizzes.map((quiz) => (
+              <article key={quiz.quizId} className="contrib-quiz-card" aria-label={`Statistics for ${quiz.quizTitle}`}>
+                <div className="contrib-quiz-card-header">
+                  <h2 className="contrib-quiz-title">{quiz.quizTitle}</h2>
+                  <span className="contrib-quiz-badge">
+                    {quiz.attemptCount} {quiz.attemptCount === 1 ? 'attempt' : 'attempts'}
+                  </span>
+                </div>
+
+                <div className="contrib-metrics-row">
+                  <div className="contrib-metric-box">
+                    <span className="contrib-metric-num">{quiz.attemptCount}</span>
+                    <span className="contrib-metric-label">Attempts</span>
+                  </div>
+                  <div className="contrib-metric-box">
+                    <span className="contrib-metric-num">{quiz.averageScore}</span>
+                    <span className="contrib-metric-label">Average Score</span>
+                  </div>
+                  <div className="contrib-metric-box">
+                    <span className="contrib-metric-num">{quiz.highestScore}</span>
+                    <span className="contrib-metric-label">Highest Score</span>
+                  </div>
+                  <div className="contrib-metric-box">
+                    <span className="contrib-metric-num">{quiz.lowestScore}</span>
+                    <span className="contrib-metric-label">Lowest Score</span>
+                  </div>
+                </div>
+
+                <div className="contrib-hardest-section">
+                  <h3 className="contrib-hardest-heading">3 Hardest Questions</h3>
+                  {quiz.attemptCount === 0 || quiz.hardestQuestions.length === 0 ? (
+                    <p className="contrib-no-data">No attempts submitted yet.</p>
+                  ) : (
+                    <div className="contrib-hardest-list">
+                      {quiz.hardestQuestions.map((q, idx) => (
+                        <div key={q.questionId || idx} className="contrib-hardest-item">
+                          <div className="contrib-hardest-rank">#{idx + 1}</div>
+                          <div className="contrib-hardest-body">
+                            <p className="contrib-hardest-text">{q.text}</p>
+                            <div className="contrib-hardest-meta">
+                              <div
+                                className="perf-bar-track contrib-bar"
+                                role="progressbar"
+                                aria-valuenow={q.correctPercentage}
+                                aria-valuemin={0}
+                                aria-valuemax={100}
+                                aria-label={`Correct percentage: ${q.correctPercentage}%`}
+                              >
+                                <div
+                                  className="perf-bar-fill contrib-bar-fill"
+                                  style={{ width: `${q.correctPercentage}%` }}
+                                />
+                              </div>
+                              <span className="contrib-hardest-stat">
+                                {q.correctCount}/{q.totalAttempts} correct ({q.correctPercentage}%)
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+    )
+  }
+
+  // ── Student Performance View (CSQ-F-040) ──────────────────────────────────
   const isEmpty = data.attempts.length === 0
 
   return (
     <section className="perf-page" aria-labelledby="perf-title">
-
-      {/* ── Header ── */}
       <header className="perf-header">
         <p className="eyebrow">MY PROGRESS</p>
         <h1 id="perf-title">Performance</h1>
@@ -138,7 +230,6 @@ export default function PerformancePage() {
           </table>
         )}
       </div>
-
     </section>
   )
 }
