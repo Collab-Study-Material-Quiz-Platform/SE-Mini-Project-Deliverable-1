@@ -54,5 +54,12 @@ export default defineConfig({
       reuseExistingServer: false,
       timeout: 60_000,
     },
+    // The production build, for the page-load measurement (TC-Perf-03). Preview reuses the dev proxy settings.
+    {
+      command: 'npx vite build --outDir test-results/preview-dist && npx vite preview --outDir test-results/preview-dist --port 4173 --strictPort',
+      url: 'http://localhost:4173',
+      reuseExistingServer: false,
+      timeout: 120_000,
+    },
   ],
 })
