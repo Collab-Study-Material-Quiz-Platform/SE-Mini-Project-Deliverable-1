@@ -12,9 +12,11 @@ export default async function* jsonResults(source) {
     tests.push({
       file: path.relative(process.cwd(), data.file).replace(/\\/g, '/'),
       name: data.name,
-      status: event.type === 'test:fail' ? 'failed' : data.skip !== undefined ? 'skipped' : data.todo !== undefined ? 'todo' : 'passed',
+      // A to-do test documents a known defect: it runs, but its failure does not fail the suite.
+      status: data.todo !== undefined ? 'todo' : event.type === 'test:fail' ? 'failed' : data.skip !== undefined ? 'skipped' : 'passed',
+      todo: typeof data.todo === 'string' ? data.todo : undefined,
       durationMs: Math.round((data.details?.duration_ms ?? 0) * 10) / 10,
-      error: event.type === 'test:fail' ? String(data.details?.error?.cause?.message ?? data.details?.error?.message ?? '') : undefined,
+      error: event.type === 'test:fail' && data.todo === undefined ? String(data.details?.error?.cause?.message ?? data.details?.error?.message ?? '') : undefined,
     })
   }
   yield `${JSON.stringify({ generatedAt: new Date().toISOString(), node: process.version, tests }, null, 2)}\n`
