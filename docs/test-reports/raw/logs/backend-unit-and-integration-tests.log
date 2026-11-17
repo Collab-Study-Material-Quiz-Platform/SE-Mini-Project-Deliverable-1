@@ -1,0 +1,295 @@
+
+> backend@1.0.0 test:coverage
+> c8 node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=junit --test-reporter-destination=coverage/junit.xml --test-reporter=./tests/reporters/json-results.mjs --test-reporter-destination=coverage/test-results.json --test-concurrency=1
+
+(node:10724) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 end listeners added to [TestsStream]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+◇ injected env (0) from .env
+✔ an admin can remove another contributor’s quiz (519.7073ms)
+✔ after admin deletes a quiz it is no longer listed for students (428.8029ms)
+✔ an admin can remove any material (330.5431ms)
+✔ after admin deletes a material it no longer appears in search (450.0973ms)
+✔ after admin deletes a material the download endpoint returns 404 (488.5288ms)
+✔ a contributor cannot delete another contributor’s material and gets 403 (474.4641ms)
+✔ a student cannot delete a material and gets 403 (486.5533ms)
+✔ deleting a missing material returns 404 (211.4926ms)
+✔ deleting a missing quiz returns 404 (221.7894ms)
+✔ admin quiz deletion writes one DELETE audit entry (433.4257ms)
+✔ admin material deletion writes one DELETE audit entry (417.0908ms)
+◇ injected env (0) from .env
+✔ a successful login creates exactly one LOGIN_SUCCESS entry (540.557ms)
+✔ a wrong password creates exactly one LOGIN_FAILED entry with the matched user id (291.3529ms)
+✔ an unknown email creates one LOGIN_FAILED entry with null userId (18.8264ms)
+✔ a material upload creates exactly one UPLOAD entry (171.4769ms)
+✔ deleting a question creates exactly one DELETE entry (251.4604ms)
+✔ no audit log entry contains a password or token (415.6709ms)
+✔ role middleware permits the configured role and rejects other roles with exact 403 response (3.7441ms)
+✔ permission matrix gives every account exactly one supported role (0.677ms)
+◇ injected env (0) from .env
+◇ injected env (0) from .env
+✔ TC-Rep-02: Contributor quiz statistics match hand-calculated metrics and hardest questions (1380.4906ms)
+✔ a quiz with no attempts returns zeroed statistics and empty hardest questions (197.5372ms)
+✔ strict isolation: Contributor cannot view another Contributor quizzes or single quiz stats (628.6715ms)
+✔ in_progress attempts are ignored in statistics calculations (330.9525ms)
+✔ role-based access control: Students and Admins cannot access contributor statistics (386.8952ms)
+✔ detects PDF, DOCX and PPTX files from their content (26.137ms)
+✔ accepts valid documents and reports the verified MIME type (12.979ms)
+✔ rejects an executable renamed with a document extension (7.7823ms)
+✔ rejects files whose extension does not match the real content (14.9047ms)
+✔ rejects ZIP archives that are not Word or PowerPoint packages (13.5009ms)
+✔ rejects empty, missing and oversized files (6.0184ms)
+◇ injected env (0) from .env
+✔ GET /api/health reports the expected health-check shape (168.9779ms)
+✔ GET /health is a backwards-compatible alias (17.4768ms)
+✔ rejects script and event-handler payloads (2.1962ms)
+✔ rejects database operators and SQL command payloads (0.1942ms)
+✔ accepts ordinary user input (0.1422ms)
+◇ injected env (0) from .env
+✔ signed tokens carry the required 30-minute expiry (62.3316ms)
+✔ revoking a token persists its revocation until its expiry (30.9755ms)
+◇ injected env (0) from .env
+✔ a logged-in user downloads the exact stored file (503.932ms)
+✔ each download increases the download count by exactly 1 (109.5188ms)
+✔ concurrent downloads are all counted (69.2639ms)
+✔ unknown or malformed material ids return 404 (16.2521ms)
+✔ downloading requires a logged-in user (24.6699ms)
+◇ injected env (0) from .env
+✔ a keyword search returns 10 results per page, newest first (510.1769ms)
+✔ results contain list fields only and never the storage path (13.3715ms)
+✔ search filters by subject, by topic and by both (35.6131ms)
+✔ a search with no matches reports "No materials found" (10.0706ms)
+✔ an uploaded material appears in search results (71.0181ms)
+✔ every logged-in role can search and anonymous users cannot (152.3792ms)
+✔ an invalid page number is rejected (7.0415ms)
+◇ injected env (0) from .env
+✔ a contributor uploads a PDF with title, subject and topic (468.3936ms)
+✔ DOCX and PPTX files are accepted (50.879ms)
+✔ non-ASCII file names are kept intact (22.8798ms)
+✔ a valid 20 MB PDF is stored and confirmed within 10 seconds (203.7754ms)
+✔ a 21 MB PDF is rejected with "Invalid file" and nothing is kept (225.1246ms)
+✔ an executable renamed to .pdf is rejected and its temporary file is deleted (22.4126ms)
+✔ unsupported formats and requests without a file are rejected (19.9334ms)
+✔ title is accepted up to 100 characters and rejected beyond that (33.1556ms)
+✔ title, subject and topic are required (45.3019ms)
+✔ only contributors can upload material (150.9476ms)
+✔ accepts and trims upload metadata (3.2903ms)
+✔ rejects missing or overlong upload metadata (1.7382ms)
+✔ builds a keyword, subject and topic search filter (0.3972ms)
+✔ an empty search lists every material from page 1 (0.2319ms)
+✔ rejects invalid page numbers (0.179ms)
+✔ ignores non-string search parameters such as operator objects (0.2096ms)
+◇ injected env (0) from .env
+✔ a contributor adds a valid 500-character question and it is persisted (477.9619ms)
+✔ a question with 3 options or with 2 correct options is rejected (35.7026ms)
+✔ saved questions appear in the question bank, newest first (42.6215ms)
+✔ only contributors can add or list questions (156.8653ms)
+✔ page size is capped at 50 and invalid paging is rejected (20.8397ms)
+◇ injected env (0) from .env
+✔ a question without a topic or difficulty is not saved (436.7647ms)
+✔ every saved question has exactly one topic and one difficulty (3.6963ms)
+✔ filtering by topic returns only that topic, ignoring case (11.3709ms)
+✔ filtering by difficulty returns only that difficulty (9.0928ms)
+✔ filtering by Algebra and Easy returns only matching questions (14.0021ms)
+✔ an unknown difficulty filter is rejected (7.1094ms)
+◇ injected env (0) from .env
+✔ a contributor edits their own question (637.3078ms)
+✔ an edit must still be a valid question (25.9528ms)
+✔ a contributor deletes their own unused question (31.472ms)
+✔ another contributor cannot edit or delete the question (26.291ms)
+✔ students cannot edit or delete questions (20.6622ms)
+✔ a question used in a published quiz cannot be deleted (21.2329ms)
+✔ a question used only in draft or removed quizzes can be deleted (22.4463ms)
+✔ unknown and malformed question ids return 404 (21.0167ms)
+✔ accepts a question with four options and one correct option (4.3906ms)
+✔ accepts options given as objects with exactly one marked correct (0.3605ms)
+✔ limits question text to 500 characters (0.1756ms)
+✔ requires exactly four options (0.1378ms)
+✔ rejects empty, mixed or duplicate options (0.212ms)
+✔ requires exactly one correct option (0.3416ms)
+✔ requires a topic and a difficulty of Easy, Medium or Hard (0.2049ms)
+✔ normalizes difficulty spelling (0.1168ms)
+✔ rejects a missing or non-object body (0.1404ms)
+✔ builds topic, difficulty and combined question filters (0.3463ms)
+◇ injected env (0) from .env
+✔ TC-Quiz-01: quizzes with 5 or 50 questions and 5 or 180 minutes are created as drafts (689.3936ms)
+✔ TC-Quiz-01: 4 or 51 questions and 4 or 181 minutes are rejected (31.0058ms)
+✔ a quiz can only use questions that exist (11.6381ms)
+✔ only contributors can create quizzes (7.7566ms)
+✔ TC-Quiz-01: publishing makes the quiz available to students (59.298ms)
+✔ only the quiz creator can publish it (23.0015ms)
+✔ publishing an unknown or malformed quiz id returns 404 (10.7895ms)
+✖ a removed quiz cannot be published again (54.0078ms) # Defect D-07: publish does not reject removed quizzes
+◇ injected env (0) from .env
+◇ injected env (0) from .env
+✔ the creator deletes their own quiz and gets 200 (339.4622ms)
+✔ a deleted quiz is not returned in the published list for students (274.1666ms)
+✔ a deleted quiz cannot be started by a student (243.3706ms)
+✔ another contributor cannot delete the quiz and gets 403 Access denied (275.2157ms)
+✔ a student cannot delete a quiz and gets 403 (280.1805ms)
+✔ deleting a missing quiz returns 404 (169.8817ms)
+✔ deleting an already-removed quiz returns 404 (251.7259ms)
+✔ deleting a quiz writes exactly one DELETE audit entry (276.3467ms)
+◇ injected env (0) from .env
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+✔ TC-Quiz-03: 7 correct answers out of 10 show 7/10, 70% and every correct answer within 3 s (1072.4973ms)
+✔ an attempt with no answers scores 0 (93.1827ms)
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+✔ correct answers are never sent before the attempt is finished (115.4633ms)
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+✔ a second submit returns 409 with the original result (184.6181ms)
+✔ simultaneous submits of one attempt grade it only once (207.8907ms)
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+✔ a past result does not change when a question is edited later (141.5513ms)
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+✔ after the time limit the answers given so far are graded and the status is timed_out (113.5996ms)
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+✔ opening an expired attempt also grades it (115.0576ms)
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+✔ an answer saved too late is refused, is not counted and returns the result (102.8145ms)
+(node:28872) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+✔ each attempt is graded separately (144.4112ms)
+✔ only the student who owns an attempt can submit it (298.863ms)
+✔ 100 simultaneous submissions return results within 3 s for at least 95% (2857.0605ms)
+✔ a 10-question quiz with 7 correct answers scores 7/10 and 70% (5.2263ms)
+✔ correct answers earn 1 mark and wrong or unanswered questions earn 0 (0.4448ms)
+✔ option 0 is treated as an answer, not as unanswered (0.3072ms)
+✔ an attempt with no answers scores 0 out of the full total (0.3217ms)
+✔ every question reports its correct answer, in quiz order (1.8885ms)
+✔ percentages are rounded to one decimal place (0.3353ms)
+✔ a question that no longer exists still counts towards the total (0.3028ms)
+◇ injected env (0) from .env
+✔ TC-Quiz-04: a student sees every published quiz with its title, question count and time limit (587.2556ms)
+✔ draft and removed quizzes are not listed (21.0628ms)
+✔ list items do not reveal which questions a quiz contains (21.1966ms)
+✔ only students can list published quizzes (192.0958ms)
+◇ injected env (0) from .env
+◇ injected env (0) from .env
+◇ injected env (0) from .env
+✔ percentile calculation follows nearest-rank standard (135.813ms)
+✔ summarise correctly reports pass criteria and latency metrics (0.5364ms)
+✔ TC-Perf-02: 100 simultaneous student submissions return results within 3 s for at least 95% (1875.0126ms)
+✔ accepts a valid quiz with 5 questions and a 5-minute limit (2.4445ms)
+✔ rejects invalid quiz time limits and question counts (0.2495ms)
+◇ injected env (0) from .env
+✔ registers a student, persists a bcrypt hash and returns only safe user fields (470.7003ms)
+✔ registers a contributor account (132.8912ms)
+✔ rejects duplicate emails with the required message (272.3833ms)
+✔ rejects public administrator registration (4.1801ms)
+✔ rejects invalid input before attempting persistence (3.8541ms)
+✔ logs in with valid credentials and returns a token without a password hash (279.9377ms)
+✔ rejects incorrect passwords and unknown emails with the same message and no token (260.7023ms)
+✔ rejects missing, altered and expired authentication tokens with HTTP 401 (123.7445ms)
+✔ accepts student registration, defaults the role, trims the name and normalizes email (5.1641ms)
+✔ accepts contributor registration (0.3958ms)
+✔ rejects names shorter than 2 characters and longer than 50 characters (0.2093ms)
+✔ rejects malformed email addresses (0.2992ms)
+✔ rejects missing passwords (0.4058ms)
+✔ does not allow public registration as an administrator (0.1825ms)
+✔ does not allow an administrator role through public registration (0.1449ms)
+✔ rejects an absent or non-object request body (0.1204ms)
+✔ rejects passwords longer than bcrypt supports without truncating them (0.1945ms)
+✔ rejects passwords that are shorter than 8 characters, lack a digit, or lack a letter (0.1919ms)
+◇ injected env (0) from .env
+◇ injected env (0) from .env
+✔ percentile uses the nearest-rank method (1796.7139ms)
+✔ the search mix covers keyword, subject, topic and combined searches (1.8998ms)
+✔ TC-Perf-01: 95th percentile of 200 searches over 10,000 materials is within 2 s (2691.8944ms)
+◇ injected env (0) from .env
+✔ the API refuses to start without MONGO_URI (385.0196ms)
+MongoDB connected
+Server on port 0
+✔ the API connects to MongoDB before it starts listening (188.6652ms)
+◇ injected env (0) from .env
+✔ TC-Auth-04: logout ends the session immediately and the old token is refused (359.8974ms)
+✔ TC-Sec-03: logging out twice with the same token is refused the second time (151.0596ms)
+✔ logout without a token returns 401 (2.8652ms)
+✔ refresh issues a new working token and revokes the old one (149.3438ms)
+✔ refresh and /me refuse a valid token whose user no longer exists (12.72ms)
+◇ injected env (0) from .env
+◇ injected env (0) from .env
+✔ 3 submitted attempts produce correct overall average, topics and attempt list (558.4542ms)
+✔ only the 20 newest attempts are returned when there are 25 (421.1063ms)
+✔ another student's attempts are never included (433.5842ms)
+✔ in_progress attempts are ignored (471.7931ms)
+✔ a Student with no attempts gets empty lists and 0 (214.86ms)
+✔ a Contributor gets 403 Access denied (209.4ms)
+✔ an Admin gets 403 Access denied (215.5441ms)
+✔ no token gets 401 (7.7871ms)
+ℹ tests 174
+ℹ suites 0
+ℹ pass 173
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 1
+ℹ duration_ms 75533.2854
+
+✖ failing tests:
+
+test at tests\quizCreate.integration.test.js:112:1
+✖ a removed quiz cannot be published again (54.0078ms) # Defect D-07: publish does not reject removed quizzes
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 404
+  
+      at TestContext.<anonymous> (D:\NeuDocuments\SideProject\MiniProject\SE\SE-Mini-Project-Deliverable-1\backend\tests\quizCreate.integration.test.js:118:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async Test.run (node:internal/test_runner/test:1069:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:752:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 404,
+    operator: 'strictEqual'
+  }
+----------------------------|---------|----------|---------|---------|------------------------------
+File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s            
+----------------------------|---------|----------|---------|---------|------------------------------
+All files                   |   93.03 |    82.01 |     100 |   93.03 |                              
+ backend                    |   89.79 |    71.42 |     100 |   89.79 |                              
+  app.js                    |     100 |      100 |     100 |     100 |                              
+  server.js                 |   78.26 |    66.66 |     100 |   78.26 | 17-21                        
+ backend/middleware         |   91.48 |     90.9 |     100 |   91.48 |                              
+  authorization.js          |     100 |      100 |     100 |     100 |                              
+  database.js               |      80 |    66.66 |     100 |      80 | 5-6                          
+  inputValidation.js        |      90 |    92.85 |     100 |      90 | 15-16                        
+ backend/models             |     100 |      100 |     100 |     100 |                              
+  AuditLog.js               |     100 |      100 |     100 |     100 |                              
+  Material.js               |     100 |      100 |     100 |     100 |                              
+  Question.js               |     100 |      100 |     100 |     100 |                              
+  Quiz.js                   |     100 |      100 |     100 |     100 |                              
+  QuizAttempt.js            |     100 |      100 |     100 |     100 |                              
+  RevokedToken.js           |     100 |      100 |     100 |     100 |                              
+  User.js                   |     100 |      100 |     100 |     100 |                              
+ backend/routes             |   89.57 |    72.76 |     100 |   89.57 |                              
+  auth.js                   |   81.57 |    66.66 |     100 |   81.57 | ...56-57,77-79,92-94,109-111 
+  health.js                 |     100 |    33.33 |     100 |     100 | 12-19                        
+  materials.js              |   88.64 |    78.26 |     100 |   88.64 | ...6,115-117,147-153,180-182 
+  protectedFeatures.js      |     100 |      100 |     100 |     100 |                              
+  questions.js              |   88.14 |    89.18 |     100 |   88.14 | 64-69,94-96,111-114,130-132  
+  quizzes.js                |   88.21 |    69.13 |     100 |   88.21 | ...1,224-226,252-254,275-277 
+  reports.js                |   94.18 |    69.23 |     100 |   94.18 | ...2,233-234,238-239,253-255 
+ backend/utils              |   97.44 |    89.92 |     100 |   97.44 |                              
+  auditService.js           |      92 |    66.66 |     100 |      92 | 21-22                        
+  authToken.js              |   91.11 |    75.67 |     100 |   91.11 | 9-10,12-13,45-46,82-83       
+  fileStorage.js            |   93.75 |      100 |     100 |   93.75 | 12                           
+  fileValidation.js         |     100 |    89.47 |     100 |     100 | 42,48-53,89                  
+  materialValidation.js     |   95.91 |     92.1 |     100 |   95.91 | 38-39                        
+  questionUsage.js          |     100 |      100 |     100 |     100 |                              
+  questionValidation.js     |     100 |    98.55 |     100 |     100 | 73                           
+  quizAttempt.js            |     100 |       75 |     100 |     100 | 9                            
+  quizGrading.js            |     100 |     92.3 |     100 |     100 | 31                           
+  quizValidation.js         |     100 |    82.35 |     100 |     100 | 2-7                          
+  registrationValidation.js |     100 |    90.32 |     100 |     100 | 9-10,14                      
+----------------------------|---------|----------|---------|---------|------------------------------

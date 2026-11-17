@@ -1,0 +1,1051 @@
+{
+  "generatedAt": "2026-11-17T16:31:22.881Z",
+  "node": "v24.4.1",
+  "tests": [
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "an admin can remove another contributor’s quiz",
+      "status": "passed",
+      "durationMs": 519.7
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "after admin deletes a quiz it is no longer listed for students",
+      "status": "passed",
+      "durationMs": 428.8
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "an admin can remove any material",
+      "status": "passed",
+      "durationMs": 330.5
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "after admin deletes a material it no longer appears in search",
+      "status": "passed",
+      "durationMs": 450.1
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "after admin deletes a material the download endpoint returns 404",
+      "status": "passed",
+      "durationMs": 488.5
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "a contributor cannot delete another contributor’s material and gets 403",
+      "status": "passed",
+      "durationMs": 474.5
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "a student cannot delete a material and gets 403",
+      "status": "passed",
+      "durationMs": 486.6
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "deleting a missing material returns 404",
+      "status": "passed",
+      "durationMs": 211.5
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "deleting a missing quiz returns 404",
+      "status": "passed",
+      "durationMs": 221.8
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "admin quiz deletion writes one DELETE audit entry",
+      "status": "passed",
+      "durationMs": 433.4
+    },
+    {
+      "file": "tests/adminModeration.integration.test.js",
+      "name": "admin material deletion writes one DELETE audit entry",
+      "status": "passed",
+      "durationMs": 417.1
+    },
+    {
+      "file": "tests/auditLog.test.js",
+      "name": "a successful login creates exactly one LOGIN_SUCCESS entry",
+      "status": "passed",
+      "durationMs": 540.6
+    },
+    {
+      "file": "tests/auditLog.test.js",
+      "name": "a wrong password creates exactly one LOGIN_FAILED entry with the matched user id",
+      "status": "passed",
+      "durationMs": 291.4
+    },
+    {
+      "file": "tests/auditLog.test.js",
+      "name": "an unknown email creates one LOGIN_FAILED entry with null userId",
+      "status": "passed",
+      "durationMs": 18.8
+    },
+    {
+      "file": "tests/auditLog.test.js",
+      "name": "a material upload creates exactly one UPLOAD entry",
+      "status": "passed",
+      "durationMs": 171.5
+    },
+    {
+      "file": "tests/auditLog.test.js",
+      "name": "deleting a question creates exactly one DELETE entry",
+      "status": "passed",
+      "durationMs": 251.5
+    },
+    {
+      "file": "tests/auditLog.test.js",
+      "name": "no audit log entry contains a password or token",
+      "status": "passed",
+      "durationMs": 415.7
+    },
+    {
+      "file": "tests/authorization.test.js",
+      "name": "role middleware permits the configured role and rejects other roles with exact 403 response",
+      "status": "passed",
+      "durationMs": 3.7
+    },
+    {
+      "file": "tests/authorization.test.js",
+      "name": "permission matrix gives every account exactly one supported role",
+      "status": "passed",
+      "durationMs": 0.7
+    },
+    {
+      "file": "tests/contributorPerformance.integration.test.js",
+      "name": "TC-Rep-02: Contributor quiz statistics match hand-calculated metrics and hardest questions",
+      "status": "passed",
+      "durationMs": 1380.5
+    },
+    {
+      "file": "tests/contributorPerformance.integration.test.js",
+      "name": "a quiz with no attempts returns zeroed statistics and empty hardest questions",
+      "status": "passed",
+      "durationMs": 197.5
+    },
+    {
+      "file": "tests/contributorPerformance.integration.test.js",
+      "name": "strict isolation: Contributor cannot view another Contributor quizzes or single quiz stats",
+      "status": "passed",
+      "durationMs": 628.7
+    },
+    {
+      "file": "tests/contributorPerformance.integration.test.js",
+      "name": "in_progress attempts are ignored in statistics calculations",
+      "status": "passed",
+      "durationMs": 331
+    },
+    {
+      "file": "tests/contributorPerformance.integration.test.js",
+      "name": "role-based access control: Students and Admins cannot access contributor statistics",
+      "status": "passed",
+      "durationMs": 386.9
+    },
+    {
+      "file": "tests/fileValidation.test.js",
+      "name": "detects PDF, DOCX and PPTX files from their content",
+      "status": "passed",
+      "durationMs": 26.1
+    },
+    {
+      "file": "tests/fileValidation.test.js",
+      "name": "accepts valid documents and reports the verified MIME type",
+      "status": "passed",
+      "durationMs": 13
+    },
+    {
+      "file": "tests/fileValidation.test.js",
+      "name": "rejects an executable renamed with a document extension",
+      "status": "passed",
+      "durationMs": 7.8
+    },
+    {
+      "file": "tests/fileValidation.test.js",
+      "name": "rejects files whose extension does not match the real content",
+      "status": "passed",
+      "durationMs": 14.9
+    },
+    {
+      "file": "tests/fileValidation.test.js",
+      "name": "rejects ZIP archives that are not Word or PowerPoint packages",
+      "status": "passed",
+      "durationMs": 13.5
+    },
+    {
+      "file": "tests/fileValidation.test.js",
+      "name": "rejects empty, missing and oversized files",
+      "status": "passed",
+      "durationMs": 6
+    },
+    {
+      "file": "tests/health.test.js",
+      "name": "GET /api/health reports the expected health-check shape",
+      "status": "passed",
+      "durationMs": 169
+    },
+    {
+      "file": "tests/health.test.js",
+      "name": "GET /health is a backwards-compatible alias",
+      "status": "passed",
+      "durationMs": 17.5
+    },
+    {
+      "file": "tests/inputValidation.test.js",
+      "name": "rejects script and event-handler payloads",
+      "status": "passed",
+      "durationMs": 2.2
+    },
+    {
+      "file": "tests/inputValidation.test.js",
+      "name": "rejects database operators and SQL command payloads",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/inputValidation.test.js",
+      "name": "accepts ordinary user input",
+      "status": "passed",
+      "durationMs": 0.1
+    },
+    {
+      "file": "tests/logout.test.js",
+      "name": "signed tokens carry the required 30-minute expiry",
+      "status": "passed",
+      "durationMs": 62.3
+    },
+    {
+      "file": "tests/logout.test.js",
+      "name": "revoking a token persists its revocation until its expiry",
+      "status": "passed",
+      "durationMs": 31
+    },
+    {
+      "file": "tests/materialDownload.integration.test.js",
+      "name": "a logged-in user downloads the exact stored file",
+      "status": "passed",
+      "durationMs": 503.9
+    },
+    {
+      "file": "tests/materialDownload.integration.test.js",
+      "name": "each download increases the download count by exactly 1",
+      "status": "passed",
+      "durationMs": 109.5
+    },
+    {
+      "file": "tests/materialDownload.integration.test.js",
+      "name": "concurrent downloads are all counted",
+      "status": "passed",
+      "durationMs": 69.3
+    },
+    {
+      "file": "tests/materialDownload.integration.test.js",
+      "name": "unknown or malformed material ids return 404",
+      "status": "passed",
+      "durationMs": 16.3
+    },
+    {
+      "file": "tests/materialDownload.integration.test.js",
+      "name": "downloading requires a logged-in user",
+      "status": "passed",
+      "durationMs": 24.7
+    },
+    {
+      "file": "tests/materialSearch.integration.test.js",
+      "name": "a keyword search returns 10 results per page, newest first",
+      "status": "passed",
+      "durationMs": 510.2
+    },
+    {
+      "file": "tests/materialSearch.integration.test.js",
+      "name": "results contain list fields only and never the storage path",
+      "status": "passed",
+      "durationMs": 13.4
+    },
+    {
+      "file": "tests/materialSearch.integration.test.js",
+      "name": "search filters by subject, by topic and by both",
+      "status": "passed",
+      "durationMs": 35.6
+    },
+    {
+      "file": "tests/materialSearch.integration.test.js",
+      "name": "a search with no matches reports \"No materials found\"",
+      "status": "passed",
+      "durationMs": 10.1
+    },
+    {
+      "file": "tests/materialSearch.integration.test.js",
+      "name": "an uploaded material appears in search results",
+      "status": "passed",
+      "durationMs": 71
+    },
+    {
+      "file": "tests/materialSearch.integration.test.js",
+      "name": "every logged-in role can search and anonymous users cannot",
+      "status": "passed",
+      "durationMs": 152.4
+    },
+    {
+      "file": "tests/materialSearch.integration.test.js",
+      "name": "an invalid page number is rejected",
+      "status": "passed",
+      "durationMs": 7
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "a contributor uploads a PDF with title, subject and topic",
+      "status": "passed",
+      "durationMs": 468.4
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "DOCX and PPTX files are accepted",
+      "status": "passed",
+      "durationMs": 50.9
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "non-ASCII file names are kept intact",
+      "status": "passed",
+      "durationMs": 22.9
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "a valid 20 MB PDF is stored and confirmed within 10 seconds",
+      "status": "passed",
+      "durationMs": 203.8
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "a 21 MB PDF is rejected with \"Invalid file\" and nothing is kept",
+      "status": "passed",
+      "durationMs": 225.1
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "an executable renamed to .pdf is rejected and its temporary file is deleted",
+      "status": "passed",
+      "durationMs": 22.4
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "unsupported formats and requests without a file are rejected",
+      "status": "passed",
+      "durationMs": 19.9
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "title is accepted up to 100 characters and rejected beyond that",
+      "status": "passed",
+      "durationMs": 33.2
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "title, subject and topic are required",
+      "status": "passed",
+      "durationMs": 45.3
+    },
+    {
+      "file": "tests/materialUpload.integration.test.js",
+      "name": "only contributors can upload material",
+      "status": "passed",
+      "durationMs": 150.9
+    },
+    {
+      "file": "tests/materialValidation.test.js",
+      "name": "accepts and trims upload metadata",
+      "status": "passed",
+      "durationMs": 3.3
+    },
+    {
+      "file": "tests/materialValidation.test.js",
+      "name": "rejects missing or overlong upload metadata",
+      "status": "passed",
+      "durationMs": 1.7
+    },
+    {
+      "file": "tests/materialValidation.test.js",
+      "name": "builds a keyword, subject and topic search filter",
+      "status": "passed",
+      "durationMs": 0.4
+    },
+    {
+      "file": "tests/materialValidation.test.js",
+      "name": "an empty search lists every material from page 1",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/materialValidation.test.js",
+      "name": "rejects invalid page numbers",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/materialValidation.test.js",
+      "name": "ignores non-string search parameters such as operator objects",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/questionBank.integration.test.js",
+      "name": "a contributor adds a valid 500-character question and it is persisted",
+      "status": "passed",
+      "durationMs": 478
+    },
+    {
+      "file": "tests/questionBank.integration.test.js",
+      "name": "a question with 3 options or with 2 correct options is rejected",
+      "status": "passed",
+      "durationMs": 35.7
+    },
+    {
+      "file": "tests/questionBank.integration.test.js",
+      "name": "saved questions appear in the question bank, newest first",
+      "status": "passed",
+      "durationMs": 42.6
+    },
+    {
+      "file": "tests/questionBank.integration.test.js",
+      "name": "only contributors can add or list questions",
+      "status": "passed",
+      "durationMs": 156.9
+    },
+    {
+      "file": "tests/questionBank.integration.test.js",
+      "name": "page size is capped at 50 and invalid paging is rejected",
+      "status": "passed",
+      "durationMs": 20.8
+    },
+    {
+      "file": "tests/questionFilter.integration.test.js",
+      "name": "a question without a topic or difficulty is not saved",
+      "status": "passed",
+      "durationMs": 436.8
+    },
+    {
+      "file": "tests/questionFilter.integration.test.js",
+      "name": "every saved question has exactly one topic and one difficulty",
+      "status": "passed",
+      "durationMs": 3.7
+    },
+    {
+      "file": "tests/questionFilter.integration.test.js",
+      "name": "filtering by topic returns only that topic, ignoring case",
+      "status": "passed",
+      "durationMs": 11.4
+    },
+    {
+      "file": "tests/questionFilter.integration.test.js",
+      "name": "filtering by difficulty returns only that difficulty",
+      "status": "passed",
+      "durationMs": 9.1
+    },
+    {
+      "file": "tests/questionFilter.integration.test.js",
+      "name": "filtering by Algebra and Easy returns only matching questions",
+      "status": "passed",
+      "durationMs": 14
+    },
+    {
+      "file": "tests/questionFilter.integration.test.js",
+      "name": "an unknown difficulty filter is rejected",
+      "status": "passed",
+      "durationMs": 7.1
+    },
+    {
+      "file": "tests/questionOwnership.integration.test.js",
+      "name": "a contributor edits their own question",
+      "status": "passed",
+      "durationMs": 637.3
+    },
+    {
+      "file": "tests/questionOwnership.integration.test.js",
+      "name": "an edit must still be a valid question",
+      "status": "passed",
+      "durationMs": 26
+    },
+    {
+      "file": "tests/questionOwnership.integration.test.js",
+      "name": "a contributor deletes their own unused question",
+      "status": "passed",
+      "durationMs": 31.5
+    },
+    {
+      "file": "tests/questionOwnership.integration.test.js",
+      "name": "another contributor cannot edit or delete the question",
+      "status": "passed",
+      "durationMs": 26.3
+    },
+    {
+      "file": "tests/questionOwnership.integration.test.js",
+      "name": "students cannot edit or delete questions",
+      "status": "passed",
+      "durationMs": 20.7
+    },
+    {
+      "file": "tests/questionOwnership.integration.test.js",
+      "name": "a question used in a published quiz cannot be deleted",
+      "status": "passed",
+      "durationMs": 21.2
+    },
+    {
+      "file": "tests/questionOwnership.integration.test.js",
+      "name": "a question used only in draft or removed quizzes can be deleted",
+      "status": "passed",
+      "durationMs": 22.4
+    },
+    {
+      "file": "tests/questionOwnership.integration.test.js",
+      "name": "unknown and malformed question ids return 404",
+      "status": "passed",
+      "durationMs": 21
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "accepts a question with four options and one correct option",
+      "status": "passed",
+      "durationMs": 4.4
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "accepts options given as objects with exactly one marked correct",
+      "status": "passed",
+      "durationMs": 0.4
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "limits question text to 500 characters",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "requires exactly four options",
+      "status": "passed",
+      "durationMs": 0.1
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "rejects empty, mixed or duplicate options",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "requires exactly one correct option",
+      "status": "passed",
+      "durationMs": 0.3
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "requires a topic and a difficulty of Easy, Medium or Hard",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "normalizes difficulty spelling",
+      "status": "passed",
+      "durationMs": 0.1
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "rejects a missing or non-object body",
+      "status": "passed",
+      "durationMs": 0.1
+    },
+    {
+      "file": "tests/questionValidation.test.js",
+      "name": "builds topic, difficulty and combined question filters",
+      "status": "passed",
+      "durationMs": 0.3
+    },
+    {
+      "file": "tests/quizCreate.integration.test.js",
+      "name": "TC-Quiz-01: quizzes with 5 or 50 questions and 5 or 180 minutes are created as drafts",
+      "status": "passed",
+      "durationMs": 689.4
+    },
+    {
+      "file": "tests/quizCreate.integration.test.js",
+      "name": "TC-Quiz-01: 4 or 51 questions and 4 or 181 minutes are rejected",
+      "status": "passed",
+      "durationMs": 31
+    },
+    {
+      "file": "tests/quizCreate.integration.test.js",
+      "name": "a quiz can only use questions that exist",
+      "status": "passed",
+      "durationMs": 11.6
+    },
+    {
+      "file": "tests/quizCreate.integration.test.js",
+      "name": "only contributors can create quizzes",
+      "status": "passed",
+      "durationMs": 7.8
+    },
+    {
+      "file": "tests/quizCreate.integration.test.js",
+      "name": "TC-Quiz-01: publishing makes the quiz available to students",
+      "status": "passed",
+      "durationMs": 59.3
+    },
+    {
+      "file": "tests/quizCreate.integration.test.js",
+      "name": "only the quiz creator can publish it",
+      "status": "passed",
+      "durationMs": 23
+    },
+    {
+      "file": "tests/quizCreate.integration.test.js",
+      "name": "publishing an unknown or malformed quiz id returns 404",
+      "status": "passed",
+      "durationMs": 10.8
+    },
+    {
+      "file": "tests/quizCreate.integration.test.js",
+      "name": "a removed quiz cannot be published again",
+      "status": "todo",
+      "todo": "Defect D-07: publish does not reject removed quizzes",
+      "durationMs": 54
+    },
+    {
+      "file": "tests/quizDelete.integration.test.js",
+      "name": "the creator deletes their own quiz and gets 200",
+      "status": "passed",
+      "durationMs": 339.5
+    },
+    {
+      "file": "tests/quizDelete.integration.test.js",
+      "name": "a deleted quiz is not returned in the published list for students",
+      "status": "passed",
+      "durationMs": 274.2
+    },
+    {
+      "file": "tests/quizDelete.integration.test.js",
+      "name": "a deleted quiz cannot be started by a student",
+      "status": "passed",
+      "durationMs": 243.4
+    },
+    {
+      "file": "tests/quizDelete.integration.test.js",
+      "name": "another contributor cannot delete the quiz and gets 403 Access denied",
+      "status": "passed",
+      "durationMs": 275.2
+    },
+    {
+      "file": "tests/quizDelete.integration.test.js",
+      "name": "a student cannot delete a quiz and gets 403",
+      "status": "passed",
+      "durationMs": 280.2
+    },
+    {
+      "file": "tests/quizDelete.integration.test.js",
+      "name": "deleting a missing quiz returns 404",
+      "status": "passed",
+      "durationMs": 169.9
+    },
+    {
+      "file": "tests/quizDelete.integration.test.js",
+      "name": "deleting an already-removed quiz returns 404",
+      "status": "passed",
+      "durationMs": 251.7
+    },
+    {
+      "file": "tests/quizDelete.integration.test.js",
+      "name": "deleting a quiz writes exactly one DELETE audit entry",
+      "status": "passed",
+      "durationMs": 276.3
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "TC-Quiz-03: 7 correct answers out of 10 show 7/10, 70% and every correct answer within 3 s",
+      "status": "passed",
+      "durationMs": 1072.5
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "an attempt with no answers scores 0",
+      "status": "passed",
+      "durationMs": 93.2
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "correct answers are never sent before the attempt is finished",
+      "status": "passed",
+      "durationMs": 115.5
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "a second submit returns 409 with the original result",
+      "status": "passed",
+      "durationMs": 184.6
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "simultaneous submits of one attempt grade it only once",
+      "status": "passed",
+      "durationMs": 207.9
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "a past result does not change when a question is edited later",
+      "status": "passed",
+      "durationMs": 141.6
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "after the time limit the answers given so far are graded and the status is timed_out",
+      "status": "passed",
+      "durationMs": 113.6
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "opening an expired attempt also grades it",
+      "status": "passed",
+      "durationMs": 115.1
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "an answer saved too late is refused, is not counted and returns the result",
+      "status": "passed",
+      "durationMs": 102.8
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "each attempt is graded separately",
+      "status": "passed",
+      "durationMs": 144.4
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "only the student who owns an attempt can submit it",
+      "status": "passed",
+      "durationMs": 298.9
+    },
+    {
+      "file": "tests/quizGrading.integration.test.js",
+      "name": "100 simultaneous submissions return results within 3 s for at least 95%",
+      "status": "passed",
+      "durationMs": 2857.1
+    },
+    {
+      "file": "tests/quizGrading.test.js",
+      "name": "a 10-question quiz with 7 correct answers scores 7/10 and 70%",
+      "status": "passed",
+      "durationMs": 5.2
+    },
+    {
+      "file": "tests/quizGrading.test.js",
+      "name": "correct answers earn 1 mark and wrong or unanswered questions earn 0",
+      "status": "passed",
+      "durationMs": 0.4
+    },
+    {
+      "file": "tests/quizGrading.test.js",
+      "name": "option 0 is treated as an answer, not as unanswered",
+      "status": "passed",
+      "durationMs": 0.3
+    },
+    {
+      "file": "tests/quizGrading.test.js",
+      "name": "an attempt with no answers scores 0 out of the full total",
+      "status": "passed",
+      "durationMs": 0.3
+    },
+    {
+      "file": "tests/quizGrading.test.js",
+      "name": "every question reports its correct answer, in quiz order",
+      "status": "passed",
+      "durationMs": 1.9
+    },
+    {
+      "file": "tests/quizGrading.test.js",
+      "name": "percentages are rounded to one decimal place",
+      "status": "passed",
+      "durationMs": 0.3
+    },
+    {
+      "file": "tests/quizGrading.test.js",
+      "name": "a question that no longer exists still counts towards the total",
+      "status": "passed",
+      "durationMs": 0.3
+    },
+    {
+      "file": "tests/quizList.integration.test.js",
+      "name": "TC-Quiz-04: a student sees every published quiz with its title, question count and time limit",
+      "status": "passed",
+      "durationMs": 587.3
+    },
+    {
+      "file": "tests/quizList.integration.test.js",
+      "name": "draft and removed quizzes are not listed",
+      "status": "passed",
+      "durationMs": 21.1
+    },
+    {
+      "file": "tests/quizList.integration.test.js",
+      "name": "list items do not reveal which questions a quiz contains",
+      "status": "passed",
+      "durationMs": 21.2
+    },
+    {
+      "file": "tests/quizList.integration.test.js",
+      "name": "only students can list published quizzes",
+      "status": "passed",
+      "durationMs": 192.1
+    },
+    {
+      "file": "tests/quizSubmitPerformance.integration.test.js",
+      "name": "percentile calculation follows nearest-rank standard",
+      "status": "passed",
+      "durationMs": 135.8
+    },
+    {
+      "file": "tests/quizSubmitPerformance.integration.test.js",
+      "name": "summarise correctly reports pass criteria and latency metrics",
+      "status": "passed",
+      "durationMs": 0.5
+    },
+    {
+      "file": "tests/quizSubmitPerformance.integration.test.js",
+      "name": "TC-Perf-02: 100 simultaneous student submissions return results within 3 s for at least 95%",
+      "status": "passed",
+      "durationMs": 1875
+    },
+    {
+      "file": "tests/quizValidation.test.js",
+      "name": "accepts a valid quiz with 5 questions and a 5-minute limit",
+      "status": "passed",
+      "durationMs": 2.4
+    },
+    {
+      "file": "tests/quizValidation.test.js",
+      "name": "rejects invalid quiz time limits and question counts",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/registration.integration.test.js",
+      "name": "registers a student, persists a bcrypt hash and returns only safe user fields",
+      "status": "passed",
+      "durationMs": 470.7
+    },
+    {
+      "file": "tests/registration.integration.test.js",
+      "name": "registers a contributor account",
+      "status": "passed",
+      "durationMs": 132.9
+    },
+    {
+      "file": "tests/registration.integration.test.js",
+      "name": "rejects duplicate emails with the required message",
+      "status": "passed",
+      "durationMs": 272.4
+    },
+    {
+      "file": "tests/registration.integration.test.js",
+      "name": "rejects public administrator registration",
+      "status": "passed",
+      "durationMs": 4.2
+    },
+    {
+      "file": "tests/registration.integration.test.js",
+      "name": "rejects invalid input before attempting persistence",
+      "status": "passed",
+      "durationMs": 3.9
+    },
+    {
+      "file": "tests/registration.integration.test.js",
+      "name": "logs in with valid credentials and returns a token without a password hash",
+      "status": "passed",
+      "durationMs": 279.9
+    },
+    {
+      "file": "tests/registration.integration.test.js",
+      "name": "rejects incorrect passwords and unknown emails with the same message and no token",
+      "status": "passed",
+      "durationMs": 260.7
+    },
+    {
+      "file": "tests/registration.integration.test.js",
+      "name": "rejects missing, altered and expired authentication tokens with HTTP 401",
+      "status": "passed",
+      "durationMs": 123.7
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "accepts student registration, defaults the role, trims the name and normalizes email",
+      "status": "passed",
+      "durationMs": 5.2
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "accepts contributor registration",
+      "status": "passed",
+      "durationMs": 0.4
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "rejects names shorter than 2 characters and longer than 50 characters",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "rejects malformed email addresses",
+      "status": "passed",
+      "durationMs": 0.3
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "rejects missing passwords",
+      "status": "passed",
+      "durationMs": 0.4
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "does not allow public registration as an administrator",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "does not allow an administrator role through public registration",
+      "status": "passed",
+      "durationMs": 0.1
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "rejects an absent or non-object request body",
+      "status": "passed",
+      "durationMs": 0.1
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "rejects passwords longer than bcrypt supports without truncating them",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/registrationValidation.test.js",
+      "name": "rejects passwords that are shorter than 8 characters, lack a digit, or lack a letter",
+      "status": "passed",
+      "durationMs": 0.2
+    },
+    {
+      "file": "tests/searchPerformance.integration.test.js",
+      "name": "percentile uses the nearest-rank method",
+      "status": "passed",
+      "durationMs": 1796.7
+    },
+    {
+      "file": "tests/searchPerformance.integration.test.js",
+      "name": "the search mix covers keyword, subject, topic and combined searches",
+      "status": "passed",
+      "durationMs": 1.9
+    },
+    {
+      "file": "tests/searchPerformance.integration.test.js",
+      "name": "TC-Perf-01: 95th percentile of 200 searches over 10,000 materials is within 2 s",
+      "status": "passed",
+      "durationMs": 2691.9
+    },
+    {
+      "file": "tests/serverStartup.test.js",
+      "name": "the API refuses to start without MONGO_URI",
+      "status": "passed",
+      "durationMs": 385
+    },
+    {
+      "file": "tests/serverStartup.test.js",
+      "name": "the API connects to MongoDB before it starts listening",
+      "status": "passed",
+      "durationMs": 188.7
+    },
+    {
+      "file": "tests/session.integration.test.js",
+      "name": "TC-Auth-04: logout ends the session immediately and the old token is refused",
+      "status": "passed",
+      "durationMs": 359.9
+    },
+    {
+      "file": "tests/session.integration.test.js",
+      "name": "TC-Sec-03: logging out twice with the same token is refused the second time",
+      "status": "passed",
+      "durationMs": 151.1
+    },
+    {
+      "file": "tests/session.integration.test.js",
+      "name": "logout without a token returns 401",
+      "status": "passed",
+      "durationMs": 2.9
+    },
+    {
+      "file": "tests/session.integration.test.js",
+      "name": "refresh issues a new working token and revokes the old one",
+      "status": "passed",
+      "durationMs": 149.3
+    },
+    {
+      "file": "tests/session.integration.test.js",
+      "name": "refresh and /me refuse a valid token whose user no longer exists",
+      "status": "passed",
+      "durationMs": 12.7
+    },
+    {
+      "file": "tests/studentPerformance.integration.test.js",
+      "name": "3 submitted attempts produce correct overall average, topics and attempt list",
+      "status": "passed",
+      "durationMs": 558.5
+    },
+    {
+      "file": "tests/studentPerformance.integration.test.js",
+      "name": "only the 20 newest attempts are returned when there are 25",
+      "status": "passed",
+      "durationMs": 421.1
+    },
+    {
+      "file": "tests/studentPerformance.integration.test.js",
+      "name": "another student's attempts are never included",
+      "status": "passed",
+      "durationMs": 433.6
+    },
+    {
+      "file": "tests/studentPerformance.integration.test.js",
+      "name": "in_progress attempts are ignored",
+      "status": "passed",
+      "durationMs": 471.8
+    },
+    {
+      "file": "tests/studentPerformance.integration.test.js",
+      "name": "a Student with no attempts gets empty lists and 0",
+      "status": "passed",
+      "durationMs": 214.9
+    },
+    {
+      "file": "tests/studentPerformance.integration.test.js",
+      "name": "a Contributor gets 403 Access denied",
+      "status": "passed",
+      "durationMs": 209.4
+    },
+    {
+      "file": "tests/studentPerformance.integration.test.js",
+      "name": "an Admin gets 403 Access denied",
+      "status": "passed",
+      "durationMs": 215.5
+    },
+    {
+      "file": "tests/studentPerformance.integration.test.js",
+      "name": "no token gets 401",
+      "status": "passed",
+      "durationMs": 7.8
+    }
+  ]
+}

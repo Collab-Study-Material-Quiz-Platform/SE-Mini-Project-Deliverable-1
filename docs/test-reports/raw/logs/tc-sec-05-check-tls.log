@@ -1,0 +1,24 @@
+============================================================
+ TLS verification — CSQ-SR-005
+ Host:  localhost
+ HTTP:  port 8080   HTTPS: port 8443
+============================================================
+
+[a] HTTP returns 301 redirect to an https:// URL
+  PASS  HTTP 8080 → 301 → https://localhost:8443/
+
+[b] HSTS header present on HTTPS response
+  PASS  Strict-Transport-Security header found  (Strict-Transport-Security: max-age=31536000; includeSubDomains)
+
+[c] TLS 1.2 connection succeeds
+  PASS  TLS 1.2 handshake succeeded
+
+[c] TLS 1.3 connection succeeds
+  PASS  TLS 1.3 handshake succeeded
+
+[d] TLS 1.1 connection is rejected
+  PASS  TLS 1.1 connection was rejected by the server
+
+============================================================
+ All performed checks PASSED.
+============================================================

@@ -1,0 +1,93 @@
+
+> frontend@0.0.0 test:coverage
+> vitest run --coverage
+
+
+ RUN  v5.1.0 D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend
+      Coverage enabled with v8
+
+ ✓ src/api.test.js (9 tests) 61ms
+ ✓ src/components/reportsAdmin.test.jsx (11 tests) 2029ms
+   ✓ Student performance page (TC-Rep-01) (4)
+     ✓ shows the overall average, the score per topic and the attempts 937ms
+   ✓ Admin moderation page (TC-Adm-01) (5)
+     ✓ lists materials and quizzes and removes each after confirmation 356ms
+ ✓ src/shell.test.jsx (22 tests) 2143ms
+   ✓ App routing (TC-Auth-04) (7)
+     ✓ #/materials shows the login page when logged out 618ms
+ ✓ src/components/quizzes.test.jsx (16 tests) 2499ms
+   ✓ Published quiz list (TC-Quiz-04) (6)
+     ✓ is denied to anyone who is not a student 415ms
+     ✓ lists each published quiz with its title, question count and time limit 310ms
+   ✓ Quiz attempt (TC-Quiz-02) (10)
+     ✓ saves each answer as soon as it is chosen 303ms
+     ✓ puts an answer back when it cannot be saved 306ms
+ ✓ src/components/materials.test.jsx (14 tests) 5764ms
+   ✓ MaterialsPage (TC-Mat-02, TC-Mat-03) (8)
+     ✓ lists the newest materials with their details 756ms
+     ✓ searches by keyword, subject and topic from page 1 1101ms
+     ✓ pages through results 10 at a time 380ms
+   ✓ UploadMaterialPage (TC-Mat-01, TC-Sec-04) (6)
+     ✓ uploads the file with its title, subject and topic and resets the form 599ms
+     ✓ rejects an unsupported format before uploading 578ms
+     ✓ rejects a file over 20 MB before uploading 609ms
+     ✓ shows the server rejection for a disguised file 611ms
+     ✓ explains when the server cannot be reached 615ms
+ ✓ src/components/questionBank.test.jsx (12 tests) 6000ms
+   ✓ QuestionBankPage (12)
+     ✓ is denied to anyone who is not a contributor 415ms
+     ✓ TC-QB-01: saves a question with four options, one correct answer, a topic and a difficulty 1935ms
+     ✓ shows the server message for an invalid question 1165ms
+     ✓ TC-QB-02: edits an own question with PUT and shows "Question updated." 569ms
+     ✓ cancelling an edit returns to the add form 305ms
+     ✓ TC-QB-03: filters by topic and difficulty, then clears the filters 578ms
+ ✓ src/auth.test.jsx (11 tests) 8578ms
+   ✓ LoginPage (TC-Auth-02) (3)
+     ✓ stores the session and opens the home page on success 1358ms
+     ✓ shows "Invalid email or password" and creates no session 685ms
+     ✓ explains when the server cannot be reached 485ms
+   ✓ RegistrationPage (TC-Auth-01, TC-Auth-05) (8)
+     ✓ creates a contributor account 1040ms
+     ✓ rejects the weak password abc12 with "Password too weak" before calling the API 812ms
+     ✓ rejects the weak password abcdefgh with "Password too weak" before calling the API 787ms
+     ✓ rejects the weak password 12345678 with "Password too weak" before calling the API 781ms
+     ✓ rejects a one-character name 614ms
+     ✓ shows "Email already registered" from the server 1048ms
+     ✓ explains when the server cannot be reached 819ms
+
+ Test Files  7 passed (7)
+      Tests  95 passed (95)
+   Start at  21:51:07
+   Duration  15.57s (environment 40%, tests 39%, setup 13%, import 4%, worker 3%, transform 1%)
+
+JUNIT report written to D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/coverage/junit.xml
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    95.7 |    84.07 |   95.26 |   99.36 |                   
+ src               |   90.55 |    84.37 |      88 |     100 |                   
+  App.jsx          |   78.78 |    72.41 |     100 |     100 | 17,32-33,35,37-40 
+  LoginPage.jsx    |   95.45 |       90 |      80 |     100 | 21                
+  ...ationPage.jsx |   93.54 |    89.65 |      80 |     100 | 19,52-59          
+  api.js           |   95.12 |    89.28 |   88.88 |     100 | 21,43,51          
+ src/components    |   96.76 |       84 |   96.52 |   99.24 |                   
+  AdminPage.jsx    |   98.03 |    75.92 |     100 |     100 | 22-30,49,52-57    
+  Home.jsx         |   95.65 |       80 |   85.71 |     100 | 49-51             
+  Layout.jsx       |     100 |    94.11 |     100 |     100 | 34                
+  ...rialsPage.jsx |   97.36 |    89.36 |     100 |    98.5 | 108               
+  ...mancePage.jsx |   97.36 |    81.48 |     100 |     100 | ...,64,84,114-169 
+  ...nBankPage.jsx |   95.96 |    92.22 |     100 |   98.16 | 56,212            
+  QuizzesPage.jsx  |   96.25 |    78.98 |   91.17 |   99.24 | 78                
+  StatusPage.jsx   |   97.61 |    91.17 |   92.85 |     100 | 21,73-84          
+  ...erialPage.jsx |   95.74 |       80 |     100 |     100 | 34-39,61-67       
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 95.7% ( 713/745 )
+Branches     : 84.07% ( 475/565 )
+Functions    : 95.26% ( 161/169 )
+Lines        : 99.36% ( 628/632 )
+================================================================================
+Not implemented: Window's scrollTo() method
+Not implemented: Window's scrollTo() method
