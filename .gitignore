@@ -4,3 +4,7 @@ backups/
 dist/
 uploads/
 deploy/certs/
+backend/coverage/
+frontend/coverage/
+frontend/test-results/
+frontend/playwright-report/

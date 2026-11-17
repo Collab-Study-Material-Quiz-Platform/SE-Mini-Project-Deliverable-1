@@ -1,0 +1,25 @@
+
+> backend@1.0.0 perf:search
+> node perf/searchPerformance.js
+
+{
+  "testCase": "TC-Perf-01",
+  "requirement": "CSQ-NF-001",
+  "date": "2026-11-17T16:39:31.591Z",
+  "node": "v24.4.1",
+  "materialsStored": 10000,
+  "concurrency": 10,
+  "targetMs": 2000,
+  "searches": 200,
+  "failures": [],
+  "meanMs": 60.1,
+  "p50Ms": 62.4,
+  "p95Ms": 83.2,
+  "p99Ms": 89.5,
+  "maxMs": 92.2,
+  "withinTargetPercent": 100,
+  "meanResponseBytes": 2159,
+  "passed": true,
+  "estimatedTransferMsAt10Mbps": 1.7
+}
+◇ injected env (0) from .env

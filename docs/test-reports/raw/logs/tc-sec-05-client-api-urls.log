@@ -1,0 +1,4 @@
+Page origin: https://localhost:8443
+POST http://localhost:5000/api/auth/login
+GET https://localhost:8443/api/health
+GET http://localhost:5000/api/materials?page=1

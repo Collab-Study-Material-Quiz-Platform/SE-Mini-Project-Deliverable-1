@@ -1,0 +1,731 @@
+[
+  {
+    "id": "TC-Auth-01",
+    "requirement": "CSQ-F-001",
+    "title": "Registration",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/auth.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 29,
+      "total": 29,
+      "files": [
+        "backend/tests/registration.integration.test.js",
+        "backend/tests/registrationValidation.test.js",
+        "frontend/src/auth.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Auth-02",
+    "requirement": "CSQ-F-002",
+    "title": "Login",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/auth.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 19,
+      "total": 19,
+      "files": [
+        "backend/tests/registration.integration.test.js",
+        "frontend/src/auth.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Auth-03",
+    "requirement": "CSQ-F-003",
+    "title": "Role-based access",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/auth.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 24,
+      "total": 24,
+      "files": [
+        "backend/tests/authorization.test.js",
+        "frontend/src/shell.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Auth-04",
+    "requirement": "CSQ-F-004",
+    "title": "Logout",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/auth.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 38,
+      "total": 38,
+      "files": [
+        "backend/tests/logout.test.js",
+        "backend/tests/session.integration.test.js",
+        "frontend/src/api.test.js",
+        "frontend/src/shell.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Auth-05",
+    "requirement": "CSQ-F-005",
+    "title": "Password validation",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 2,
+      "total": 2,
+      "files": [
+        "frontend/e2e/auth.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 21,
+      "total": 21,
+      "files": [
+        "backend/tests/registrationValidation.test.js",
+        "frontend/src/auth.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Mat-01",
+    "requirement": "CSQ-F-010",
+    "title": "Upload study material",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/materials.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 24,
+      "total": 24,
+      "files": [
+        "backend/tests/materialUpload.integration.test.js",
+        "frontend/src/components/materials.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Mat-02",
+    "requirement": "CSQ-F-011",
+    "title": "Search material",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/materials.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 27,
+      "total": 27,
+      "files": [
+        "backend/tests/materialSearch.integration.test.js",
+        "backend/tests/materialValidation.test.js",
+        "frontend/src/components/materials.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Mat-03",
+    "requirement": "CSQ-F-012",
+    "title": "Download material",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/materials.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 19,
+      "total": 19,
+      "files": [
+        "backend/tests/materialDownload.integration.test.js",
+        "frontend/src/components/materials.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-QB-01",
+    "requirement": "CSQ-F-020",
+    "title": "Add question",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/questionBank.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 27,
+      "total": 27,
+      "files": [
+        "backend/tests/questionBank.integration.test.js",
+        "backend/tests/questionValidation.test.js",
+        "frontend/src/components/questionBank.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-QB-02",
+    "requirement": "CSQ-F-021",
+    "title": "Edit/delete own question",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/questionBank.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 20,
+      "total": 20,
+      "files": [
+        "backend/tests/questionOwnership.integration.test.js",
+        "frontend/src/components/questionBank.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-QB-03",
+    "requirement": "CSQ-F-022",
+    "title": "Tag/filter questions",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/questionBank.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 18,
+      "total": 18,
+      "files": [
+        "backend/tests/questionFilter.integration.test.js",
+        "frontend/src/components/questionBank.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Quiz-01",
+    "requirement": "CSQ-F-030",
+    "title": "Create and publish quiz",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/quiz.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 9,
+      "total": 9,
+      "files": [
+        "backend/tests/quizCreate.integration.test.js",
+        "backend/tests/quizValidation.test.js"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Quiz-02",
+    "requirement": "CSQ-F-031",
+    "title": "Timed quiz attempt and auto-submit",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/quiz.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 16,
+      "total": 16,
+      "files": [
+        "frontend/src/components/quizzes.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Quiz-03",
+    "requirement": "CSQ-F-032",
+    "title": "Automatic grading/result",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/quiz.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 35,
+      "total": 35,
+      "files": [
+        "backend/tests/quizGrading.integration.test.js",
+        "backend/tests/quizGrading.test.js",
+        "frontend/src/components/quizzes.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Quiz-04",
+    "requirement": "CSQ-F-033",
+    "title": "Published quiz listing",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/quiz.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 20,
+      "total": 20,
+      "files": [
+        "backend/tests/quizList.integration.test.js",
+        "frontend/src/components/quizzes.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Quiz-05",
+    "requirement": "CSQ-F-034",
+    "title": "Delete own quiz",
+    "status": "PARTIAL",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/quiz.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 8,
+      "total": 8,
+      "files": [
+        "backend/tests/quizDelete.integration.test.js"
+      ]
+    },
+    "evidence": [
+      "Open defect: D-07."
+    ]
+  },
+  {
+    "id": "TC-Rep-01",
+    "requirement": "CSQ-F-040",
+    "title": "Student performance page",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/reportsAdmin.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 19,
+      "total": 19,
+      "files": [
+        "backend/tests/studentPerformance.integration.test.js",
+        "frontend/src/components/reportsAdmin.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Rep-02",
+    "requirement": "CSQ-F-041",
+    "title": "Contributor quiz statistics",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/reportsAdmin.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 16,
+      "total": 16,
+      "files": [
+        "backend/tests/contributorPerformance.integration.test.js",
+        "frontend/src/components/reportsAdmin.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Adm-01",
+    "requirement": "CSQ-F-050",
+    "title": "Admin moderation",
+    "status": "PARTIAL",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/reportsAdmin.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 22,
+      "total": 22,
+      "files": [
+        "backend/tests/adminModeration.integration.test.js",
+        "frontend/src/components/reportsAdmin.test.jsx"
+      ]
+    },
+    "evidence": [
+      "Open defect: D-04."
+    ]
+  },
+  {
+    "id": "TC-Perf-01",
+    "requirement": "CSQ-NF-001",
+    "title": "Material search performance",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "supportingTests": {
+      "passed": 3,
+      "total": 3,
+      "files": [
+        "backend/tests/searchPerformance.integration.test.js"
+      ]
+    },
+    "evidence": [
+      "Load script (`npm run perf:search`): 200 searches over 10000 materials, p50 62.4 ms, **p95 83.2 ms**, max 92.2 ms, 100% within 2 s, 0 failed requests.",
+      "Team report: [tc-perf-01-search-performance.md](../tc-perf-01-search-performance.md)."
+    ]
+  },
+  {
+    "id": "TC-Perf-02",
+    "requirement": "CSQ-NF-002",
+    "title": "Concurrent quiz-result performance",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "supportingTests": {
+      "passed": 3,
+      "total": 3,
+      "files": [
+        "backend/tests/quizSubmitPerformance.integration.test.js"
+      ]
+    },
+    "evidence": [
+      "Load script (`npm run perf:quiz-submit`): 100 simultaneous submissions, p50 848.7 ms, **p95 911.4 ms**, max 919.9 ms, 100% within 3 s, 0 failed requests.",
+      "Team report: [tc-perf-02-quiz-result-performance.md](../tc-perf-02-quiz-result-performance.md)."
+    ]
+  },
+  {
+    "id": "TC-Perf-03",
+    "requirement": "CSQ-NF-006",
+    "title": "Page-load performance",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/pageLoad.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "evidence": [
+      "Real browser loads of the production build at 10 Mbps: 90 loads, 100% within 3 s, p95 428 ms.",
+      "Team report: [tc-perf-03-page-load-performance.md](../tc-perf-03-page-load-performance.md)."
+    ]
+  },
+  {
+    "id": "TC-Ops-01",
+    "requirement": "CSQ-NF-003",
+    "title": "Availability",
+    "status": "PARTIAL",
+    "browserTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "supportingTests": {
+      "passed": 26,
+      "total": 26,
+      "files": [
+        "backend/tests/health.test.js",
+        "backend/tests/serverStartup.test.js",
+        "frontend/src/shell.test.jsx"
+      ]
+    },
+    "evidence": [
+      "The health endpoint, its database check and the status pages are verified. The 99% monthly figure needs a month of uptime monitoring on the deployed server, which a test run cannot produce.",
+      "Team report: [availability.md](../availability.md)."
+    ]
+  },
+  {
+    "id": "TC-Ops-02",
+    "requirement": "CSQ-NF-007",
+    "title": "Backup and restore",
+    "status": "PARTIAL",
+    "browserTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "supportingTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "evidence": [
+      "Backup/restore drill: retention kept exactly 7 backups; restore of the latest backup took 1021 ms and restored every collection ([log](raw/tc-ops-02-backup-drill.log)).",
+      "Open defects: D-02, D-03."
+    ]
+  },
+  {
+    "id": "TC-UX-01",
+    "requirement": "CSQ-NF-004",
+    "title": "First-time usability",
+    "status": "MANUAL",
+    "browserTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "supportingTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "evidence": [
+      "User trial with 10 first-time participants, recorded by the team in November 2026: 10 of 10 completed all tasks within 10 minutes without help. A usability trial with people cannot be automated; the browser tests cover the same task script. See [tc-ux-01-usability-acceptance.md](../tc-ux-01-usability-acceptance.md)."
+    ]
+  },
+  {
+    "id": "TC-Comp-01",
+    "requirement": "CSQ-NF-005",
+    "title": "Browser and responsive compatibility",
+    "status": "PARTIAL",
+    "browserTests": {
+      "passed": 18,
+      "total": 18,
+      "files": [
+        "frontend/e2e/compatibility.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "evidence": [
+      "Each browser engine is tested at one version (the one bundled with Playwright). Edge is covered by the Chromium engine and Safari by WebKit; the \"latest two versions\" condition and real Safari/Edge builds still need the manual checks in the compatibility report.",
+      "Team report: [compatibility-test-report.md](../compatibility-test-report.md)."
+    ]
+  },
+  {
+    "id": "TC-Sec-01",
+    "requirement": "CSQ-SR-001",
+    "title": "Password storage/logging",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/security.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 8,
+      "total": 8,
+      "files": [
+        "backend/tests/registration.integration.test.js"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Sec-02",
+    "requirement": "CSQ-SR-002",
+    "title": "Role check on protected requests",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/security.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 13,
+      "total": 13,
+      "files": [
+        "backend/tests/adminModeration.integration.test.js",
+        "backend/tests/authorization.test.js"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Sec-03",
+    "requirement": "CSQ-SR-003",
+    "title": "Invalid/expired/revoked JWT",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/security.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 16,
+      "total": 16,
+      "files": [
+        "backend/tests/logout.test.js",
+        "backend/tests/session.integration.test.js",
+        "frontend/src/api.test.js"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Sec-04",
+    "requirement": "CSQ-SR-004",
+    "title": "File type and size validation",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/materials.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 30,
+      "total": 30,
+      "files": [
+        "backend/tests/fileValidation.test.js",
+        "backend/tests/materialUpload.integration.test.js",
+        "frontend/src/components/materials.test.jsx"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Sec-05",
+    "requirement": "CSQ-SR-005",
+    "title": "HTTPS/TLS validation",
+    "status": "FAIL",
+    "browserTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "supportingTests": {
+      "passed": 0,
+      "total": 0,
+      "files": []
+    },
+    "evidence": [
+      "Nginx checks with scripts/check-tls.sh: HTTP → 301 to HTTPS, HSTS present, TLS 1.2 and 1.3 accepted, TLS 1.1 rejected. Client API requests over plain HTTP: `POST http://localhost:5000/api/auth/login`, `GET http://localhost:5000/api/materials?page=1` ([log](raw/tc-sec-05-tls-check.log)).",
+      "Team report: [https-tls.md](../https-tls.md).",
+      "Open defect: D-01."
+    ]
+  },
+  {
+    "id": "TC-Sec-06",
+    "requirement": "CSQ-SR-006",
+    "title": "Audit logging",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/security.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 6,
+      "total": 6,
+      "files": [
+        "backend/tests/auditLog.test.js"
+      ]
+    },
+    "evidence": []
+  },
+  {
+    "id": "TC-Sec-07",
+    "requirement": "CSQ-SR-007",
+    "title": "Server-side injection/script validation",
+    "status": "PASS",
+    "browserTests": {
+      "passed": 1,
+      "total": 1,
+      "files": [
+        "frontend/e2e/security.spec.js"
+      ]
+    },
+    "supportingTests": {
+      "passed": 3,
+      "total": 3,
+      "files": [
+        "backend/tests/inputValidation.test.js"
+      ]
+    },
+    "evidence": []
+  }
+]

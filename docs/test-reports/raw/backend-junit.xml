@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="an admin can remove another contributor’s quiz" time="0.475100" classname="test"/>
+	<testcase name="after admin deletes a quiz it is no longer listed for students" time="0.469949" classname="test"/>
+	<testcase name="an admin can remove any material" time="0.324333" classname="test"/>
+	<testcase name="after admin deletes a material it no longer appears in search" time="0.320343" classname="test"/>
+	<testcase name="after admin deletes a material the download endpoint returns 404" time="0.464210" classname="test"/>
+	<testcase name="a contributor cannot delete another contributor’s material and gets 403" time="0.478904" classname="test"/>
+	<testcase name="a student cannot delete a material and gets 403" time="0.433856" classname="test"/>
+	<testcase name="deleting a missing material returns 404" time="0.220269" classname="test"/>
+	<testcase name="deleting a missing quiz returns 404" time="0.226070" classname="test"/>
+	<testcase name="admin quiz deletion writes one DELETE audit entry" time="0.436397" classname="test"/>
+	<testcase name="admin material deletion writes one DELETE audit entry" time="0.454217" classname="test"/>
+	<testcase name="a successful login creates exactly one LOGIN_SUCCESS entry" time="0.502795" classname="test"/>
+	<testcase name="a wrong password creates exactly one LOGIN_FAILED entry with the matched user id" time="0.256957" classname="test"/>
+	<testcase name="an unknown email creates one LOGIN_FAILED entry with null userId" time="0.019622" classname="test"/>
+	<testcase name="a material upload creates exactly one UPLOAD entry" time="0.145190" classname="test"/>
+	<testcase name="deleting a question creates exactly one DELETE entry" time="0.139629" classname="test"/>
+	<testcase name="no audit log entry contains a password or token" time="0.239525" classname="test"/>
+	<testcase name="role middleware permits the configured role and rejects other roles with exact 403 response" time="0.003273" classname="test"/>
+	<testcase name="permission matrix gives every account exactly one supported role" time="0.000520" classname="test"/>
+	<testcase name="TC-Rep-02: Contributor quiz statistics match hand-calculated metrics and hardest questions" time="0.915056" classname="test"/>
+	<testcase name="a quiz with no attempts returns zeroed statistics and empty hardest questions" time="0.138891" classname="test"/>
+	<testcase name="strict isolation: Contributor cannot view another Contributor quizzes or single quiz stats" time="0.360082" classname="test"/>
+	<testcase name="in_progress attempts are ignored in statistics calculations" time="0.218738" classname="test"/>
+	<testcase name="role-based access control: Students and Admins cannot access contributor statistics" time="0.405501" classname="test"/>
+	<testcase name="detects PDF, DOCX and PPTX files from their content" time="0.020463" classname="test"/>
+	<testcase name="accepts valid documents and reports the verified MIME type" time="0.011697" classname="test"/>
+	<testcase name="rejects an executable renamed with a document extension" time="0.005341" classname="test"/>
+	<testcase name="rejects files whose extension does not match the real content" time="0.008210" classname="test"/>
+	<testcase name="rejects ZIP archives that are not Word or PowerPoint packages" time="0.008906" classname="test"/>
+	<testcase name="rejects empty, missing and oversized files" time="0.004511" classname="test"/>
+	<testcase name="GET /api/health reports the expected health-check shape" time="0.149018" classname="test"/>
+	<testcase name="GET /health is a backwards-compatible alias" time="0.021655" classname="test"/>
+	<testcase name="rejects script and event-handler payloads" time="0.002572" classname="test"/>
+	<testcase name="rejects database operators and SQL command payloads" time="0.000187" classname="test"/>
+	<testcase name="accepts ordinary user input" time="0.000136" classname="test"/>
+	<testcase name="signed tokens carry the required 30-minute expiry" time="0.046395" classname="test"/>
+	<testcase name="revoking a token persists its revocation until its expiry" time="0.025727" classname="test"/>
+	<testcase name="a logged-in user downloads the exact stored file" time="0.531629" classname="test"/>
+	<testcase name="each download increases the download count by exactly 1" time="0.097154" classname="test"/>
+	<testcase name="concurrent downloads are all counted" time="0.075647" classname="test"/>
+	<testcase name="unknown or malformed material ids return 404" time="0.011340" classname="test"/>
+	<testcase name="downloading requires a logged-in user" time="0.023083" classname="test"/>
+	<testcase name="a keyword search returns 10 results per page, newest first" time="0.496029" classname="test"/>
+	<testcase name="results contain list fields only and never the storage path" time="0.012984" classname="test"/>
+	<testcase name="search filters by subject, by topic and by both" time="0.033397" classname="test"/>
+	<testcase name="a search with no matches reports &amp;quot;No materials found&amp;quot;" time="0.009348" classname="test"/>
+	<testcase name="an uploaded material appears in search results" time="0.061502" classname="test"/>
+	<testcase name="every logged-in role can search and anonymous users cannot" time="0.149164" classname="test"/>
+	<testcase name="an invalid page number is rejected" time="0.005039" classname="test"/>
+	<testcase name="a contributor uploads a PDF with title, subject and topic" time="0.472106" classname="test"/>
+	<testcase name="DOCX and PPTX files are accepted" time="0.048969" classname="test"/>
+	<testcase name="non-ASCII file names are kept intact" time="0.022552" classname="test"/>
+	<testcase name="a valid 20 MB PDF is stored and confirmed within 10 seconds" time="0.194360" classname="test"/>
+	<testcase name="a 21 MB PDF is rejected with &amp;quot;Invalid file&amp;quot; and nothing is kept" time="0.171730" classname="test"/>
+	<testcase name="an executable renamed to .pdf is rejected and its temporary file is deleted" time="0.014322" classname="test"/>
+	<testcase name="unsupported formats and requests without a file are rejected" time="0.020779" classname="test"/>
+	<testcase name="title is accepted up to 100 characters and rejected beyond that" time="0.032888" classname="test"/>
+	<testcase name="title, subject and topic are required" time="0.047258" classname="test"/>
+	<testcase name="only contributors can upload material" time="0.152895" classname="test"/>
+	<testcase name="accepts and trims upload metadata" time="0.002814" classname="test"/>
+	<testcase name="rejects missing or overlong upload metadata" time="0.001322" classname="test"/>
+	<testcase name="builds a keyword, subject and topic search filter" time="0.000543" classname="test"/>
+	<testcase name="an empty search lists every material from page 1" time="0.000252" classname="test"/>
+	<testcase name="rejects invalid page numbers" time="0.000180" classname="test"/>
+	<testcase name="ignores non-string search parameters such as operator objects" time="0.000423" classname="test"/>
+	<testcase name="a contributor adds a valid 500-character question and it is persisted" time="0.476150" classname="test"/>
+	<testcase name="a question with 3 options or with 2 correct options is rejected" time="0.027881" classname="test"/>
+	<testcase name="saved questions appear in the question bank, newest first" time="0.044627" classname="test"/>
+	<testcase name="only contributors can add or list questions" time="0.149659" classname="test"/>
+	<testcase name="page size is capped at 50 and invalid paging is rejected" time="0.018806" classname="test"/>
+	<testcase name="a question without a topic or difficulty is not saved" time="0.459279" classname="test"/>
+	<testcase name="every saved question has exactly one topic and one difficulty" time="0.004293" classname="test"/>
+	<testcase name="filtering by topic returns only that topic, ignoring case" time="0.014377" classname="test"/>
+	<testcase name="filtering by difficulty returns only that difficulty" time="0.010626" classname="test"/>
+	<testcase name="filtering by Algebra and Easy returns only matching questions" time="0.012816" classname="test"/>
+	<testcase name="an unknown difficulty filter is rejected" time="0.006439" classname="test"/>
+	<testcase name="a contributor edits their own question" time="0.629457" classname="test"/>
+	<testcase name="an edit must still be a valid question" time="0.025017" classname="test"/>
+	<testcase name="a contributor deletes their own unused question" time="0.031496" classname="test"/>
+	<testcase name="another contributor cannot edit or delete the question" time="0.029907" classname="test"/>
+	<testcase name="students cannot edit or delete questions" time="0.022353" classname="test"/>
+	<testcase name="a question used in a published quiz cannot be deleted" time="0.023427" classname="test"/>
+	<testcase name="a question used only in draft or removed quizzes can be deleted" time="0.023669" classname="test"/>
+	<testcase name="unknown and malformed question ids return 404" time="0.020736" classname="test"/>
+	<testcase name="accepts a question with four options and one correct option" time="0.004295" classname="test"/>
+	<testcase name="accepts options given as objects with exactly one marked correct" time="0.000377" classname="test"/>
+	<testcase name="limits question text to 500 characters" time="0.000211" classname="test"/>
+	<testcase name="requires exactly four options" time="0.000149" classname="test"/>
+	<testcase name="rejects empty, mixed or duplicate options" time="0.000230" classname="test"/>
+	<testcase name="requires exactly one correct option" time="0.000313" classname="test"/>
+	<testcase name="requires a topic and a difficulty of Easy, Medium or Hard" time="0.000206" classname="test"/>
+	<testcase name="normalizes difficulty spelling" time="0.000123" classname="test"/>
+	<testcase name="rejects a missing or non-object body" time="0.000193" classname="test"/>
+	<testcase name="builds topic, difficulty and combined question filters" time="0.000288" classname="test"/>
+	<testcase name="TC-Quiz-01: quizzes with 5 or 50 questions and 5 or 180 minutes are created as drafts" time="0.667539" classname="test"/>
+	<testcase name="TC-Quiz-01: 4 or 51 questions and 4 or 181 minutes are rejected" time="0.035624" classname="test"/>
+	<testcase name="a quiz can only use questions that exist" time="0.013254" classname="test"/>
+	<testcase name="only contributors can create quizzes" time="0.009361" classname="test"/>
+	<testcase name="TC-Quiz-01: publishing makes the quiz available to students" time="0.071378" classname="test"/>
+	<testcase name="only the quiz creator can publish it" time="0.021234" classname="test"/>
+	<testcase name="publishing an unknown or malformed quiz id returns 404" time="0.012264" classname="test"/>
+	<testcase name="a removed quiz cannot be published again" time="0.048814" classname="test" failure="Expected values to be strictly equal:200 !== 404">
+		<skipped type="todo" message="Defect D-07: publish does not reject removed quizzes"/>
+		<failure type="testCodeFailure" message="Expected values to be strictly equal:200 !== 404">
+[Error [ERR_TEST_FAILURE]: Expected values to be strictly equal:
+
+200 !== 404
+] {
+  code: 'ERR_TEST_FAILURE',
+  failureType: 'testCodeFailure',
+  cause: AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 404
+  
+      at TestContext.&lt;anonymous> (D:\NeuDocuments\SideProject\MiniProject\SE\SE-Mini-Project-Deliverable-1\backend\tests\quizCreate.integration.test.js:118:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async Test.run (node:internal/test_runner/test:1069:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:752:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 404,
+    operator: 'strictEqual'
+  }
+}
+		</failure>
+	</testcase>
+	<testcase name="the creator deletes their own quiz and gets 200" time="0.358593" classname="test"/>
+	<testcase name="a deleted quiz is not returned in the published list for students" time="0.315590" classname="test"/>
+	<testcase name="a deleted quiz cannot be started by a student" time="0.282219" classname="test"/>
+	<testcase name="another contributor cannot delete the quiz and gets 403 Access denied" time="0.249440" classname="test"/>
+	<testcase name="a student cannot delete a quiz and gets 403" time="0.228315" classname="test"/>
+	<testcase name="deleting a missing quiz returns 404" time="0.124674" classname="test"/>
+	<testcase name="deleting an already-removed quiz returns 404" time="0.166768" classname="test"/>
+	<testcase name="deleting a quiz writes exactly one DELETE audit entry" time="0.253338" classname="test"/>
+	<testcase name="TC-Quiz-03: 7 correct answers out of 10 show 7/10, 70% and every correct answer within 3 s" time="0.675934" classname="test"/>
+	<testcase name="an attempt with no answers scores 0" time="0.045052" classname="test"/>
+	<testcase name="correct answers are never sent before the attempt is finished" time="0.048288" classname="test"/>
+	<testcase name="a second submit returns 409 with the original result" time="0.069028" classname="test"/>
+	<testcase name="simultaneous submits of one attempt grade it only once" time="0.092291" classname="test"/>
+	<testcase name="a past result does not change when a question is edited later" time="0.066456" classname="test"/>
+	<testcase name="after the time limit the answers given so far are graded and the status is timed_out" time="0.054618" classname="test"/>
+	<testcase name="opening an expired attempt also grades it" time="0.061328" classname="test"/>
+	<testcase name="an answer saved too late is refused, is not counted and returns the result" time="0.045129" classname="test"/>
+	<testcase name="each attempt is graded separately" time="0.071154" classname="test"/>
+	<testcase name="only the student who owns an attempt can submit it" time="0.176158" classname="test"/>
+	<testcase name="100 simultaneous submissions return results within 3 s for at least 95%" time="1.980151" classname="test"/>
+	<testcase name="a 10-question quiz with 7 correct answers scores 7/10 and 70%" time="0.004343" classname="test"/>
+	<testcase name="correct answers earn 1 mark and wrong or unanswered questions earn 0" time="0.000314" classname="test"/>
+	<testcase name="option 0 is treated as an answer, not as unanswered" time="0.000222" classname="test"/>
+	<testcase name="an attempt with no answers scores 0 out of the full total" time="0.000409" classname="test"/>
+	<testcase name="every question reports its correct answer, in quiz order" time="0.001676" classname="test"/>
+	<testcase name="percentages are rounded to one decimal place" time="0.000537" classname="test"/>
+	<testcase name="a question that no longer exists still counts towards the total" time="0.000614" classname="test"/>
+	<testcase name="TC-Quiz-04: a student sees every published quiz with its title, question count and time limit" time="0.426025" classname="test"/>
+	<testcase name="draft and removed quizzes are not listed" time="0.019846" classname="test"/>
+	<testcase name="list items do not reveal which questions a quiz contains" time="0.016425" classname="test"/>
+	<testcase name="only students can list published quizzes" time="0.147239" classname="test"/>
+	<testcase name="percentile calculation follows nearest-rank standard" time="0.242633" classname="test"/>
+	<testcase name="summarise correctly reports pass criteria and latency metrics" time="0.000507" classname="test"/>
+	<testcase name="TC-Perf-02: 100 simultaneous student submissions return results within 3 s for at least 95%" time="1.482978" classname="test"/>
+	<testcase name="accepts a valid quiz with 5 questions and a 5-minute limit" time="0.001976" classname="test"/>
+	<testcase name="rejects invalid quiz time limits and question counts" time="0.000235" classname="test"/>
+	<testcase name="registers a student, persists a bcrypt hash and returns only safe user fields" time="0.456518" classname="test"/>
+	<testcase name="registers a contributor account" time="0.125993" classname="test"/>
+	<testcase name="rejects duplicate emails with the required message" time="0.238730" classname="test"/>
+	<testcase name="rejects public administrator registration" time="0.003095" classname="test"/>
+	<testcase name="rejects invalid input before attempting persistence" time="0.002886" classname="test"/>
+	<testcase name="logs in with valid credentials and returns a token without a password hash" time="0.234459" classname="test"/>
+	<testcase name="rejects incorrect passwords and unknown emails with the same message and no token" time="0.211873" classname="test"/>
+	<testcase name="rejects missing, altered and expired authentication tokens with HTTP 401" time="0.120906" classname="test"/>
+	<testcase name="accepts student registration, defaults the role, trims the name and normalizes email" time="0.006257" classname="test"/>
+	<testcase name="accepts contributor registration" time="0.000724" classname="test"/>
+	<testcase name="rejects names shorter than 2 characters and longer than 50 characters" time="0.000440" classname="test"/>
+	<testcase name="rejects malformed email addresses" time="0.000297" classname="test"/>
+	<testcase name="rejects missing passwords" time="0.000369" classname="test"/>
+	<testcase name="does not allow public registration as an administrator" time="0.000323" classname="test"/>
+	<testcase name="does not allow an administrator role through public registration" time="0.000225" classname="test"/>
+	<testcase name="rejects an absent or non-object request body" time="0.000280" classname="test"/>
+	<testcase name="rejects passwords longer than bcrypt supports without truncating them" time="0.000228" classname="test"/>
+	<testcase name="rejects passwords that are shorter than 8 characters, lack a digit, or lack a letter" time="0.000183" classname="test"/>
+	<testcase name="percentile uses the nearest-rank method" time="1.652296" classname="test"/>
+	<testcase name="the search mix covers keyword, subject, topic and combined searches" time="0.001165" classname="test"/>
+	<testcase name="TC-Perf-01: 95th percentile of 200 searches over 10,000 materials is within 2 s" time="2.642593" classname="test"/>
+	<testcase name="the API refuses to start without MONGO_URI" time="0.338645" classname="test"/>
+	<testcase name="the API connects to MongoDB before it starts listening" time="0.195838" classname="test"/>
+	<testcase name="TC-Auth-04: logout ends the session immediately and the old token is refused" time="0.345666" classname="test"/>
+	<testcase name="TC-Sec-03: logging out twice with the same token is refused the second time" time="0.139935" classname="test"/>
+	<testcase name="logout without a token returns 401" time="0.002354" classname="test"/>
+	<testcase name="refresh issues a new working token and revokes the old one" time="0.145157" classname="test"/>
+	<testcase name="refresh and /me refuse a valid token whose user no longer exists" time="0.012417" classname="test"/>
+	<testcase name="3 submitted attempts produce correct overall average, topics and attempt list" time="0.529525" classname="test"/>
+	<testcase name="only the 20 newest attempts are returned when there are 25" time="0.379661" classname="test"/>
+	<testcase name="another student's attempts are never included" time="0.446814" classname="test"/>
+	<testcase name="in_progress attempts are ignored" time="0.278009" classname="test"/>
+	<testcase name="a Student with no attempts gets empty lists and 0" time="0.200528" classname="test"/>
+	<testcase name="a Contributor gets 403 Access denied" time="0.233689" classname="test"/>
+	<testcase name="an Admin gets 403 Access denied" time="0.224779" classname="test"/>
+	<testcase name="no token gets 401" time="0.008952" classname="test"/>
+	<!-- tests 174 -->
+	<!-- suites 0 -->
+	<!-- pass 173 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 1 -->
+	<!-- duration_ms 64481.4095 -->
+</testsuites>

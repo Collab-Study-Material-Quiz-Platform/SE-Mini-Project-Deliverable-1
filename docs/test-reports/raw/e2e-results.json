@@ -1,0 +1,2090 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\playwright.config.js",
+    "rootDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e\\support\\global-setup.js",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "system-chromium",
+        "name": "system-chromium",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-chromium-mobile-360",
+        "name": "compat-chromium-mobile-360",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-chromium-tablet-768",
+        "name": "compat-chromium-tablet-768",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-chromium-desktop-1920",
+        "name": "compat-chromium-desktop-1920",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-firefox-mobile-360",
+        "name": "compat-firefox-mobile-360",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-firefox-tablet-768",
+        "name": "compat-firefox-tablet-768",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-firefox-desktop-1920",
+        "name": "compat-firefox-desktop-1920",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-webkit-mobile-360",
+        "name": "compat-webkit-mobile-360",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-webkit-tablet-768",
+        "name": "compat-webkit-tablet-768",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "compat-webkit-desktop-1920",
+        "name": "compat-webkit-desktop-1920",
+        "testDir": "D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/compatibility\\.spec\\.js/"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "system-chromium",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": {},
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "system-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-chromium-mobile-360",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 360,
+            "height": 740
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-chromium-mobile-360"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-chromium-tablet-768",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-chromium-tablet-768"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-chromium-desktop-1920",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-chromium-desktop-1920"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-firefox-mobile-360",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+          "viewport": {
+            "width": 360,
+            "height": 740
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "firefox"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-firefox-mobile-360"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-firefox-tablet-768",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "firefox"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-firefox-tablet-768"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-firefox-desktop-1920",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "firefox"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-firefox-desktop-1920"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-webkit-mobile-360",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "viewport": {
+            "width": 360,
+            "height": 740
+          },
+          "screen": {
+            "width": 1792,
+            "height": 1120
+          },
+          "deviceScaleFactor": 2,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-webkit-mobile-360"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-webkit-tablet-768",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "screen": {
+            "width": 1792,
+            "height": 1120
+          },
+          "deviceScaleFactor": 2,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-webkit-tablet-768"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "compat-webkit-desktop-1920",
+        "testDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "snapshotDir": "D:\\NeuDocuments\\SideProject\\MiniProject\\SE\\SE-Mini-Project-Deliverable-1\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          },
+          "screen": {
+            "width": 1792,
+            "height": 1120
+          },
+          "deviceScaleFactor": 2,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "webkit"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "compat-webkit-desktop-1920"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/e2e-results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/e2e-junit.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth.spec.js",
+      "file": "auth.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication and access control",
+          "file": "auth.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-Auth-01: a visitor registers as Student or Contributor within 3 s; a reused email is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2769,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:06.027Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d5ed79a6b333c2ba7209-eadbc09dea3644fa54ee",
+              "file": "auth.spec.js",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "TC-Auth-05: \"abc12\" and \"abcdefgh\" are rejected with \"Password too weak\"; \"abcdef12\" is accepted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1484,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:09.144Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d5ed79a6b333c2ba7209-f75be84375bdd3afe642",
+              "file": "auth.spec.js",
+              "line": 33,
+              "column": 3
+            },
+            {
+              "title": "TC-Auth-05: the server also rejects a weak password sent directly to the API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 100,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:10.656Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d5ed79a6b333c2ba7209-fc855ec19fa5ff2a9441",
+              "file": "auth.spec.js",
+              "line": 50,
+              "column": 3
+            },
+            {
+              "title": "TC-Auth-02: correct credentials open the home page for the role; wrong ones show the error and create no session",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2430,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:10.782Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d5ed79a6b333c2ba7209-b233e01873b6b78d1dd5",
+              "file": "auth.spec.js",
+              "line": 56,
+              "column": 3
+            },
+            {
+              "title": "TC-Auth-03: each role sees only its permitted features, and forbidden requests get 403 \"Access denied\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1776,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:13.244Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d5ed79a6b333c2ba7209-563c6c683e19e30c4b7d",
+              "file": "auth.spec.js",
+              "line": 76,
+              "column": 3
+            },
+            {
+              "title": "TC-Auth-04: logout ends the session; protected pages show the login page and the old token is refused",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1734,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:15.044Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d5ed79a6b333c2ba7209-69c845682201bd853c3f",
+              "file": "auth.spec.js",
+              "line": 94,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "materials.spec.js",
+      "file": "materials.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Material sharing",
+          "file": "materials.spec.js",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-Mat-01: a contributor uploads a 20 MB PDF, it is confirmed within 10 s and appears in search",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3092,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:16.835Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "96d899d653ac68f512fd-1e7031e9c07de4238a30",
+              "file": "materials.spec.js",
+              "line": 9,
+              "column": 3
+            },
+            {
+              "title": "TC-Sec-04: a 21 MB PDF and an executable renamed to .pdf are rejected with \"Invalid file\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2225,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:19.951Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "96d899d653ac68f512fd-6bdce2c3d40706f8ac1a",
+              "file": "materials.spec.js",
+              "line": 35,
+              "column": 3
+            },
+            {
+              "title": "TC-Mat-02: search lists matching materials 10 per page, newest first, and \"No materials found\" for no match",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3018,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:22.202Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "96d899d653ac68f512fd-9eb57b91afd6d342cb9c",
+              "file": "materials.spec.js",
+              "line": 69,
+              "column": 3
+            },
+            {
+              "title": "TC-Mat-03: a download matches the stored file size and adds exactly 1 to the count each time",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3375,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:35:25.245Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "96d899d653ac68f512fd-ec3b4e28b8b27ee32614",
+              "file": "materials.spec.js",
+              "line": 101,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "pageLoad.spec.js",
+      "file": "pageLoad.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-Perf-03: main pages load within 3 s for at least 95% of loads at 10 Mbps",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "system-chromium",
+              "projectName": "system-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 63358,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Home               p50 367 ms  p95 416 ms  max 416 ms\nCreate account     p50 349 ms  p95 368 ms  max 368 ms\nLog in             p50 316 ms  p95 334 ms  max 334 ms\nMaterials          p50 376 ms  p95 409 ms  max 409 ms\nUpload material    p50 333 ms  p95 364 ms  max 364 ms\nQuestion bank      p50 401 ms  p95 443 ms  max 443 ms\nPublished quizzes  p50 333 ms  p95 370 ms  max 370 ms\nPerformance        p50 333 ms  p95 388 ms  max 388 ms\nSystem status      p50 406 ms  p95 501 ms  max 501 ms\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:35:28.666Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "page-load-results.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJsb2FkcyI6IDkwLAogICJwOTVNcyI6IDQyOCwKICAid2l0aGluVGFyZ2V0UGVyY2VudCI6IDEwMCwKICAibmV0d29yayI6ICIxMCBNYnBzIGRvd24gYW5kIHVwLCAyMCBtcyBsYXRlbmN5LCBjYWNoZSBkaXNhYmxlZCIsCiAgInBhZ2VzIjogWwogICAgewogICAgICAicGFnZSI6ICJIb21lIiwKICAgICAgInJvdXRlIjogIiMvIiwKICAgICAgImxvYWRzIjogMTAsCiAgICAgICJtZWFuTXMiOiAzNzIsCiAgICAgICJwNTBNcyI6IDM2NywKICAgICAgInA5NU1zIjogNDE2LAogICAgICAibWF4TXMiOiA0MTYsCiAgICAgICJkdXJhdGlvbnMiOiBbCiAgICAgICAgNDE2LAogICAgICAgIDM2MiwKICAgICAgICAzNTIsCiAgICAgICAgMzg0LAogICAgICAgIDM3NSwKICAgICAgICAzNjcsCiAgICAgICAgMzcwLAogICAgICAgIDM2NywKICAgICAgICAzNzAsCiAgICAgICAgMzU5CiAgICAgIF0KICAgIH0sCiAgICB7CiAgICAgICJwYWdlIjogIkNyZWF0ZSBhY2NvdW50IiwKICAgICAgInJvdXRlIjogIiMvcmVnaXN0ZXIiLAogICAgICAibG9hZHMiOiAxMCwKICAgICAgIm1lYW5NcyI6IDM1MiwKICAgICAgInA1ME1zIjogMzQ5LAogICAgICAicDk1TXMiOiAzNjgsCiAgICAgICJtYXhNcyI6IDM2OCwKICAgICAgImR1cmF0aW9ucyI6IFsKICAgICAgICAzNTQsCiAgICAgICAgMzQ4LAogICAgICAgIDMzNCwKICAgICAgICAzNTcsCiAgICAgICAgMzY2LAogICAgICAgIDM2NiwKICAgICAgICAzNDksCiAgICAgICAgMzM3LAogICAgICAgIDM2OCwKICAgICAgICAzMzkKICAgICAgXQogICAgfSwKICAgIHsKICAgICAgInBhZ2UiOiAiTG9nIGluIiwKICAgICAgInJvdXRlIjogIiMvbG9naW4iLAogICAgICAibG9hZHMiOiAxMCwKICAgICAgIm1lYW5NcyI6IDMyMSwKICAgICAgInA1ME1zIjogMzE2LAogICAgICAicDk1TXMiOiAzMzQsCiAgICAgICJtYXhNcyI6IDMzNCwKICAgICAgImR1cmF0aW9ucyI6IFsKICAgICAgICAzMjUsCiAgICAgICAgMzE2LAogICAgICAgIDMxNSwKICAgICAgICAzMzQsCiAgICAgICAgMzExLAogICAgICAgIDMyNSwKICAgICAgICAzMDgsCiAgICAgICAgMzMzLAogICAgICAgIDMxNCwKICAgICAgICAzMzMKICAgICAgXQogICAgfSwKICAgIHsKICAgICAgInBhZ2UiOiAiTWF0ZXJpYWxzIiwKICAgICAgInJvdXRlIjogIiMvbWF0ZXJpYWxzIiwKICAgICAgImxvYWRzIjogMTAsCiAgICAgICJtZWFuTXMiOiAzODQsCiAgICAgICJwNTBNcyI6IDM3NiwKICAgICAgInA5NU1zIjogNDA5LAogICAgICAibWF4TXMiOiA0MDksCiAgICAgICJkdXJhdGlvbnMiOiBbCiAgICAgICAgNDA2LAogICAgICAgIDM3MSwKICAgICAgICAzNjUsCiAgICAgICAgMzg0LAogICAgICAgIDQwOSwKICAgICAgICAzNjcsCiAgICAgICAgMzc2LAogICAgICAgIDM3MCwKICAgICAgICA0MDgsCiAgICAgICAgMzg3CiAgICAgIF0KICAgIH0sCiAgICB7CiAgICAgICJwYWdlIjogIlVwbG9hZCBtYXRlcmlhbCIsCiAgICAgICJyb3V0ZSI6ICIjL21hdGVyaWFscy91cGxvYWQiLAogICAgICAibG9hZHMiOiAxMCwKICAgICAgIm1lYW5NcyI6IDMzMywKICAgICAgInA1ME1zIjogMzMzLAogICAgICAicDk1TXMiOiAzNjQsCiAgICAgICJtYXhNcyI6IDM2NCwKICAgICAgImR1cmF0aW9ucyI6IFsKICAgICAgICAzMzMsCiAgICAgICAgMzE1LAogICAgICAgIDM2NCwKICAgICAgICAzMzYsCiAgICAgICAgMzQyLAogICAgICAgIDMyOSwKICAgICAgICAzMzksCiAgICAgICAgMzEyLAogICAgICAgIDM0MCwKICAgICAgICAzMTcKICAgICAgXQogICAgfSwKICAgIHsKICAgICAgInBhZ2UiOiAiUXVlc3Rpb24gYmFuayIsCiAgICAgICJyb3V0ZSI6ICIjL3F1ZXN0aW9ucyIsCiAgICAgICJsb2FkcyI6IDEwLAogICAgICAibWVhbk1zIjogMzk5LAogICAgICAicDUwTXMiOiA0MDEsCiAgICAgICJwOTVNcyI6IDQ0MywKICAgICAgIm1heE1zIjogNDQzLAogICAgICAiZHVyYXRpb25zIjogWwogICAgICAgIDQyNCwKICAgICAgICA0MDMsCiAgICAgICAgNDM1LAogICAgICAgIDQwMywKICAgICAgICA0MDEsCiAgICAgICAgMzY3LAogICAgICAgIDM3OSwKICAgICAgICA0NDMsCiAgICAgICAgMzcyLAogICAgICAgIDM2NQogICAgICBdCiAgICB9LAogICAgewogICAgICAicGFnZSI6ICJQdWJsaXNoZWQgcXVpenplcyIsCiAgICAgICJyb3V0ZSI6ICIjL3F1aXp6ZXMiLAogICAgICAibG9hZHMiOiAxMCwKICAgICAgIm1lYW5NcyI6IDMzNiwKICAgICAgInA1ME1zIjogMzMzLAogICAgICAicDk1TXMiOiAzNzAsCiAgICAgICJtYXhNcyI6IDM3MCwKICAgICAgImR1cmF0aW9ucyI6IFsKICAgICAgICAzMzIsCiAgICAgICAgMzMzLAogICAgICAgIDM0NywKICAgICAgICAzMzMsCiAgICAgICAgMzE5LAogICAgICAgIDMzNiwKICAgICAgICAzMTUsCiAgICAgICAgMzU3LAogICAgICAgIDMxNiwKICAgICAgICAzNzAKICAgICAgXQogICAgfSwKICAgIHsKICAgICAgInBhZ2UiOiAiUGVyZm9ybWFuY2UiLAogICAgICAicm91dGUiOiAiIy9wZXJmb3JtYW5jZSIsCiAgICAgICJsb2FkcyI6IDEwLAogICAgICAibWVhbk1zIjogMzQxLAogICAgICAicDUwTXMiOiAzMzMsCiAgICAgICJwOTVNcyI6IDM4OCwKICAgICAgIm1heE1zIjogMzg4LAogICAgICAiZHVyYXRpb25zIjogWwogICAgICAgIDM4OCwKICAgICAgICAzNDksCiAgICAgICAgMzU3LAogICAgICAgIDMzNCwKICAgICAgICAzMjcsCiAgICAgICAgMzMyLAogICAgICAgIDMyNSwKICAgICAgICAzMzYsCiAgICAgICAgMzI5LAogICAgICAgIDMzMwogICAgICBdCiAgICB9LAogICAgewogICAgICAicGFnZSI6ICJTeXN0ZW0gc3RhdHVzIiwKICAgICAgInJvdXRlIjogIiMvc3RhdHVzIiwKICAgICAgImxvYWRzIjogMTAsCiAgICAgICJtZWFuTXMiOiA0MTcsCiAgICAgICJwNTBNcyI6IDQwNiwKICAgICAgInA5NU1zIjogNTAxLAogICAgICAibWF4TXMiOiA1MDEsCiAgICAgICJkdXJhdGlvbnMiOiBbCiAgICAgICAgNTAxLAogICAgICAgIDQyOSwKICAgICAgICA0MjgsCiAgICAgICAgNDA2LAogICAgICAgIDQxNSwKICAgICAgICAzOTMsCiAgICAgICAgMzg2LAogICAgICAgIDM5NSwKICAgICAgICA0MTUsCiAgICAgICAgNDAxCiAgICAgIF0KICAgIH0KICBdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "35d19815cd9230e871a6-d538810a64a03f704869",
+          "file": "pageLoad.spec.js",
+          "line": 18,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "questionBank.spec.js",
+      "file": "questionBank.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Question bank",
+          "file": "questionBank.spec.js",
+          "line": 17,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-QB-01: a 500-character question with 4 options and 1 correct answer is saved; 3 options or 2 correct are rejected",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2265,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:32.206Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a31a34c3692b08837850-33189071b2d506e5c2fb",
+              "file": "questionBank.spec.js",
+              "line": 18,
+              "column": 3
+            },
+            {
+              "title": "TC-QB-02: own questions can be edited and deleted; another contributor gets \"Access denied\"; a question in a published quiz is \"in use\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3453,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:34.500Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a31a34c3692b08837850-a29216c495d4017ed40a",
+              "file": "questionBank.spec.js",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "TC-QB-03: a question needs a topic and difficulty, and filtering by Algebra and Easy returns only matching questions",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2801,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:37.980Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a31a34c3692b08837850-9f3324191d09ce11fc82",
+              "file": "questionBank.spec.js",
+              "line": 88,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "quiz.spec.js",
+      "file": "quiz.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Quizzes",
+          "file": "quiz.spec.js",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-Quiz-01: quizzes with 5-50 questions and 5-180 minutes are accepted; 4/51 questions and 4/181 minutes are rejected",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1637,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:40.851Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "253ea674c375b4ce8398-1abe30f9dc926316bc49",
+              "file": "quiz.spec.js",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "TC-Quiz-04: a student sees every published quiz with its title, number of questions and time limit",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2130,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:42.510Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "253ea674c375b4ce8398-3fb5671890c7759d4b0f",
+              "file": "quiz.spec.js",
+              "line": 42,
+              "column": 3
+            },
+            {
+              "title": "TC-Quiz-02: the countdown stays within 1 s of server time and answers are submitted automatically at 00:00",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7769,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:44.671Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "253ea674c375b4ce8398-bef678fd89aea3210003",
+              "file": "quiz.spec.js",
+              "line": 55,
+              "column": 3
+            },
+            {
+              "title": "TC-Quiz-03: 7 correct, 2 wrong and 1 unanswered show 7/10, 70% and every correct answer within 3 s",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4233,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:52.468Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "253ea674c375b4ce8398-47e38aa210a21948446c",
+              "file": "quiz.spec.js",
+              "line": 90,
+              "column": 3
+            },
+            {
+              "title": "TC-Quiz-05: a contributor deletes their own quiz, students no longer see it, and another contributor gets \"Access denied\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2397,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:56.732Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "253ea674c375b4ce8398-75016734f7d9455a81c1",
+              "file": "quiz.spec.js",
+              "line": 122,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "reportsAdmin.spec.js",
+      "file": "reportsAdmin.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Performance reports and moderation",
+          "file": "reportsAdmin.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-Rep-01: a student sees an overall average, topic scores and attempts that match a manual calculation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2709,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:36:59.186Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ccb7ad6281d95a51f1f0-ab493190df3b1a9d7fd1",
+              "file": "reportsAdmin.spec.js",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "TC-Rep-02: a contributor sees attempts, average, highest, lowest and the 3 hardest questions for own quizzes only",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4962,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:37:01.920Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ccb7ad6281d95a51f1f0-a98097798290b7acb7d3",
+              "file": "reportsAdmin.spec.js",
+              "line": 37,
+              "column": 3
+            },
+            {
+              "title": "TC-Adm-01: an admin removes a material and a quiz; students no longer find either",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3339,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:37:06.910Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ccb7ad6281d95a51f1f0-d2c4994bcb9a69d3d92d",
+              "file": "reportsAdmin.spec.js",
+              "line": 62,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "security.spec.js",
+      "file": "security.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Security validation (Test Plan 5.1)",
+          "file": "security.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-Sec-01: passwords are stored only as bcrypt hashes with cost >= 10 and never returned",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1582,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:37:10.299Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3efa7971ab9a8dd627a5-c4fcf6a86b62b5dbef48",
+              "file": "security.spec.js",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "TC-Sec-02: a Student token on Contributor-only and Admin-only requests gets 403 \"Access denied\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 800,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:37:11.904Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3efa7971ab9a8dd627a5-d272671ab6744fac3a9e",
+              "file": "security.spec.js",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "TC-Sec-03: missing, altered, 31-minute-old and revoked tokens all get 401",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 931,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:37:12.725Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3efa7971ab9a8dd627a5-546441d0565b7ff1ea8a",
+              "file": "security.spec.js",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "TC-Sec-06: login success and failure, upload and deletion each write one audit entry with user, action and time",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 806,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:37:13.677Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3efa7971ab9a8dd627a5-3ab6f1b0a8c9fbe4e236",
+              "file": "security.spec.js",
+              "line": 61,
+              "column": 3
+            },
+            {
+              "title": "TC-Sec-07: script and database-command input is rejected with 400 and not stored",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "system-chromium",
+                  "projectName": "system-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 422,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-17T16:37:14.504Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3efa7971ab9a8dd627a5-b5f37a2bf170c116807b",
+              "file": "security.spec.js",
+              "line": 88,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "compatibility.spec.js",
+      "file": "compatibility.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-chromium-mobile-360",
+              "projectName": "compat-chromium-mobile-360",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:16.593Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-chromium-tablet-768",
+              "projectName": "compat-chromium-tablet-768",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2901,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:22.997Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-chromium-desktop-1920",
+              "projectName": "compat-chromium-desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3053,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:29.519Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-firefox-mobile-360",
+              "projectName": "compat-firefox-mobile-360",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9607,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:36.277Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-firefox-tablet-768",
+              "projectName": "compat-firefox-tablet-768",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9413,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:54.689Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-firefox-desktop-1920",
+              "projectName": "compat-firefox-desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:38:12.777Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-webkit-mobile-360",
+              "projectName": "compat-webkit-mobile-360",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4935,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:38:31.446Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-webkit-tablet-768",
+              "projectName": "compat-webkit-tablet-768",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6866,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:38:41.321Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-webkit-desktop-1920",
+              "projectName": "compat-webkit-desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14949,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:38:55.682Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "db117c2b36bbcaa81a40-e83cdf3cd949a8f701d2",
+          "file": "compatibility.spec.js",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "TC-Comp-01: a contributor can use the upload and question bank forms",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-chromium-mobile-360",
+              "projectName": "compat-chromium-mobile-360",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2049,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:19.811Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-chromium-tablet-768",
+              "projectName": "compat-chromium-tablet-768",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2197,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:26.136Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-chromium-desktop-1920",
+              "projectName": "compat-chromium-desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2258,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:32.771Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-firefox-mobile-360",
+              "projectName": "compat-firefox-mobile-360",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5721,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:37:46.942Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-firefox-tablet-768",
+              "projectName": "compat-firefox-tablet-768",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:38:04.935Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-firefox-desktop-1920",
+              "projectName": "compat-firefox-desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6196,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:38:23.192Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-webkit-mobile-360",
+              "projectName": "compat-webkit-mobile-360",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3695,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:38:36.579Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-webkit-tablet-768",
+              "projectName": "compat-webkit-tablet-768",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6226,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:38:48.349Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            },
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "compat-webkit-desktop-1920",
+              "projectName": "compat-webkit-desktop-1920",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13858,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T16:39:10.780Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "db117c2b36bbcaa81a40-e413d39e1407de12cce3",
+          "file": "compatibility.spec.js",
+          "line": 54,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-17T16:34:50.555Z",
+    "duration": 275951.37899999996,
+    "expected": 45,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

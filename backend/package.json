@@ -7,7 +7,8 @@
     "test": "node --test",
     "start": "node server.js",
     "perf:search": "node perf/searchPerformance.js",
-    "perf:quiz-submit": "node perf/quizSubmitPerformance.js"
+    "perf:quiz-submit": "node perf/quizSubmitPerformance.js",
+    "test:coverage": "c8 node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=junit --test-reporter-destination=coverage/junit.xml --test-reporter=./tests/reporters/json-results.mjs --test-reporter-destination=coverage/test-results.json"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +20,8 @@
     "express": "^5.3.0",
     "mongoose": "^9.11.2",
     "multer": "^2.5.0"
+  },
+  "devDependencies": {
+    "c8": "^10.1.3"
   }
 }

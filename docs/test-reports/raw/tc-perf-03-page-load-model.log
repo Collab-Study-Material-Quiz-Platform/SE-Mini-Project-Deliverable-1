@@ -1,0 +1,24 @@
+================================================================
+ TC-Perf-03 (CSQ-NF-006): Page-Load Performance Audit
+ Standard: 10 Mbps Bandwidth | Target: 95th Percentile <= 3000 ms
+================================================================
+
+Initial Bundle Total Assets: 5 files
+Uncompressed Size: 309.1 KB
+Gzip Compressed Size: 87.9 KB
+Simulated Bundle Transfer Latency at 10 Mbps: 72.0 ms
+
+┌─────────┬─────────────────────────────┬─────────────────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ (index) │ Page                        │ Route           │ Mean (ms) │ p50 (ms) │ p95 (ms) │ Max (ms) │ Status   │
+├─────────┼─────────────────────────────┼─────────────────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0       │ 'Home'                      │ '#/'            │ 103.5     │ 102.8    │ 115      │ 119.1    │ 'PASSED' │
+│ 1       │ 'Create Account (Register)' │ '#/register'    │ 106.7     │ 106      │ 116.8    │ 121.3    │ 'PASSED' │
+│ 2       │ 'Log In'                    │ '#/login'       │ 105.5     │ 104.9    │ 118.4    │ 123.8    │ 'PASSED' │
+│ 3       │ 'Materials Search & List'   │ '#/materials'   │ 168.2     │ 168.4    │ 185.5    │ 190.8    │ 'PASSED' │
+│ 4       │ 'Question Bank'             │ '#/questions'   │ 156.7     │ 156.4    │ 173.5    │ 181.8    │ 'PASSED' │
+│ 5       │ 'Published Quizzes'         │ '#/quizzes'     │ 139.8     │ 139.5    │ 154      │ 162.6    │ 'PASSED' │
+│ 6       │ 'Performance Dashboard'     │ '#/performance' │ 161       │ 160.4    │ 177.8    │ 180.3    │ 'PASSED' │
+│ 7       │ 'System Status'             │ '#/status'      │ 114.3     │ 115.4    │ 126.1    │ 130.5    │ 'PASSED' │
+└─────────┴─────────────────────────────┴─────────────────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+Overall TC-Perf-03 Status: ALL PAGES PASSED (p95 <= 3000 ms)
