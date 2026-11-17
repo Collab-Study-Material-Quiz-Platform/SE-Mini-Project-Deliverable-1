@@ -85,7 +85,8 @@ describe('MaterialsPage (TC-Mat-02, TC-Mat-03)', () => {
     const clickSpy = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {})
     mockApi({
       'GET /api/materials': page([material(1, { downloadCount: 4 })]),
-      'GET /api/materials/m1/download': () => new Response(new Blob(['%PDF-1.4']), { status: 200 }),
+      // A string body: Node 22's Response cannot read a jsdom Blob.
+      'GET /api/materials/m1/download': () => new Response('%PDF-1.4', { status: 200 }),
     })
     render(<MaterialsPage />)
     await userEvent.click(await screen.findByRole('button', { name: 'Download Lecture 1' }))
