@@ -1,136 +1,136 @@
-<testsuites id="" name="" tests="45" failures="0" skipped="0" errors="0" time="270.007122">
-<testsuite name="auth.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="system-chromium" tests="6" failures="0" skipped="0" time="9.945" errors="0">
-<testcase name="Authentication and access control › TC-Auth-01: a visitor registers as Student or Contributor within 3 s; a reused email is refused" classname="auth.spec.js" time="2.473">
+<testsuites id="" name="" tests="45" failures="0" skipped="0" errors="0" time="275.951379">
+<testsuite name="auth.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="system-chromium" tests="6" failures="0" skipped="0" time="10.293" errors="0">
+<testcase name="Authentication and access control › TC-Auth-01: a visitor registers as Student or Contributor within 3 s; a reused email is refused" classname="auth.spec.js" time="2.769">
 </testcase>
-<testcase name="Authentication and access control › TC-Auth-05: &quot;abc12&quot; and &quot;abcdefgh&quot; are rejected with &quot;Password too weak&quot;; &quot;abcdef12&quot; is accepted" classname="auth.spec.js" time="1.468">
+<testcase name="Authentication and access control › TC-Auth-05: &quot;abc12&quot; and &quot;abcdefgh&quot; are rejected with &quot;Password too weak&quot;; &quot;abcdef12&quot; is accepted" classname="auth.spec.js" time="1.484">
 </testcase>
-<testcase name="Authentication and access control › TC-Auth-05: the server also rejects a weak password sent directly to the API" classname="auth.spec.js" time="0.074">
+<testcase name="Authentication and access control › TC-Auth-05: the server also rejects a weak password sent directly to the API" classname="auth.spec.js" time="0.1">
 </testcase>
-<testcase name="Authentication and access control › TC-Auth-02: correct credentials open the home page for the role; wrong ones show the error and create no session" classname="auth.spec.js" time="2.404">
+<testcase name="Authentication and access control › TC-Auth-02: correct credentials open the home page for the role; wrong ones show the error and create no session" classname="auth.spec.js" time="2.43">
 </testcase>
-<testcase name="Authentication and access control › TC-Auth-03: each role sees only its permitted features, and forbidden requests get 403 &quot;Access denied&quot;" classname="auth.spec.js" time="1.867">
+<testcase name="Authentication and access control › TC-Auth-03: each role sees only its permitted features, and forbidden requests get 403 &quot;Access denied&quot;" classname="auth.spec.js" time="1.776">
 </testcase>
-<testcase name="Authentication and access control › TC-Auth-04: logout ends the session; protected pages show the login page and the old token is refused" classname="auth.spec.js" time="1.659">
-</testcase>
-</testsuite>
-<testsuite name="materials.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="system-chromium" tests="4" failures="0" skipped="0" time="11.121" errors="0">
-<testcase name="Material sharing › TC-Mat-01: a contributor uploads a 20 MB PDF, it is confirmed within 10 s and appears in search" classname="materials.spec.js" time="2.932">
-</testcase>
-<testcase name="Material sharing › TC-Sec-04: a 21 MB PDF and an executable renamed to .pdf are rejected with &quot;Invalid file&quot;" classname="materials.spec.js" time="2.267">
-</testcase>
-<testcase name="Material sharing › TC-Mat-02: search lists matching materials 10 per page, newest first, and &quot;No materials found&quot; for no match" classname="materials.spec.js" time="2.842">
-</testcase>
-<testcase name="Material sharing › TC-Mat-03: a download matches the stored file size and adds exactly 1 to the count each time" classname="materials.spec.js" time="3.08">
+<testcase name="Authentication and access control › TC-Auth-04: logout ends the session; protected pages show the login page and the old token is refused" classname="auth.spec.js" time="1.734">
 </testcase>
 </testsuite>
-<testsuite name="pageLoad.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="system-chromium" tests="1" failures="0" skipped="0" time="61.673" errors="0">
-<testcase name="TC-Perf-03: main pages load within 3 s for at least 95% of loads at 10 Mbps" classname="pageLoad.spec.js" time="61.673">
+<testsuite name="materials.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="system-chromium" tests="4" failures="0" skipped="0" time="11.71" errors="0">
+<testcase name="Material sharing › TC-Mat-01: a contributor uploads a 20 MB PDF, it is confirmed within 10 s and appears in search" classname="materials.spec.js" time="3.092">
+</testcase>
+<testcase name="Material sharing › TC-Sec-04: a 21 MB PDF and an executable renamed to .pdf are rejected with &quot;Invalid file&quot;" classname="materials.spec.js" time="2.225">
+</testcase>
+<testcase name="Material sharing › TC-Mat-02: search lists matching materials 10 per page, newest first, and &quot;No materials found&quot; for no match" classname="materials.spec.js" time="3.018">
+</testcase>
+<testcase name="Material sharing › TC-Mat-03: a download matches the stored file size and adds exactly 1 to the count each time" classname="materials.spec.js" time="3.375">
+</testcase>
+</testsuite>
+<testsuite name="pageLoad.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="system-chromium" tests="1" failures="0" skipped="0" time="63.358" errors="0">
+<testcase name="TC-Perf-03: main pages load within 3 s for at least 95% of loads at 10 Mbps" classname="pageLoad.spec.js" time="63.358">
 <system-out>
-<![CDATA[Home               p50 356 ms  p95 377 ms  max 377 ms
-Create account     p50 332 ms  p95 367 ms  max 367 ms
-Log in             p50 323 ms  p95 347 ms  max 347 ms
-Materials          p50 377 ms  p95 405 ms  max 405 ms
-Upload material    p50 324 ms  p95 346 ms  max 346 ms
-Question bank      p50 394 ms  p95 448 ms  max 448 ms
-Published quizzes  p50 345 ms  p95 369 ms  max 369 ms
-Performance        p50 339 ms  p95 361 ms  max 361 ms
-System status      p50 402 ms  p95 431 ms  max 431 ms
+<![CDATA[Home               p50 367 ms  p95 416 ms  max 416 ms
+Create account     p50 349 ms  p95 368 ms  max 368 ms
+Log in             p50 316 ms  p95 334 ms  max 334 ms
+Materials          p50 376 ms  p95 409 ms  max 409 ms
+Upload material    p50 333 ms  p95 364 ms  max 364 ms
+Question bank      p50 401 ms  p95 443 ms  max 443 ms
+Published quizzes  p50 333 ms  p95 370 ms  max 370 ms
+Performance        p50 333 ms  p95 388 ms  max 388 ms
+System status      p50 406 ms  p95 501 ms  max 501 ms
 ]]>
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="questionBank.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="system-chromium" tests="3" failures="0" skipped="0" time="7.29" errors="0">
-<testcase name="Question bank › TC-QB-01: a 500-character question with 4 options and 1 correct answer is saved; 3 options or 2 correct are rejected" classname="questionBank.spec.js" time="2.368">
+<testsuite name="questionBank.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="system-chromium" tests="3" failures="0" skipped="0" time="8.519" errors="0">
+<testcase name="Question bank › TC-QB-01: a 500-character question with 4 options and 1 correct answer is saved; 3 options or 2 correct are rejected" classname="questionBank.spec.js" time="2.265">
 </testcase>
-<testcase name="Question bank › TC-QB-02: own questions can be edited and deleted; another contributor gets &quot;Access denied&quot;; a question in a published quiz is &quot;in use&quot;" classname="questionBank.spec.js" time="2.27">
+<testcase name="Question bank › TC-QB-02: own questions can be edited and deleted; another contributor gets &quot;Access denied&quot;; a question in a published quiz is &quot;in use&quot;" classname="questionBank.spec.js" time="3.453">
 </testcase>
-<testcase name="Question bank › TC-QB-03: a question needs a topic and difficulty, and filtering by Algebra and Easy returns only matching questions" classname="questionBank.spec.js" time="2.652">
-</testcase>
-</testsuite>
-<testsuite name="quiz.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="system-chromium" tests="5" failures="0" skipped="0" time="18.261" errors="0">
-<testcase name="Quizzes › TC-Quiz-01: quizzes with 5-50 questions and 5-180 minutes are accepted; 4/51 questions and 4/181 minutes are rejected" classname="quiz.spec.js" time="1.737">
-</testcase>
-<testcase name="Quizzes › TC-Quiz-04: a student sees every published quiz with its title, number of questions and time limit" classname="quiz.spec.js" time="2.132">
-</testcase>
-<testcase name="Quizzes › TC-Quiz-02: the countdown stays within 1 s of server time and answers are submitted automatically at 00:00" classname="quiz.spec.js" time="7.918">
-</testcase>
-<testcase name="Quizzes › TC-Quiz-03: 7 correct, 2 wrong and 1 unanswered show 7/10, 70% and every correct answer within 3 s" classname="quiz.spec.js" time="4.051">
-</testcase>
-<testcase name="Quizzes › TC-Quiz-05: a contributor deletes their own quiz, students no longer see it, and another contributor gets &quot;Access denied&quot;" classname="quiz.spec.js" time="2.423">
+<testcase name="Question bank › TC-QB-03: a question needs a topic and difficulty, and filtering by Algebra and Easy returns only matching questions" classname="questionBank.spec.js" time="2.801">
 </testcase>
 </testsuite>
-<testsuite name="reportsAdmin.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="system-chromium" tests="3" failures="0" skipped="0" time="10.908" errors="0">
-<testcase name="Performance reports and moderation › TC-Rep-01: a student sees an overall average, topic scores and attempts that match a manual calculation" classname="reportsAdmin.spec.js" time="2.701">
+<testsuite name="quiz.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="system-chromium" tests="5" failures="0" skipped="0" time="18.166" errors="0">
+<testcase name="Quizzes › TC-Quiz-01: quizzes with 5-50 questions and 5-180 minutes are accepted; 4/51 questions and 4/181 minutes are rejected" classname="quiz.spec.js" time="1.637">
 </testcase>
-<testcase name="Performance reports and moderation › TC-Rep-02: a contributor sees attempts, average, highest, lowest and the 3 hardest questions for own quizzes only" classname="reportsAdmin.spec.js" time="4.755">
+<testcase name="Quizzes › TC-Quiz-04: a student sees every published quiz with its title, number of questions and time limit" classname="quiz.spec.js" time="2.13">
 </testcase>
-<testcase name="Performance reports and moderation › TC-Adm-01: an admin removes a material and a quiz; students no longer find either" classname="reportsAdmin.spec.js" time="3.452">
+<testcase name="Quizzes › TC-Quiz-02: the countdown stays within 1 s of server time and answers are submitted automatically at 00:00" classname="quiz.spec.js" time="7.769">
 </testcase>
-</testsuite>
-<testsuite name="security.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="system-chromium" tests="5" failures="0" skipped="0" time="4.683" errors="0">
-<testcase name="Security validation (Test Plan 5.1) › TC-Sec-01: passwords are stored only as bcrypt hashes with cost &gt;= 10 and never returned" classname="security.spec.js" time="1.631">
+<testcase name="Quizzes › TC-Quiz-03: 7 correct, 2 wrong and 1 unanswered show 7/10, 70% and every correct answer within 3 s" classname="quiz.spec.js" time="4.233">
 </testcase>
-<testcase name="Security validation (Test Plan 5.1) › TC-Sec-02: a Student token on Contributor-only and Admin-only requests gets 403 &quot;Access denied&quot;" classname="security.spec.js" time="0.803">
-</testcase>
-<testcase name="Security validation (Test Plan 5.1) › TC-Sec-03: missing, altered, 31-minute-old and revoked tokens all get 401" classname="security.spec.js" time="0.981">
-</testcase>
-<testcase name="Security validation (Test Plan 5.1) › TC-Sec-06: login success and failure, upload and deletion each write one audit entry with user, action and time" classname="security.spec.js" time="0.813">
-</testcase>
-<testcase name="Security validation (Test Plan 5.1) › TC-Sec-07: script and database-command input is rejected with 400 and not stored" classname="security.spec.js" time="0.455">
+<testcase name="Quizzes › TC-Quiz-05: a contributor deletes their own quiz, students no longer see it, and another contributor gets &quot;Access denied&quot;" classname="quiz.spec.js" time="2.397">
 </testcase>
 </testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-chromium-mobile-360" tests="2" failures="0" skipped="0" time="4.887" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="2.897">
+<testsuite name="reportsAdmin.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="system-chromium" tests="3" failures="0" skipped="0" time="11.01" errors="0">
+<testcase name="Performance reports and moderation › TC-Rep-01: a student sees an overall average, topic scores and attempts that match a manual calculation" classname="reportsAdmin.spec.js" time="2.709">
 </testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="1.99">
+<testcase name="Performance reports and moderation › TC-Rep-02: a contributor sees attempts, average, highest, lowest and the 3 hardest questions for own quizzes only" classname="reportsAdmin.spec.js" time="4.962">
 </testcase>
-</testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-chromium-tablet-768" tests="2" failures="0" skipped="0" time="5.189" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="3.091">
-</testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="2.098">
+<testcase name="Performance reports and moderation › TC-Adm-01: an admin removes a material and a quiz; students no longer find either" classname="reportsAdmin.spec.js" time="3.339">
 </testcase>
 </testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-chromium-desktop-1920" tests="2" failures="0" skipped="0" time="5.297" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="3.221">
+<testsuite name="security.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="system-chromium" tests="5" failures="0" skipped="0" time="4.541" errors="0">
+<testcase name="Security validation (Test Plan 5.1) › TC-Sec-01: passwords are stored only as bcrypt hashes with cost &gt;= 10 and never returned" classname="security.spec.js" time="1.582">
 </testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="2.076">
+<testcase name="Security validation (Test Plan 5.1) › TC-Sec-02: a Student token on Contributor-only and Admin-only requests gets 403 &quot;Access denied&quot;" classname="security.spec.js" time="0.8">
 </testcase>
-</testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-firefox-mobile-360" tests="2" failures="0" skipped="0" time="14.804" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="9.187">
+<testcase name="Security validation (Test Plan 5.1) › TC-Sec-03: missing, altered, 31-minute-old and revoked tokens all get 401" classname="security.spec.js" time="0.931">
 </testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="5.617">
+<testcase name="Security validation (Test Plan 5.1) › TC-Sec-06: login success and failure, upload and deletion each write one audit entry with user, action and time" classname="security.spec.js" time="0.806">
 </testcase>
-</testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-firefox-tablet-768" tests="2" failures="0" skipped="0" time="15.791" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="9.02">
-</testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="6.771">
+<testcase name="Security validation (Test Plan 5.1) › TC-Sec-07: script and database-command input is rejected with 400 and not stored" classname="security.spec.js" time="0.422">
 </testcase>
 </testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-firefox-desktop-1920" tests="2" failures="0" skipped="0" time="14.928" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="8.973">
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-chromium-mobile-360" tests="2" failures="0" skipped="0" time="5.032" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="2.983">
 </testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="5.955">
-</testcase>
-</testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-webkit-mobile-360" tests="2" failures="0" skipped="0" time="8.311" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="4.942">
-</testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="3.369">
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="2.049">
 </testcase>
 </testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-webkit-tablet-768" tests="2" failures="0" skipped="0" time="12.673" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="6.747">
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-chromium-tablet-768" tests="2" failures="0" skipped="0" time="5.098" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="2.901">
 </testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="5.926">
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="2.197">
 </testcase>
 </testsuite>
-<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:21:40.321Z" hostname="compat-webkit-desktop-1920" tests="2" failures="0" skipped="0" time="26.118" errors="0">
-<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="14.837">
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-chromium-desktop-1920" tests="2" failures="0" skipped="0" time="5.311" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="3.053">
 </testcase>
-<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="11.281">
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="2.258">
+</testcase>
+</testsuite>
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-firefox-mobile-360" tests="2" failures="0" skipped="0" time="15.328" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="9.607">
+</testcase>
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="5.721">
+</testcase>
+</testsuite>
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-firefox-tablet-768" tests="2" failures="0" skipped="0" time="15.287" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="9.413">
+</testcase>
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="5.874">
+</testcase>
+</testsuite>
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-firefox-desktop-1920" tests="2" failures="0" skipped="0" time="15.827" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="9.631">
+</testcase>
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="6.196">
+</testcase>
+</testsuite>
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-webkit-mobile-360" tests="2" failures="0" skipped="0" time="8.63" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="4.935">
+</testcase>
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="3.695">
+</testcase>
+</testsuite>
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-webkit-tablet-768" tests="2" failures="0" skipped="0" time="13.092" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="6.866">
+</testcase>
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="6.226">
+</testcase>
+</testsuite>
+<testsuite name="compatibility.spec.js" timestamp="2026-11-17T16:35:04.243Z" hostname="compat-webkit-desktop-1920" tests="2" failures="0" skipped="0" time="28.807" errors="0">
+<testcase name="TC-Comp-01: a student logs in, searches and downloads material, and completes a timed quiz" classname="compatibility.spec.js" time="14.949">
+</testcase>
+<testcase name="TC-Comp-01: a contributor can use the upload and question bank forms" classname="compatibility.spec.js" time="13.858">
 </testcase>
 </testsuite>
 </testsuites>

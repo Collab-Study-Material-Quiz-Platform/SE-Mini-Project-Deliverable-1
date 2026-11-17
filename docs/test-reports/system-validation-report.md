@@ -1,8 +1,8 @@
 # System Validation Report
 
 **Project:** Collaborative Study Material & Quiz Platform (Project #21)  
-**Generated:** 2026-11-17 16:31 UTC by `node scripts/generate-test-reports.mjs`  
-**Code version:** commit `3218ccc` on branch `test/part-3-test-reports`  
+**Generated:** 2026-11-17 16:40 UTC by `node scripts/generate-test-reports.mjs`  
+**Code version:** commit `299cd4b` on branch `test/part-3-test-reports`  
 **Environment:** Windows_NT 10.0.26200 (Intel(R) Core(TM) Ultra 5 125H, 15 GB RAM); Node.js v24.4.1; MongoDB 7.0.14
 
 This report records the execution of every test case in the Test Case Document (TC-Auth-01 to TC-Sec-07) against the integrated system: the React client, the Express API and MongoDB, driven through real browsers by Playwright (Test Plan level 3, system testing, and level 4, acceptance). Each test case also lists the unit and API tests that support it ([Unit Test Report](unit-test-report.md)).
@@ -76,7 +76,7 @@ This report records the execution of every test case in the Test Case Document (
 
 ### TC-Auth-01 — Registration (CSQ-F-001): ✅ Pass
 
-- ✅ Browser: TC-Auth-01: a visitor registers as Student or Contributor within 3 s; a reused email is refused (2.5 s)
+- ✅ Browser: TC-Auth-01: a visitor registers as Student or Contributor within 3 s; a reused email is refused (2.8 s)
 - Supporting tests: 29/29 passed in `backend/tests/registration.integration.test.js`, `backend/tests/registrationValidation.test.js`, `frontend/src/auth.test.jsx`.
 
 ### TC-Auth-02 — Login (CSQ-F-002): ✅ Pass
@@ -86,7 +86,7 @@ This report records the execution of every test case in the Test Case Document (
 
 ### TC-Auth-03 — Role-based access (CSQ-F-003): ✅ Pass
 
-- ✅ Browser: TC-Auth-03: each role sees only its permitted features, and forbidden requests get 403 "Access denied" (1.9 s)
+- ✅ Browser: TC-Auth-03: each role sees only its permitted features, and forbidden requests get 403 "Access denied" (1.8 s)
 - Supporting tests: 24/24 passed in `backend/tests/authorization.test.js`, `frontend/src/shell.test.jsx`.
 
 ### TC-Auth-04 — Logout (CSQ-F-004): ✅ Pass
@@ -102,47 +102,47 @@ This report records the execution of every test case in the Test Case Document (
 
 ### TC-Mat-01 — Upload study material (CSQ-F-010): ✅ Pass
 
-- ✅ Browser: TC-Mat-01: a contributor uploads a 20 MB PDF, it is confirmed within 10 s and appears in search (2.9 s)
+- ✅ Browser: TC-Mat-01: a contributor uploads a 20 MB PDF, it is confirmed within 10 s and appears in search (3.1 s)
 - Supporting tests: 24/24 passed in `backend/tests/materialUpload.integration.test.js`, `frontend/src/components/materials.test.jsx`.
 
 ### TC-Mat-02 — Search material (CSQ-F-011): ✅ Pass
 
-- ✅ Browser: TC-Mat-02: search lists matching materials 10 per page, newest first, and "No materials found" for no match (2.8 s)
+- ✅ Browser: TC-Mat-02: search lists matching materials 10 per page, newest first, and "No materials found" for no match (3.0 s)
 - Supporting tests: 27/27 passed in `backend/tests/materialSearch.integration.test.js`, `backend/tests/materialValidation.test.js`, `frontend/src/components/materials.test.jsx`.
 
 ### TC-Mat-03 — Download material (CSQ-F-012): ✅ Pass
 
-- ✅ Browser: TC-Mat-03: a download matches the stored file size and adds exactly 1 to the count each time (3.1 s)
+- ✅ Browser: TC-Mat-03: a download matches the stored file size and adds exactly 1 to the count each time (3.4 s)
 - Supporting tests: 19/19 passed in `backend/tests/materialDownload.integration.test.js`, `frontend/src/components/materials.test.jsx`.
 
 ### TC-QB-01 — Add question (CSQ-F-020): ✅ Pass
 
-- ✅ Browser: TC-QB-01: a 500-character question with 4 options and 1 correct answer is saved; 3 options or 2 correct are rejected (2.4 s)
+- ✅ Browser: TC-QB-01: a 500-character question with 4 options and 1 correct answer is saved; 3 options or 2 correct are rejected (2.3 s)
 - Supporting tests: 27/27 passed in `backend/tests/questionBank.integration.test.js`, `backend/tests/questionValidation.test.js`, `frontend/src/components/questionBank.test.jsx`.
 
 ### TC-QB-02 — Edit/delete own question (CSQ-F-021): ✅ Pass
 
-- ✅ Browser: TC-QB-02: own questions can be edited and deleted; another contributor gets "Access denied"; a question in a published quiz is "in use" (2.3 s)
+- ✅ Browser: TC-QB-02: own questions can be edited and deleted; another contributor gets "Access denied"; a question in a published quiz is "in use" (3.5 s)
 - Supporting tests: 20/20 passed in `backend/tests/questionOwnership.integration.test.js`, `frontend/src/components/questionBank.test.jsx`.
 
 ### TC-QB-03 — Tag/filter questions (CSQ-F-022): ✅ Pass
 
-- ✅ Browser: TC-QB-03: a question needs a topic and difficulty, and filtering by Algebra and Easy returns only matching questions (2.7 s)
+- ✅ Browser: TC-QB-03: a question needs a topic and difficulty, and filtering by Algebra and Easy returns only matching questions (2.8 s)
 - Supporting tests: 18/18 passed in `backend/tests/questionFilter.integration.test.js`, `frontend/src/components/questionBank.test.jsx`.
 
 ### TC-Quiz-01 — Create and publish quiz (CSQ-F-030): ✅ Pass
 
-- ✅ Browser: TC-Quiz-01: quizzes with 5-50 questions and 5-180 minutes are accepted; 4/51 questions and 4/181 minutes are rejected (1.7 s)
+- ✅ Browser: TC-Quiz-01: quizzes with 5-50 questions and 5-180 minutes are accepted; 4/51 questions and 4/181 minutes are rejected (1.6 s)
 - Supporting tests: 9/9 passed in `backend/tests/quizCreate.integration.test.js`, `backend/tests/quizValidation.test.js`.
 
 ### TC-Quiz-02 — Timed quiz attempt and auto-submit (CSQ-F-031): ✅ Pass
 
-- ✅ Browser: TC-Quiz-02: the countdown stays within 1 s of server time and answers are submitted automatically at 00:00 (7.9 s)
+- ✅ Browser: TC-Quiz-02: the countdown stays within 1 s of server time and answers are submitted automatically at 00:00 (7.8 s)
 - Supporting tests: 16/16 passed in `frontend/src/components/quizzes.test.jsx`.
 
 ### TC-Quiz-03 — Automatic grading/result (CSQ-F-032): ✅ Pass
 
-- ✅ Browser: TC-Quiz-03: 7 correct, 2 wrong and 1 unanswered show 7/10, 70% and every correct answer within 3 s (4.1 s)
+- ✅ Browser: TC-Quiz-03: 7 correct, 2 wrong and 1 unanswered show 7/10, 70% and every correct answer within 3 s (4.2 s)
 - Supporting tests: 35/35 passed in `backend/tests/quizGrading.integration.test.js`, `backend/tests/quizGrading.test.js`, `frontend/src/components/quizzes.test.jsx`.
 
 ### TC-Quiz-04 — Published quiz listing (CSQ-F-033): ✅ Pass
@@ -163,28 +163,30 @@ This report records the execution of every test case in the Test Case Document (
 
 ### TC-Rep-02 — Contributor quiz statistics (CSQ-F-041): ✅ Pass
 
-- ✅ Browser: TC-Rep-02: a contributor sees attempts, average, highest, lowest and the 3 hardest questions for own quizzes only (4.8 s)
+- ✅ Browser: TC-Rep-02: a contributor sees attempts, average, highest, lowest and the 3 hardest questions for own quizzes only (5.0 s)
 - Supporting tests: 16/16 passed in `backend/tests/contributorPerformance.integration.test.js`, `frontend/src/components/reportsAdmin.test.jsx`.
 
 ### TC-Adm-01 — Admin moderation (CSQ-F-050): 🟡 Partial
 
-- ✅ Browser: TC-Adm-01: an admin removes a material and a quiz; students no longer find either (3.5 s)
+- ✅ Browser: TC-Adm-01: an admin removes a material and a quiz; students no longer find either (3.3 s)
 - Supporting tests: 22/22 passed in `backend/tests/adminModeration.integration.test.js`, `frontend/src/components/reportsAdmin.test.jsx`.
 - Open defect: D-04.
 
 ### TC-Perf-01 — Material search performance (CSQ-NF-001): ✅ Pass
 
 - Supporting tests: 3/3 passed in `backend/tests/searchPerformance.integration.test.js`.
+- Load script (`npm run perf:search`): 200 searches over 10000 materials, p50 62.4 ms, **p95 83.2 ms**, max 92.2 ms, 100% within 2 s, 0 failed requests.
 - Team report: [tc-perf-01-search-performance.md](../tc-perf-01-search-performance.md).
 
 ### TC-Perf-02 — Concurrent quiz-result performance (CSQ-NF-002): ✅ Pass
 
 - Supporting tests: 3/3 passed in `backend/tests/quizSubmitPerformance.integration.test.js`.
+- Load script (`npm run perf:quiz-submit`): 100 simultaneous submissions, p50 848.7 ms, **p95 911.4 ms**, max 919.9 ms, 100% within 3 s, 0 failed requests.
 - Team report: [tc-perf-02-quiz-result-performance.md](../tc-perf-02-quiz-result-performance.md).
 
 ### TC-Perf-03 — Page-load performance (CSQ-NF-006): ✅ Pass
 
-- ✅ Browser: TC-Perf-03: main pages load within 3 s for at least 95% of loads at 10 Mbps (61.7 s)
+- ✅ Browser: TC-Perf-03: main pages load within 3 s for at least 95% of loads at 10 Mbps (63.4 s)
 - Real browser loads of the production build at 10 Mbps: 90 loads, 100% within 3 s, p95 428 ms.
 - Team report: [tc-perf-03-page-load-performance.md](../tc-perf-03-page-load-performance.md).
 
@@ -196,7 +198,7 @@ This report records the execution of every test case in the Test Case Document (
 
 ### TC-Ops-02 — Backup and restore (CSQ-NF-007): 🟡 Partial
 
-- Backup/restore drill: retention kept exactly 7 backups; restore of the latest backup took 1098 ms and restored every collection ([log](raw/tc-ops-02-backup-drill.log)).
+- Backup/restore drill: retention kept exactly 7 backups; restore of the latest backup took 1021 ms and restored every collection ([log](raw/tc-ops-02-backup-drill.log)).
 - Open defects: D-02, D-03.
 
 ### TC-UX-01 — First-time usability (CSQ-NF-004): 📝 Manual (recorded)
@@ -221,12 +223,12 @@ This report records the execution of every test case in the Test Case Document (
 
 ### TC-Sec-03 — Invalid/expired/revoked JWT (CSQ-SR-003): ✅ Pass
 
-- ✅ Browser: TC-Sec-03: missing, altered, 31-minute-old and revoked tokens all get 401 (1.0 s)
+- ✅ Browser: TC-Sec-03: missing, altered, 31-minute-old and revoked tokens all get 401 (0.9 s)
 - Supporting tests: 16/16 passed in `backend/tests/logout.test.js`, `backend/tests/session.integration.test.js`, `frontend/src/api.test.js`.
 
 ### TC-Sec-04 — File type and size validation (CSQ-SR-004): ✅ Pass
 
-- ✅ Browser: TC-Sec-04: a 21 MB PDF and an executable renamed to .pdf are rejected with "Invalid file" (2.3 s)
+- ✅ Browser: TC-Sec-04: a 21 MB PDF and an executable renamed to .pdf are rejected with "Invalid file" (2.2 s)
 - Supporting tests: 30/30 passed in `backend/tests/fileValidation.test.js`, `backend/tests/materialUpload.integration.test.js`, `frontend/src/components/materials.test.jsx`.
 
 ### TC-Sec-05 — HTTPS/TLS validation (CSQ-SR-005): ❌ Fail
@@ -242,7 +244,7 @@ This report records the execution of every test case in the Test Case Document (
 
 ### TC-Sec-07 — Server-side injection/script validation (CSQ-SR-007): ✅ Pass
 
-- ✅ Browser: TC-Sec-07: script and database-command input is rejected with 400 and not stored (0.5 s)
+- ✅ Browser: TC-Sec-07: script and database-command input is rejected with 400 and not stored (0.4 s)
 - Supporting tests: 3/3 passed in `backend/tests/inputValidation.test.js`.
 
 ## Compatibility matrix (TC-Comp-01)
@@ -261,15 +263,15 @@ Production build in Chromium, 10 Mbps down and up, 20 ms latency, cache disabled
 
 | Page | Route | Loads | Mean | p50 | p95 | Max |
 | --- | --- | --- | --- | --- | --- | --- |
-| Home | `#/` | 10 | 355 ms | 356 ms | 377 ms | 377 ms |
-| Create account | `#/register` | 10 | 335 ms | 332 ms | 367 ms | 367 ms |
-| Log in | `#/login` | 10 | 326 ms | 323 ms | 347 ms | 347 ms |
-| Materials | `#/materials` | 10 | 376 ms | 377 ms | 405 ms | 405 ms |
-| Upload material | `#/materials/upload` | 10 | 330 ms | 324 ms | 346 ms | 346 ms |
-| Question bank | `#/questions` | 10 | 401 ms | 394 ms | 448 ms | 448 ms |
-| Published quizzes | `#/quizzes` | 10 | 343 ms | 345 ms | 369 ms | 369 ms |
-| Performance | `#/performance` | 10 | 342 ms | 339 ms | 361 ms | 361 ms |
-| System status | `#/status` | 10 | 406 ms | 402 ms | 431 ms | 431 ms |
+| Home | `#/` | 10 | 372 ms | 367 ms | 416 ms | 416 ms |
+| Create account | `#/register` | 10 | 352 ms | 349 ms | 368 ms | 368 ms |
+| Log in | `#/login` | 10 | 321 ms | 316 ms | 334 ms | 334 ms |
+| Materials | `#/materials` | 10 | 384 ms | 376 ms | 409 ms | 409 ms |
+| Upload material | `#/materials/upload` | 10 | 333 ms | 333 ms | 364 ms | 364 ms |
+| Question bank | `#/questions` | 10 | 399 ms | 401 ms | 443 ms | 443 ms |
+| Published quizzes | `#/quizzes` | 10 | 336 ms | 333 ms | 370 ms | 370 ms |
+| Performance | `#/performance` | 10 | 341 ms | 333 ms | 388 ms | 388 ms |
+| System status | `#/status` | 10 | 417 ms | 406 ms | 501 ms | 501 ms |
 
 Across all 90 loads: **p95 428 ms, 100% within 3 s** (target: 95% within 3 s). The team's model-based measurement is in [tc-perf-03-page-load-performance.md](../tc-perf-03-page-load-performance.md) and was re-run here ([log](raw/tc-perf-03-page-load-model.log)).
 
@@ -321,4 +323,4 @@ Across all 90 loads: **p95 428 ms, 100% within 3 s** (target: 95% within 3 s). T
 node scripts/generate-test-reports.mjs --with-backup-drill --with-tls
 ```
 
-Browser test report: [html/e2e-report/index.html](html/e2e-report/index.html). Commands and exit codes of this run: reports rebuilt from earlier results.
+Browser test report: [html/e2e-report/index.html](html/e2e-report/index.html). Commands and exit codes of this run: Backend unit and integration tests (exit 0, 67.9 s, [log](raw/logs/backend-unit-and-integration-tests.log)); Frontend unit tests (exit 0, 17.9 s, [log](raw/logs/frontend-unit-tests.log)); System validation browser tests (exit 0, 280.1 s, [log](raw/logs/system-validation-browser-tests.log)); TC-Perf-01 load script (exit 0, 5.9 s, [log](raw/logs/tc-perf-01-load-script.log)); TC-Perf-02 load script (exit 0, 3.2 s, [log](raw/logs/tc-perf-02-load-script.log)); Frontend production build (exit 0, 1.6 s, [log](raw/logs/frontend-production-build.log)); TC-Perf-03 page-load model (exit 0, 0.2 s, [log](raw/logs/tc-perf-03-page-load-model.log)); Build frontend for HTTPS check (exit 0, 1.5 s, [log](raw/logs/build-frontend-for-https-check.log)); Start Nginx HTTPS stack (exit 0, 1.7 s, [log](raw/logs/start-nginx-https-stack.log)); TC-Sec-05 check-tls (exit 0, 4.4 s, [log](raw/logs/tc-sec-05-check-tls.log)); TC-Sec-05 client API URLs (exit 0, 4.5 s, [log](raw/logs/tc-sec-05-client-api-urls.log)); Stop Nginx HTTPS stack (exit 0, 1.5 s, [log](raw/logs/stop-nginx-https-stack.log)).

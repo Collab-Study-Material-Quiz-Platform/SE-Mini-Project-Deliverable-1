@@ -11,14 +11,14 @@ Simulated Bundle Transfer Latency at 10 Mbps: 72.0 ms
 ┌─────────┬─────────────────────────────┬─────────────────┬───────────┬──────────┬──────────┬──────────┬──────────┐
 │ (index) │ Page                        │ Route           │ Mean (ms) │ p50 (ms) │ p95 (ms) │ Max (ms) │ Status   │
 ├─────────┼─────────────────────────────┼─────────────────┼───────────┼──────────┼──────────┼──────────┼──────────┤
-│ 0       │ 'Home'                      │ '#/'            │ 104.2     │ 103.7    │ 115.5    │ 120      │ 'PASSED' │
-│ 1       │ 'Create Account (Register)' │ '#/register'    │ 106.8     │ 106.7    │ 119.3    │ 120.7    │ 'PASSED' │
-│ 2       │ 'Log In'                    │ '#/login'       │ 106.7     │ 107.5    │ 117.3    │ 121.5    │ 'PASSED' │
-│ 3       │ 'Materials Search & List'   │ '#/materials'   │ 167.9     │ 167.8    │ 184.1    │ 190.2    │ 'PASSED' │
-│ 4       │ 'Question Bank'             │ '#/questions'   │ 156.8     │ 155.4    │ 174.5    │ 176.6    │ 'PASSED' │
-│ 5       │ 'Published Quizzes'         │ '#/quizzes'     │ 140.5     │ 141.4    │ 155.7    │ 160.6    │ 'PASSED' │
-│ 6       │ 'Performance Dashboard'     │ '#/performance' │ 161.1     │ 160.9    │ 177.5    │ 185.2    │ 'PASSED' │
-│ 7       │ 'System Status'             │ '#/status'      │ 113.4     │ 112.6    │ 127.3    │ 130.2    │ 'PASSED' │
+│ 0       │ 'Home'                      │ '#/'            │ 103.5     │ 102.8    │ 115      │ 119.1    │ 'PASSED' │
+│ 1       │ 'Create Account (Register)' │ '#/register'    │ 106.7     │ 106      │ 116.8    │ 121.3    │ 'PASSED' │
+│ 2       │ 'Log In'                    │ '#/login'       │ 105.5     │ 104.9    │ 118.4    │ 123.8    │ 'PASSED' │
+│ 3       │ 'Materials Search & List'   │ '#/materials'   │ 168.2     │ 168.4    │ 185.5    │ 190.8    │ 'PASSED' │
+│ 4       │ 'Question Bank'             │ '#/questions'   │ 156.7     │ 156.4    │ 173.5    │ 181.8    │ 'PASSED' │
+│ 5       │ 'Published Quizzes'         │ '#/quizzes'     │ 139.8     │ 139.5    │ 154      │ 162.6    │ 'PASSED' │
+│ 6       │ 'Performance Dashboard'     │ '#/performance' │ 161       │ 160.4    │ 177.8    │ 180.3    │ 'PASSED' │
+│ 7       │ 'System Status'             │ '#/status'      │ 114.3     │ 115.4    │ 126.1    │ 130.5    │ 'PASSED' │
 └─────────┴─────────────────────────────┴─────────────────┴───────────┴──────────┴──────────┴──────────┴──────────┘
 
 Overall TC-Perf-03 Status: ALL PAGES PASSED (p95 <= 3000 ms)

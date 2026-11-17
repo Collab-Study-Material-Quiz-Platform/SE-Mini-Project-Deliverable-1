@@ -443,6 +443,7 @@
       ]
     },
     "evidence": [
+      "Load script (`npm run perf:search`): 200 searches over 10000 materials, p50 62.4 ms, **p95 83.2 ms**, max 92.2 ms, 100% within 2 s, 0 failed requests.",
       "Team report: [tc-perf-01-search-performance.md](../tc-perf-01-search-performance.md)."
     ]
   },
@@ -464,6 +465,7 @@
       ]
     },
     "evidence": [
+      "Load script (`npm run perf:quiz-submit`): 100 simultaneous submissions, p50 848.7 ms, **p95 911.4 ms**, max 919.9 ms, 100% within 3 s, 0 failed requests.",
       "Team report: [tc-perf-02-quiz-result-performance.md](../tc-perf-02-quiz-result-performance.md)."
     ]
   },
@@ -529,7 +531,7 @@
       "files": []
     },
     "evidence": [
-      "Backup/restore drill: retention kept exactly 7 backups; restore of the latest backup took 1098 ms and restored every collection ([log](raw/tc-ops-02-backup-drill.log)).",
+      "Backup/restore drill: retention kept exactly 7 backups; restore of the latest backup took 1021 ms and restored every collection ([log](raw/tc-ops-02-backup-drill.log)).",
       "Open defects: D-02, D-03."
     ]
   },

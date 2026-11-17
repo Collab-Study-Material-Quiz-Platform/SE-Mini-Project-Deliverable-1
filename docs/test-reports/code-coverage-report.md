@@ -1,8 +1,8 @@
 # Code Coverage Report
 
 **Project:** Collaborative Study Material & Quiz Platform (Project #21)  
-**Generated:** 2026-11-17 16:31 UTC by `node scripts/generate-test-reports.mjs`  
-**Code version:** commit `3218ccc` on branch `test/part-3-test-reports`  
+**Generated:** 2026-11-17 16:40 UTC by `node scripts/generate-test-reports.mjs`  
+**Code version:** commit `299cd4b` on branch `test/part-3-test-reports`  
 **Environment:** Windows_NT 10.0.26200 (Intel(R) Core(TM) Ultra 5 125H, 15 GB RAM); Node.js v24.4.1; MongoDB 7.0.14
 
 Statement, line and function coverage of the application code by the unit and API integration tests in the [Unit Test Report](unit-test-report.md). Backend coverage is measured with c8 (V8 coverage) across `app.js`, `server.js`, `routes/`, `middleware/`, `models/` and `utils/`, including files no test loads. Frontend coverage is measured with Vitest (V8 coverage) across `frontend/src`, excluding test files and the `main.jsx` entry point. Branch coverage is detailed in the [Branch Coverage Report](branch-coverage-report.md).

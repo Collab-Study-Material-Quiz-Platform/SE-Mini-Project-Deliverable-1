@@ -1,8 +1,8 @@
 # Branch Coverage Report
 
 **Project:** Collaborative Study Material & Quiz Platform (Project #21)  
-**Generated:** 2026-11-17 16:31 UTC by `node scripts/generate-test-reports.mjs`  
-**Code version:** commit `3218ccc` on branch `test/part-3-test-reports`  
+**Generated:** 2026-11-17 16:40 UTC by `node scripts/generate-test-reports.mjs`  
+**Code version:** commit `299cd4b` on branch `test/part-3-test-reports`  
 **Environment:** Windows_NT 10.0.26200 (Intel(R) Core(TM) Ultra 5 125H, 15 GB RAM); Node.js v24.4.1; MongoDB 7.0.14
 
 Branch coverage counts every path through each decision in the code: both outcomes of `if`/`else`, each side of `&&`, `||` and `??`, both results of `? :`, each `switch` case and default parameter values. A branch is covered when at least one test runs it. Measured with V8 coverage (c8 for the backend, Vitest for the frontend) during the unit and API integration tests.

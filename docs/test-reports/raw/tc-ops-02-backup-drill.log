@@ -1,22 +1,22 @@
-TC-Ops-02 backup and restore drill — 2026-11-17T16:25:59.532Z
+TC-Ops-02 backup and restore drill — 2026-11-17T16:39:37.687Z
 Database: mongodb://127.0.0.1:27017/studyplatform_e2e (data left by the browser tests)
 Before backup: {"audit_logs":157,"materials":33,"questions":194,"quizattempts":19,"quizzes":25,"revokedtokens":4,"users":75}
 --- 1. Run scripts/backup.sh 9 times; retention must keep the newest 7
-Backup done: backup_2026-11-17_21-56-00.gz
-Backup done: backup_2026-11-17_21-56-02.gz
-Backup done: backup_2026-11-17_21-56-03.gz
-Backup done: backup_2026-11-17_21-56-05.gz
-Backup done: backup_2026-11-17_21-56-06.gz
-Backup done: backup_2026-11-17_21-56-08.gz
-Backup done: backup_2026-11-17_21-56-09.gz
-Backup done: backup_2026-11-17_21-56-11.gz
-Backup done: backup_2026-11-17_21-56-12.gz
+Backup done: backup_2026-11-17_22-09-38.gz
+Backup done: backup_2026-11-17_22-09-40.gz
+Backup done: backup_2026-11-17_22-09-41.gz
+Backup done: backup_2026-11-17_22-09-43.gz
+Backup done: backup_2026-11-17_22-09-44.gz
+Backup done: backup_2026-11-17_22-09-46.gz
+Backup done: backup_2026-11-17_22-09-47.gz
+Backup done: backup_2026-11-17_22-09-49.gz
+Backup done: backup_2026-11-17_22-09-50.gz
 Backups kept: 7
 --- 2. Simulate data loss: drop the users, questions, quizzes and materials collections
 After loss: {"audit_logs":157,"quizattempts":19,"revokedtokens":4}
---- 3. Run scripts/restore.sh on the latest backup (backup_2026-11-17_21-56-12.gz)
+--- 3. Run scripts/restore.sh on the latest backup (backup_2026-11-17_22-09-50.gz)
 Restore done
-2026-11-17T21:56:16.989+0530	507 document(s) restored successfully. 0 document(s) failed to restore.
+2026-11-17T22:09:54.748+0530	507 document(s) restored successfully. 0 document(s) failed to restore.
 After restore: {"audit_logs":157,"materials":33,"questions":194,"quizattempts":19,"quizzes":25,"revokedtokens":4,"users":75}
-Restore took 1098 ms (target: within 4 hours)
+Restore took 1021 ms (target: within 4 hours)
 RESULT: PASS — retention kept 7 backups and every collection has the same document count as before the backup
