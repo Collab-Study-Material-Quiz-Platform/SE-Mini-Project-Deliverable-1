@@ -248,6 +248,16 @@ async function runTlsChecks() {
 // ---------------------------------------------------------------------------------------------------------
 // Reading results
 // ---------------------------------------------------------------------------------------------------------
+// The load scripts print their results as the last JSON object in their output.
+function lastJson(output) {
+  const start = output.lastIndexOf('\n{')
+  try {
+    return start >= 0 ? JSON.parse(output.slice(start + 1, output.lastIndexOf('}') + 1)) : null
+  } catch {
+    return null
+  }
+}
+
 function readJson(file) {
   return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null
 }
@@ -379,10 +389,15 @@ async function main() {
     run('Frontend unit tests', 'npm run test:coverage', { cwd: frontend })
     // 3. System validation in real browsers.
     if (!args.has('--skip-e2e')) run('System validation browser tests', 'npx playwright test', { cwd: frontend, env: { E2E_MONGO_URI: E2E_DB } })
-    // 4. TC-Perf-03 page-load model from the team's report (uses the production build).
+    // 4. The team's load scripts for TC-Perf-01 and TC-Perf-02, which print full timing statistics.
+    //    Both are given a dedicated database: perf:quiz-submit otherwise falls back to the application database.
+    const perfEnv = { NODE_ENV: 'test', PERF_MONGO_URI: `${MONGO_BASE}/studyplatform_perf` }
+    extras.perfSearch = lastJson(run('TC-Perf-01 load script', 'npm run perf:search', { cwd: backend, env: perfEnv }).output)
+    extras.perfQuizSubmit = lastJson(run('TC-Perf-02 load script', 'npm run perf:quiz-submit', { cwd: backend, env: perfEnv }).output)
+    // 5. TC-Perf-03 page-load model from the team's report (uses the production build).
     run('Frontend production build', 'npm run build', { cwd: frontend })
     extras.pageLoadModel = run('TC-Perf-03 page-load model', 'node scripts/measure-page-load.js').output
-    // 5. Operational and deployment checks that need extra tools.
+    // 6. Operational and deployment checks that need extra tools.
     if (args.has('--with-backup-drill')) extras.backupDrill = runBackupDrill()
     if (args.has('--with-tls')) extras.tls = await runTlsChecks()
     fs.writeFileSync(path.join(raw, 'extra-checks.json'), `${JSON.stringify(extras, null, 2)}\n`)
@@ -405,7 +420,8 @@ async function main() {
   const html = path.join(out, 'html')
   const backendHtml = copyDir(path.join(backend, 'coverage', 'lcov-report'), path.join(html, 'backend-coverage'))
   const frontendHtml = copyDir(path.join(frontend, 'coverage'), path.join(html, 'frontend-coverage'))
-  if (frontendHtml) for (const extra of ['coverage-final.json', 'lcov.info', 'junit.xml', 'coverage-summary.json']) fs.rmSync(path.join(html, 'frontend-coverage', extra), { force: true })
+  // Keep only Vitest's HTML report; lcov-report is a second copy of it.
+  if (frontendHtml) for (const extra of ['coverage-final.json', 'lcov.info', 'junit.xml', 'coverage-summary.json', 'lcov-report']) fs.rmSync(path.join(html, 'frontend-coverage', extra), { recursive: true, force: true })
   const e2eHtml = copyDir(path.join(frontend, 'playwright-report'), path.join(html, 'e2e-report'))
 
   const backendTests = (readJson(path.join(raw, 'backend-test-results.json'))?.tests || []).map(test => ({ ...test, suite: 'backend' }))
@@ -528,6 +544,12 @@ async function main() {
     if (tc.id === 'TC-Perf-03' && e2e.pageLoad) {
       evidence.push(`Real browser loads of the production build at 10 Mbps: ${e2e.pageLoad.loads} loads, ${e2e.pageLoad.withinTargetPercent}% within 3 s, p95 ${e2e.pageLoad.p95Ms} ms.`)
       if (!e2e.pageLoad.loads || e2e.pageLoad.withinTargetPercent < 95) status = 'FAIL'
+    }
+    const load = { 'TC-Perf-01': extras.perfSearch, 'TC-Perf-02': extras.perfQuizSubmit }[tc.id]
+    if (load) {
+      const volume = tc.id === 'TC-Perf-01' ? `${load.searches} searches over ${load.materialsStored} materials` : `${load.submissions} simultaneous submissions`
+      evidence.push(`Load script (\`npm run ${tc.id === 'TC-Perf-01' ? 'perf:search' : 'perf:quiz-submit'}\`): ${volume}, p50 ${load.p50Ms} ms, **p95 ${load.p95Ms} ms**, max ${load.maxMs} ms, ${load.withinTargetPercent}% within ${load.targetMs / 1000} s, ${load.failures.length} failed requests.`)
+      if (!load.passed) status = 'FAIL'
     }
     if (tc.partial) evidence.push(tc.partial)
     if (tc.evidence) evidence.push(`Team report: [${path.basename(tc.evidence)}](../${path.basename(tc.evidence)}).`)
