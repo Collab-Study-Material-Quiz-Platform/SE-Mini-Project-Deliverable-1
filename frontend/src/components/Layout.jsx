@@ -1,5 +1,5 @@
 // Layout.jsx — App shell: sticky header, main content area, footer
-import { getAuthUser } from '../api';
+import { API_BASE_URL, getAuthUser } from '../api';
 import './Layout.css';
 
 const NAV_LINKS = [
@@ -32,7 +32,7 @@ export default function Layout({ children, currentHash }) {
   async function handleLogout() {
     const token = localStorage.getItem('authToken');
     if (token) {
-      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/logout`, {
+      await fetch(`${API_BASE_URL}/api/auth/logout`, {
         method: 'POST', headers: { Authorization: `Bearer ${token}` },
       }).catch(() => {});
     }

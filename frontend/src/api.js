@@ -1,5 +1,7 @@
 // api.js — shared helpers for authenticated calls to the backend REST API
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+// Empty by default, so requests go to /api on the page's own origin: Nginx over HTTPS when deployed (CSQ-SR-005)
+// and the Vite proxy in development. Set VITE_API_URL only when the API is on a different origin.
+export const API_BASE_URL = import.meta.env.VITE_API_URL ?? ''
 let refreshInFlight = null
 
 export function getAuthUser() {

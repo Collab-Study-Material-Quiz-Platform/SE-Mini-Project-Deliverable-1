@@ -24,6 +24,13 @@ describe('apiRequest', () => {
     expect(calls[0].init.headers.Authorization).toBe(`Bearer ${token}`)
   })
 
+  test('calls the API on the page origin, so HTTPS pages never send requests over plain HTTP (D-01)', async () => {
+    logInAs('student')
+    const { fetchMock } = mockApi({ 'GET /api/materials': { materials: [] } })
+    await apiRequest('/api/materials')
+    expect(fetchMock.mock.calls[0][0]).toBe('/api/materials')
+  })
+
   test('sends no authorization header when logged out', async () => {
     const { calls } = mockApi({ 'GET /api/health': { status: 'OK' } })
     await apiRequest('/api/health')

@@ -1,7 +1,6 @@
 import { useState } from 'react'
+import { API_BASE_URL } from './api'
 import './RegistrationPage.css'
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 function RegistrationPage() {
   const [form, setForm] = useState({

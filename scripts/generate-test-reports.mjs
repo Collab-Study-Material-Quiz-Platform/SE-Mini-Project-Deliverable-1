@@ -76,7 +76,7 @@ const TEST_CASES = [
 // Defects found while executing the Test Plan. Update the status when a defect is fixed.
 const DEFECTS = [
   {
-    id: 'D-01', severity: 'High', status: 'Open', testCases: ['TC-Sec-05'],
+    id: 'D-01', severity: 'High', status: 'Fixed in Sprint 3', testCases: ['TC-Sec-05'],
     title: 'The client sends API requests, including the login password, over plain HTTP when the site is served over HTTPS',
     detail: 'The React client defaults `VITE_API_URL` to `http://localhost:5000` (frontend/src/api.js, LoginPage.jsx, RegistrationPage.jsx, Layout.jsx). With the HTTPS stack running, the page at https://localhost:8443 sent `POST http://localhost:5000/api/auth/login` and `GET http://localhost:5000/api/materials` directly to Node, bypassing Nginx and TLS. Setting `VITE_API_URL` to an empty string does not help because the code uses `||`.',
     fix: 'Default the API base URL to the page origin (an empty string, using `??` instead of `||`) so the client calls `/api/...` on the same HTTPS origin, which Nginx already proxies; the Vite dev proxy keeps local development working.',
