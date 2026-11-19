@@ -1,8 +1,8 @@
 # Code Coverage Report
 
 **Project:** Collaborative Study Material & Quiz Platform (Project #21)  
-**Generated:** 2026-11-17 16:40 UTC by `node scripts/generate-test-reports.mjs`  
-**Code version:** commit `299cd4b` on branch `test/part-3-test-reports`  
+**Generated:** 2026-11-19 02:54 UTC by `node scripts/generate-test-reports.mjs`  
+**Code version:** commit `20f2942` on branch `fix/d-01-same-origin-api`  
 **Environment:** Windows_NT 10.0.26200 (Intel(R) Core(TM) Ultra 5 125H, 15 GB RAM); Node.js v24.4.1; MongoDB 7.0.14
 
 Statement, line and function coverage of the application code by the unit and API integration tests in the [Unit Test Report](unit-test-report.md). Backend coverage is measured with c8 (V8 coverage) across `app.js`, `server.js`, `routes/`, `middleware/`, `models/` and `utils/`, including files no test loads. Frontend coverage is measured with Vitest (V8 coverage) across `frontend/src`, excluding test files and the `main.jsx` entry point. Branch coverage is detailed in the [Branch Coverage Report](branch-coverage-report.md).
@@ -12,8 +12,8 @@ Statement, line and function coverage of the application code by the unit and AP
 | Code | Statements | Lines | Functions | Branches |
 | --- | --- | --- | --- | --- |
 | Backend (Node/Express) | 93.0% (1711/1839) | 93.0% (1711/1839) | 100.0% (51/51) | 82.0% (456/556) |
-| Frontend (React) | 95.7% (713/745) | 99.4% (628/632) | 95.3% (161/169) | 84.1% (475/565) |
-| **Whole application** | 93.8% (2424/2584) | 94.7% (2339/2471) | 96.4% (212/220) | 83.1% (931/1121) |
+| Frontend (React) | 95.7% (711/743) | 99.4% (626/630) | 95.3% (161/169) | 83.9% (469/559) |
+| **Whole application** | 93.8% (2422/2582) | 94.7% (2337/2469) | 96.4% (212/220) | 83.0% (925/1115) |
 
 HTML reports with line-by-line highlighting: [backend](html/backend-coverage/index.html), [frontend](html/frontend-coverage/index.html). LCOV files: [backend](raw/backend-lcov.info), [frontend](raw/frontend-lcov.info).
 
@@ -63,12 +63,12 @@ HTML reports with line-by-line highlighting: [backend](html/backend-coverage/ind
 | `frontend/src/App.jsx` | 78.8% | 100.0% | 100.0% | 72.4% |
 | `frontend/src/components/AdminPage.jsx` | 98.0% | 100.0% | 100.0% | 75.9% |
 | `frontend/src/components/Home.jsx` | 95.7% | 100.0% | 85.7% | 80.0% |
-| `frontend/src/components/Layout.jsx` | 100.0% | 100.0% | 100.0% | 94.1% |
+| `frontend/src/components/Layout.jsx` | 100.0% | 100.0% | 100.0% | 93.3% |
 | `frontend/src/components/PerformancePage.jsx` | 97.4% | 100.0% | 100.0% | 81.5% |
 | `frontend/src/components/StatusPage.jsx` | 97.6% | 100.0% | 92.8% | 91.2% |
 | `frontend/src/components/UploadMaterialPage.jsx` | 95.7% | 100.0% | 100.0% | 80.0% |
-| `frontend/src/LoginPage.jsx` | 95.5% | 100.0% | 80.0% | 90.0% |
-| `frontend/src/RegistrationPage.jsx` | 93.5% | 100.0% | 80.0% | 89.7% |
+| `frontend/src/LoginPage.jsx` | 95.2% | 100.0% | 80.0% | 87.5% |
+| `frontend/src/RegistrationPage.jsx` | 93.3% | 100.0% | 80.0% | 88.9% |
 
 ## What is not covered
 

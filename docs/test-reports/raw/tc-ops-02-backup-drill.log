@@ -1,22 +1,22 @@
-TC-Ops-02 backup and restore drill — 2026-11-17T16:39:37.687Z
+TC-Ops-02 backup and restore drill — 2026-11-19T02:54:29.950Z
 Database: mongodb://127.0.0.1:27017/studyplatform_e2e (data left by the browser tests)
-Before backup: {"audit_logs":157,"materials":33,"questions":194,"quizattempts":19,"quizzes":25,"revokedtokens":4,"users":75}
+Before backup: {"audit_logs":159,"materials":33,"questions":194,"quizattempts":19,"quizzes":25,"revokedtokens":5,"users":76}
 --- 1. Run scripts/backup.sh 9 times; retention must keep the newest 7
-Backup done: backup_2026-11-17_22-09-38.gz
-Backup done: backup_2026-11-17_22-09-40.gz
-Backup done: backup_2026-11-17_22-09-41.gz
-Backup done: backup_2026-11-17_22-09-43.gz
-Backup done: backup_2026-11-17_22-09-44.gz
-Backup done: backup_2026-11-17_22-09-46.gz
-Backup done: backup_2026-11-17_22-09-47.gz
-Backup done: backup_2026-11-17_22-09-49.gz
-Backup done: backup_2026-11-17_22-09-50.gz
+Backup done: backup_2026-11-19_08-24-33.gz
+Backup done: backup_2026-11-19_08-24-35.gz
+Backup done: backup_2026-11-19_08-24-36.gz
+Backup done: backup_2026-11-19_08-24-38.gz
+Backup done: backup_2026-11-19_08-24-39.gz
+Backup done: backup_2026-11-19_08-24-41.gz
+Backup done: backup_2026-11-19_08-24-42.gz
+Backup done: backup_2026-11-19_08-24-44.gz
+Backup done: backup_2026-11-19_08-24-45.gz
 Backups kept: 7
 --- 2. Simulate data loss: drop the users, questions, quizzes and materials collections
-After loss: {"audit_logs":157,"quizattempts":19,"revokedtokens":4}
---- 3. Run scripts/restore.sh on the latest backup (backup_2026-11-17_22-09-50.gz)
+After loss: {"audit_logs":159,"quizattempts":19,"revokedtokens":5}
+--- 3. Run scripts/restore.sh on the latest backup (backup_2026-11-19_08-24-45.gz)
 Restore done
-2026-11-17T22:09:54.748+0530	507 document(s) restored successfully. 0 document(s) failed to restore.
-After restore: {"audit_logs":157,"materials":33,"questions":194,"quizattempts":19,"quizzes":25,"revokedtokens":4,"users":75}
-Restore took 1021 ms (target: within 4 hours)
+2026-11-19T08:24:50.024+0530	511 document(s) restored successfully. 0 document(s) failed to restore.
+After restore: {"audit_logs":159,"materials":33,"questions":194,"quizattempts":19,"quizzes":25,"revokedtokens":5,"users":76}
+Restore took 1290 ms (target: within 4 hours)
 RESULT: PASS — retention kept 7 backups and every collection has the same document count as before the backup
