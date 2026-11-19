@@ -28,6 +28,21 @@ test.describe('Security validation (Test Plan 5.1)', () => {
     expect(storage).not.toContain(password)
   })
 
+  test('TC-Sec-05: the client sends every API request to its own origin, never directly to the Node server (D-01)', async ({ page, request }) => {
+    const student = await createAccount(request, 'student')
+    const apiRequests = []
+    page.on('request', sent => { if (sent.url().includes('/api/')) apiRequests.push(sent.url()) })
+    await logIn(page, student.email, student.password)
+    await page.goto('/#/materials')
+    await expect(page.getByRole('heading', { name: 'Study material' })).toBeVisible()
+    await page.getByRole('button', { name: 'Log out' }).click()
+    await expect(page).toHaveURL(/#\/login$/)
+
+    const origin = new URL(page.url()).origin
+    expect(apiRequests.length).toBeGreaterThanOrEqual(3)
+    for (const url of apiRequests) expect(new URL(url).origin, url).toBe(origin)
+  })
+
   test('TC-Sec-02: a Student token on Contributor-only and Admin-only requests gets 403 "Access denied"', async ({ request }) => {
     const student = await createAccount(request, 'student')
     const contributor = await createAccount(request, 'contributor')

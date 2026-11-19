@@ -6,76 +6,70 @@
  RUN  v5.1.0 D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend
       Coverage enabled with v8
 
- ✓ src/api.test.js (9 tests) 74ms
- ✓ src/components/reportsAdmin.test.jsx (11 tests) 2397ms
+ ✓ src/api.test.js (10 tests) 58ms
+ ✓ src/components/reportsAdmin.test.jsx (11 tests) 1706ms
    ✓ Student performance page (TC-Rep-01) (4)
-     ✓ shows the overall average, the score per topic and the attempts 1087ms
+     ✓ shows the overall average, the score per topic and the attempts 739ms
    ✓ Admin moderation page (TC-Adm-01) (5)
-     ✓ lists materials and quizzes and removes each after confirmation 541ms
- ✓ src/shell.test.jsx (22 tests) 2606ms
+     ✓ lists materials and quizzes and removes each after confirmation 339ms
+ ✓ src/shell.test.jsx (22 tests) 1857ms
    ✓ App routing (TC-Auth-04) (7)
-     ✓ #/materials shows the login page when logged out 732ms
- ✓ src/components/quizzes.test.jsx (16 tests) 3041ms
+     ✓ #/materials shows the login page when logged out 549ms
+ ✓ src/components/quizzes.test.jsx (16 tests) 2191ms
    ✓ Published quiz list (TC-Quiz-04) (6)
-     ✓ is denied to anyone who is not a student 535ms
-     ✓ lists each published quiz with its title, question count and time limit 328ms
-   ✓ Quiz attempt (TC-Quiz-02) (10)
-     ✓ shows the questions and a countdown timer from the server time 432ms
-     ✓ saves each answer as soon as it is chosen 370ms
-     ✓ puts an answer back when it cannot be saved 326ms
- ✓ src/components/materials.test.jsx (14 tests) 6301ms
-   ✓ MaterialsPage (TC-Mat-02, TC-Mat-03) (8)
-     ✓ lists the newest materials with their details 854ms
-     ✓ searches by keyword, subject and topic from page 1 1183ms
-     ✓ pages through results 10 at a time 445ms
-   ✓ UploadMaterialPage (TC-Mat-01, TC-Sec-04) (6)
-     ✓ uploads the file with its title, subject and topic and resets the form 677ms
-     ✓ rejects an unsupported format before uploading 647ms
-     ✓ rejects a file over 20 MB before uploading 637ms
-     ✓ shows the server rejection for a disguised file 616ms
-     ✓ explains when the server cannot be reached 635ms
- ✓ src/components/questionBank.test.jsx (12 tests) 6442ms
+     ✓ is denied to anyone who is not a student 380ms
+ ✓ src/components/questionBank.test.jsx (12 tests) 5123ms
    ✓ QuestionBankPage (12)
-     ✓ is denied to anyone who is not a contributor 560ms
-     ✓ TC-QB-01: saves a question with four options, one correct answer, a topic and a difficulty 2203ms
-     ✓ shows the server message for an invalid question 1165ms
-     ✓ TC-QB-02: edits an own question with PUT and shows "Question updated." 544ms
-     ✓ cancelling an edit returns to the add form 312ms
-     ✓ TC-QB-03: filters by topic and difficulty, then clears the filters 566ms
- ✓ src/auth.test.jsx (11 tests) 9025ms
+     ✓ is denied to anyone who is not a contributor 386ms
+     ✓ TC-QB-01: saves a question with four options, one correct answer, a topic and a difficulty 1694ms
+     ✓ shows the server message for an invalid question 1103ms
+     ✓ TC-QB-02: edits an own question with PUT and shows "Question updated." 445ms
+     ✓ TC-QB-03: filters by topic and difficulty, then clears the filters 528ms
+ ✓ src/components/materials.test.jsx (14 tests) 5764ms
+   ✓ MaterialsPage (TC-Mat-02, TC-Mat-03) (8)
+     ✓ lists the newest materials with their details 621ms
+     ✓ searches by keyword, subject and topic from page 1 920ms
+     ✓ pages through results 10 at a time 381ms
+   ✓ UploadMaterialPage (TC-Mat-01, TC-Sec-04) (6)
+     ✓ uploads the file with its title, subject and topic and resets the form 726ms
+     ✓ rejects an unsupported format before uploading 650ms
+     ✓ rejects a file over 20 MB before uploading 683ms
+     ✓ shows the server rejection for a disguised file 667ms
+     ✓ explains when the server cannot be reached 651ms
+ ✓ src/auth.test.jsx (11 tests) 7984ms
    ✓ LoginPage (TC-Auth-02) (3)
-     ✓ stores the session and opens the home page on success 1584ms
-     ✓ shows "Invalid email or password" and creates no session 830ms
-     ✓ explains when the server cannot be reached 594ms
+     ✓ stores the session and opens the home page on success 1175ms
+     ✓ shows "Invalid email or password" and creates no session 701ms
+     ✓ explains when the server cannot be reached 553ms
    ✓ RegistrationPage (TC-Auth-01, TC-Auth-05) (8)
-     ✓ creates a contributor account 1008ms
-     ✓ rejects the weak password abc12 with "Password too weak" before calling the API 805ms
-     ✓ rejects the weak password abcdefgh with "Password too weak" before calling the API 782ms
-     ✓ rejects the weak password 12345678 with "Password too weak" before calling the API 844ms
-     ✓ rejects a one-character name 669ms
-     ✓ shows "Email already registered" from the server 943ms
-     ✓ explains when the server cannot be reached 861ms
+     ✓ creates a contributor account 918ms
+     ✓ rejects the weak password abc12 with "Password too weak" before calling the API 808ms
+     ✓ rejects the weak password abcdefgh with "Password too weak" before calling the API 806ms
+     ✓ rejects the weak password 12345678 with "Password too weak" before calling the API 789ms
+     ✓ rejects a one-character name 623ms
+     ✓ shows "Email already registered" from the server 743ms
+     ✓ explains when the server cannot be reached 761ms
 
  Test Files  7 passed (7)
-      Tests  95 passed (95)
-   Start at  22:04:30
-   Duration  15.70s (tests 43%, environment 37%, setup 13%, import 4%, worker 3%, transform 1%)
+      Tests  96 passed (96)
+   Start at  08:19:23
+   Duration  14.62s (environment 47%, tests 38%, setup 10%, import 3%, worker 1%, transform 1%)
 
 JUNIT report written to D:/NeuDocuments/SideProject/MiniProject/SE/SE-Mini-Project-Deliverable-1/frontend/coverage/junit.xml
 [34m % [39m[2mCoverage report from [22m[33mv8[39m
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------|---------|----------|---------|---------|-------------------
-All files          |    95.7 |    84.07 |   95.26 |   99.36 |                   
- src               |   90.55 |    84.37 |      88 |     100 |                   
+All files          |   95.69 |    83.89 |   95.26 |   99.36 |                   
+ src               |    90.4 |    83.69 |      88 |     100 |                   
   App.jsx          |   78.78 |    72.41 |     100 |     100 | 17,32-33,35,37-40 
-  LoginPage.jsx    |   95.45 |       90 |      80 |     100 | 21                
-  ...ationPage.jsx |   93.54 |    89.65 |      80 |     100 | 19,52-59          
-  api.js           |   95.12 |    89.28 |   88.88 |     100 | 21,43,51          
- src/components    |   96.76 |       84 |   96.52 |   99.24 |                   
+  LoginPage.jsx    |   95.23 |     87.5 |      80 |     100 | 20                
+  ...ationPage.jsx |   93.33 |    88.88 |      80 |     100 | 18,51-58          
+  api.js           |   95.12 |    89.28 |   88.88 |     100 | 23,45,53          
+ src/components    |   96.76 |    83.94 |   96.52 |   99.24 |                   
   AdminPage.jsx    |   98.03 |    75.92 |     100 |     100 | 22-30,49,52-57    
   Home.jsx         |   95.65 |       80 |   85.71 |     100 | 49-51             
-  Layout.jsx       |     100 |    94.11 |     100 |     100 | 34                
+  Layout.jsx       |     100 |    93.33 |     100 |     100 | 34                
   ...rialsPage.jsx |   97.36 |    89.36 |     100 |    98.5 | 108               
   ...mancePage.jsx |   97.36 |    81.48 |     100 |     100 | ...,64,84,114-169 
   ...nBankPage.jsx |   95.96 |    92.22 |     100 |   98.16 | 56,212            
@@ -85,10 +79,10 @@ All files          |    95.7 |    84.07 |   95.26 |   99.36 |
 -------------------|---------|----------|---------|---------|-------------------
 
 =============================== Coverage summary ===============================
-Statements   : 95.7% ( 713/745 )
-Branches     : 84.07% ( 475/565 )
+Statements   : 95.69% ( 711/743 )
+Branches     : 83.89% ( 469/559 )
 Functions    : 95.26% ( 161/169 )
-Lines        : 99.36% ( 628/632 )
+Lines        : 99.36% ( 626/630 )
 ================================================================================
 Not implemented: Window's scrollTo() method
 Not implemented: Window's scrollTo() method

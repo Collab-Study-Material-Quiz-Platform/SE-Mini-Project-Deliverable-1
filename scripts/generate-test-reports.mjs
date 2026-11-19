@@ -76,7 +76,7 @@ const TEST_CASES = [
 // Defects found while executing the Test Plan. Update the status when a defect is fixed.
 const DEFECTS = [
   {
-    id: 'D-01', severity: 'High', status: 'Open', testCases: ['TC-Sec-05'],
+    id: 'D-01', severity: 'High', status: 'Fixed in Sprint 3', testCases: ['TC-Sec-05'],
     title: 'The client sends API requests, including the login password, over plain HTTP when the site is served over HTTPS',
     detail: 'The React client defaults `VITE_API_URL` to `http://localhost:5000` (frontend/src/api.js, LoginPage.jsx, RegistrationPage.jsx, Layout.jsx). With the HTTPS stack running, the page at https://localhost:8443 sent `POST http://localhost:5000/api/auth/login` and `GET http://localhost:5000/api/materials` directly to Node, bypassing Nginx and TLS. Setting `VITE_API_URL` to an empty string does not help because the code uses `||`.',
     fix: 'Default the API base URL to the page origin (an empty string, using `??` instead of `||`) so the client calls `/api/...` on the same HTTPS origin, which Nginx already proxies; the Vite dev proxy keeps local development working.',
@@ -238,7 +238,7 @@ async function runTlsChecks() {
     lines.push('', '--- Step 4: API requests made by the client served over HTTPS', probe.output.trim())
     const tlsPassed = /All performed checks PASSED/.test(check.output)
     const insecureCalls = probe.output.split('\n').filter(line => line.includes('http://'))
-    return { tlsPassed, insecureCalls, log: lines.join('\n') }
+    return { tlsPassed, insecureCalls, checkedAt: new Date().toISOString().slice(0, 10), log: lines.join('\n') }
   } finally {
     run('Stop Nginx HTTPS stack', `docker compose -f docker-compose.https.yml -f "${override}" down`)
     server.kill()
@@ -530,8 +530,14 @@ async function main() {
       }
     } else if (tc.id === 'TC-Sec-05') {
       if (extras.tls) {
-        status = !extras.tls.tlsPassed ? 'FAIL' : extras.tls.insecureCalls.length ? 'FAIL' : 'PASS'
-        evidence.push(`Nginx checks with scripts/check-tls.sh: ${extras.tls.tlsPassed ? 'HTTP → 301 to HTTPS, HSTS present, TLS 1.2 and 1.3 accepted, TLS 1.1 rejected' : 'failed'}. Client API requests over plain HTTP: ${extras.tls.insecureCalls.length ? extras.tls.insecureCalls.map(call => `\`${call}\``).join(', ') : 'none'} ([log](raw/tc-sec-05-tls-check.log)).`)
+        // The browser test checks that the client keeps every API request on the page origin; when it ran,
+        // it replaces the URL probe from the last --with-tls run, which may predate a client change.
+        const clientOk = browser.length ? failed.length === 0 : extras.tls.insecureCalls.length === 0
+        status = extras.tls.tlsPassed && clientOk ? 'PASS' : 'FAIL'
+        evidence.push(`Nginx checks with scripts/check-tls.sh${extras.tls.checkedAt ? ` (run ${extras.tls.checkedAt})` : ''}: ${extras.tls.tlsPassed ? 'HTTP → 301 to HTTPS, HSTS present, TLS 1.2 and 1.3 accepted, TLS 1.1 rejected' : 'failed'} ([log](raw/tc-sec-05-tls-check.log)).`)
+        evidence.push(browser.length
+          ? `Client API requests: ${clientOk ? 'every request stayed on the page origin, so the client never bypasses HTTPS' : 'some requests left the page origin'} (browser test).`
+          : `Client API requests over plain HTTP: ${extras.tls.insecureCalls.length ? extras.tls.insecureCalls.map(call => `\`${call}\``).join(', ') : 'none'}.`)
       } else {
         status = 'NOT RUN'
         evidence.push('Run with `--with-tls` (needs Docker running).')

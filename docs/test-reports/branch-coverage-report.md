@@ -1,8 +1,8 @@
 # Branch Coverage Report
 
 **Project:** Collaborative Study Material & Quiz Platform (Project #21)  
-**Generated:** 2026-11-17 16:40 UTC by `node scripts/generate-test-reports.mjs`  
-**Code version:** commit `299cd4b` on branch `test/part-3-test-reports`  
+**Generated:** 2026-11-19 02:54 UTC by `node scripts/generate-test-reports.mjs`  
+**Code version:** commit `20f2942` on branch `fix/d-01-same-origin-api`  
 **Environment:** Windows_NT 10.0.26200 (Intel(R) Core(TM) Ultra 5 125H, 15 GB RAM); Node.js v24.4.1; MongoDB 7.0.14
 
 Branch coverage counts every path through each decision in the code: both outcomes of `if`/`else`, each side of `&&`, `||` and `??`, both results of `? :`, each `switch` case and default parameter values. A branch is covered when at least one test runs it. Measured with V8 coverage (c8 for the backend, Vitest for the frontend) during the unit and API integration tests.
@@ -12,8 +12,8 @@ Branch coverage counts every path through each decision in the code: both outcom
 | Code | Branches covered | Branch coverage |
 | --- | --- | --- |
 | Backend (Node/Express) | 456 of 556 | 82.0% |
-| Frontend (React) | 475 of 565 | 84.1% |
-| **Whole application** | 931 of 1121 | 83.1% |
+| Frontend (React) | 469 of 559 | 83.9% |
+| **Whole application** | 925 of 1115 | 83.0% |
 
 Branch coverage is lower than line coverage because one line often holds several branches. For example, `return res.status(error ? 500 : 200)` is one covered line but counts as two branches, and the 500 side only runs when a database call fails.
 
@@ -62,13 +62,13 @@ Branch coverage is lower than line coverage because one line often holds several
 | `frontend/src/components/Home.jsx` | 10 | 80.0% | 49, 51 |
 | `frontend/src/components/UploadMaterialPage.jsx` | 25 | 80.0% | 34, 38, 39, 61, 67 |
 | `frontend/src/components/PerformancePage.jsx` | 54 | 81.5% | 6, 26, 27, 29, 64, 84, 114, 169 |
-| `frontend/src/api.js` | 28 | 89.3% | 21, 43, 51 |
+| `frontend/src/LoginPage.jsx` | 8 | 87.5% | 20 |
+| `frontend/src/RegistrationPage.jsx` | 27 | 88.9% | 18, 51, 58 |
+| `frontend/src/api.js` | 28 | 89.3% | 23, 45, 53 |
 | `frontend/src/components/MaterialsPage.jsx` | 47 | 89.4% | 15, 43, 47, 90, 104 |
-| `frontend/src/RegistrationPage.jsx` | 29 | 89.7% | 19, 52, 59 |
-| `frontend/src/LoginPage.jsx` | 10 | 90.0% | 21 |
 | `frontend/src/components/StatusPage.jsx` | 34 | 91.2% | 21, 73, 84 |
 | `frontend/src/components/QuestionBankPage.jsx` | 90 | 92.2% | 28, 47, 147, 152, 155, 205, 209 |
-| `frontend/src/components/Layout.jsx` | 17 | 94.1% | 34 |
+| `frontend/src/components/Layout.jsx` | 15 | 93.3% | 34 |
 
 ## Why the remaining branches are not covered
 

@@ -3,21 +3,21 @@
 > node perf/quizSubmitPerformance.js
 
 Seeding 1 quiz and 100 concurrent student attempts...
-Executing 100 simultaneous quiz submissions against http://127.0.0.1:49732...
+Executing 100 simultaneous quiz submissions against http://127.0.0.1:62383...
 {
   "testCase": "TC-Perf-02",
   "requirement": "CSQ-NF-002",
-  "date": "2026-11-17T16:39:35.841Z",
+  "date": "2026-11-19T02:54:28.124Z",
   "node": "v24.4.1",
   "simultaneousSubmissions": 100,
   "targetMs": 3000,
   "submissions": 100,
   "failures": [],
-  "meanMs": 839.8,
-  "p50Ms": 848.7,
-  "p95Ms": 911.4,
-  "p99Ms": 915.1,
-  "maxMs": 919.9,
+  "meanMs": 815.2,
+  "p50Ms": 809.6,
+  "p95Ms": 872.8,
+  "p99Ms": 878.9,
+  "maxMs": 879.4,
   "withinTargetPercent": 100,
   "meanResponseBytes": 3004,
   "passed": true

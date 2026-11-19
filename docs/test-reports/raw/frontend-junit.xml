@@ -1,207 +1,209 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="95" failures="0" errors="0" time="29.8859981">
-    <testsuite name="src/api.test.js" timestamp="2026-11-17T16:34:46.306Z" hostname="Narendra" tests="9" failures="0" errors="0" skipped="0" time="0.0743594">
-        <testcase classname="src/api.test.js" name="getAuthUser &gt; returns the stored user" time="0.0248526">
+<testsuites name="vitest tests" tests="96" failures="0" errors="0" time="24.6828899">
+    <testsuite name="src/api.test.js" timestamp="2026-11-19T02:49:38.044Z" hostname="Narendra" tests="10" failures="0" errors="0" skipped="0" time="0.0580955">
+        <testcase classname="src/api.test.js" name="getAuthUser &gt; returns the stored user" time="0.0168536">
         </testcase>
-        <testcase classname="src/api.test.js" name="getAuthUser &gt; returns null when nothing or invalid JSON is stored" time="0.0021672">
+        <testcase classname="src/api.test.js" name="getAuthUser &gt; returns null when nothing or invalid JSON is stored" time="0.002034">
         </testcase>
-        <testcase classname="src/api.test.js" name="apiRequest &gt; sends the stored token as a bearer header" time="0.0132584">
+        <testcase classname="src/api.test.js" name="apiRequest &gt; sends the stored token as a bearer header" time="0.0094362">
         </testcase>
-        <testcase classname="src/api.test.js" name="apiRequest &gt; sends no authorization header when logged out" time="0.0017294">
+        <testcase classname="src/api.test.js" name="apiRequest &gt; calls the API on the page origin, so HTTPS pages never send requests over plain HTTP (D-01)" time="0.0017655">
         </testcase>
-        <testcase classname="src/api.test.js" name="apiRequest &gt; a 401 response clears the session and opens the login page (TC-Auth-04)" time="0.003377">
+        <testcase classname="src/api.test.js" name="apiRequest &gt; sends no authorization header when logged out" time="0.0018131">
         </testcase>
-        <testcase classname="src/api.test.js" name="apiRequest &gt; refreshes a token that expires within 15 minutes before calling the API" time="0.0077441">
+        <testcase classname="src/api.test.js" name="apiRequest &gt; a 401 response clears the session and opens the login page (TC-Auth-04)" time="0.0036158">
         </testcase>
-        <testcase classname="src/api.test.js" name="apiRequest &gt; keeps the old token when the refresh fails" time="0.0021777">
+        <testcase classname="src/api.test.js" name="apiRequest &gt; refreshes a token that expires within 15 minutes before calling the API" time="0.0079655">
         </testcase>
-        <testcase classname="src/api.test.js" name="apiRequest &gt; uses a token that cannot be decoded as it is" time="0.0043161">
+        <testcase classname="src/api.test.js" name="apiRequest &gt; keeps the old token when the refresh fails" time="0.0020624">
         </testcase>
-        <testcase classname="src/api.test.js" name="readJson &gt; parses JSON and falls back to an empty object" time="0.0023476">
+        <testcase classname="src/api.test.js" name="apiRequest &gt; uses a token that cannot be decoded as it is" time="0.0035975">
         </testcase>
-    </testsuite>
-    <testsuite name="src/auth.test.jsx" timestamp="2026-11-17T16:34:46.349Z" hostname="Narendra" tests="11" failures="0" errors="0" skipped="0" time="9.0246758">
-        <testcase classname="src/auth.test.jsx" name="LoginPage (TC-Auth-02) &gt; stores the session and opens the home page on success" time="1.5839742">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="LoginPage (TC-Auth-02) &gt; shows &quot;Invalid email or password&quot; and creates no session" time="0.8302165">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="LoginPage (TC-Auth-02) &gt; explains when the server cannot be reached" time="0.5943863">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; offers only Student and Contributor accounts" time="0.0946806">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; creates a contributor account" time="1.0077298">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; rejects the weak password abc12 with &quot;Password too weak&quot; before calling the API" time="0.8052275">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; rejects the weak password abcdefgh with &quot;Password too weak&quot; before calling the API" time="0.7816556">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; rejects the weak password 12345678 with &quot;Password too weak&quot; before calling the API" time="0.8438512">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; rejects a one-character name" time="0.6687074">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; shows &quot;Email already registered&quot; from the server" time="0.9432207">
-        </testcase>
-        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; explains when the server cannot be reached" time="0.8613774">
+        <testcase classname="src/api.test.js" name="readJson &gt; parses JSON and falls back to an empty object" time="0.001819">
         </testcase>
     </testsuite>
-    <testsuite name="src/components/materials.test.jsx" timestamp="2026-11-17T16:34:46.355Z" hostname="Narendra" tests="14" failures="0" errors="0" skipped="0" time="6.3006339">
-        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; lists the newest materials with their details" time="0.8542721">
+    <testsuite name="src/auth.test.jsx" timestamp="2026-11-19T02:49:38.055Z" hostname="Narendra" tests="11" failures="0" errors="0" skipped="0" time="7.9840601">
+        <testcase classname="src/auth.test.jsx" name="LoginPage (TC-Auth-02) &gt; stores the session and opens the home page on success" time="1.1750401">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; shows &quot;No materials found&quot; when nothing matches" time="0.0944971">
+        <testcase classname="src/auth.test.jsx" name="LoginPage (TC-Auth-02) &gt; shows &quot;Invalid email or password&quot; and creates no session" time="0.7013167">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; searches by keyword, subject and topic from page 1" time="1.1832948">
+        <testcase classname="src/auth.test.jsx" name="LoginPage (TC-Auth-02) &gt; explains when the server cannot be reached" time="0.5526229">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; pages through results 10 at a time" time="0.4452781">
+        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; offers only Student and Contributor accounts" time="0.1016908">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; downloading saves the file and adds 1 to the download count" time="0.1880847">
+        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; creates a contributor account" time="0.9175467">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; shows the server message when a download fails" time="0.1526223">
+        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; rejects the weak password abc12 with &quot;Password too weak&quot; before calling the API" time="0.8077303">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; shows search errors and connection failures" time="0.0705133">
+        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; rejects the weak password abcdefgh with &quot;Password too weak&quot; before calling the API" time="0.805541">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; only contributors see the upload link" time="0.07646">
+        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; rejects the weak password 12345678 with &quot;Password too weak&quot; before calling the API" time="0.7888376">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; is denied to anyone who is not a contributor" time="0.0161745">
+        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; rejects a one-character name" time="0.6234515">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; uploads the file with its title, subject and topic and resets the form" time="0.6774495">
+        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; shows &quot;Email already registered&quot; from the server" time="0.7431363">
         </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; rejects an unsupported format before uploading" time="0.6467156">
-        </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; rejects a file over 20 MB before uploading" time="0.6365057">
-        </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; shows the server rejection for a disguised file" time="0.6156151">
-        </testcase>
-        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; explains when the server cannot be reached" time="0.6346559">
+        <testcase classname="src/auth.test.jsx" name="RegistrationPage (TC-Auth-01, TC-Auth-05) &gt; explains when the server cannot be reached" time="0.7605757">
         </testcase>
     </testsuite>
-    <testsuite name="src/components/questionBank.test.jsx" timestamp="2026-11-17T16:34:46.363Z" hostname="Narendra" tests="12" failures="0" errors="0" skipped="0" time="6.4419487">
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; is denied to anyone who is not a contributor" time="0.5603084">
+    <testsuite name="src/components/materials.test.jsx" timestamp="2026-11-19T02:49:38.063Z" hostname="Narendra" tests="14" failures="0" errors="0" skipped="0" time="5.7641519">
+        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; lists the newest materials with their details" time="0.6206536">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-01: saves a question with four options, one correct answer, a topic and a difficulty" time="2.2034711">
+        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; shows &quot;No materials found&quot; when nothing matches" time="0.0475752">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; shows the server message for an invalid question" time="1.1647432">
+        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; searches by keyword, subject and topic from page 1" time="0.9201844">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; lists questions with the correct answer, tags and &quot;Yours&quot; only on own questions" time="0.1223359">
+        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; pages through results 10 at a time" time="0.3808703">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-02: edits an own question with PUT and shows &quot;Question updated.&quot;" time="0.5435194">
+        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; downloading saves the file and adds 1 to the download count" time="0.115407">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; cancelling an edit returns to the add form" time="0.3123943">
+        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; shows the server message when a download fails" time="0.1444596">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-02: deletes an own question after confirmation" time="0.1991994">
+        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; shows search errors and connection failures" time="0.0747161">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-02: shows &quot;Question is in use&quot; when the question is in a published quiz" time="0.2000014">
+        <testcase classname="src/components/materials.test.jsx" name="MaterialsPage (TC-Mat-02, TC-Mat-03) &gt; only contributors see the upload link" time="0.0619613">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; does not delete when the confirmation is cancelled" time="0.1569346">
+        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; is denied to anyone who is not a contributor" time="0.0160214">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-03: filters by topic and difficulty, then clears the filters" time="0.5660606">
+        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; uploads the file with its title, subject and topic and resets the form" time="0.7258857">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; pages through the question bank" time="0.2970327">
+        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; rejects an unsupported format before uploading" time="0.6501363">
         </testcase>
-        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; shows load errors and connection failures" time="0.1079197">
+        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; rejects a file over 20 MB before uploading" time="0.682566">
         </testcase>
-    </testsuite>
-    <testsuite name="src/components/quizzes.test.jsx" timestamp="2026-11-17T16:34:46.368Z" hostname="Narendra" tests="16" failures="0" errors="0" skipped="0" time="3.0411219">
-        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; is denied to anyone who is not a student" time="0.5353109">
+        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; shows the server rejection for a disguised file" time="0.6670693">
         </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; lists each published quiz with its title, question count and time limit" time="0.3281786">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; says when there are no published quizzes" time="0.0398945">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; shows an error when the list cannot be loaded" time="0.0732898">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; starting a quiz opens the new attempt" time="0.2132556">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; shows why a quiz could not be started" time="0.1354551">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; is denied to anyone who is not a student" time="0.0306671">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; shows the questions and a countdown timer from the server time" time="0.4323271">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; saves each answer as soon as it is chosen" time="0.370149">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; puts an answer back when it cannot be saved" time="0.325885">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; TC-Quiz-03: submitting shows the score, percentage and correct answer to each question" time="0.1844221">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; a repeated submit that returns 409 with the stored result still shows the result" time="0.1045603">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; a failed submit keeps the attempt open and explains the error" time="0.1316352">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; auto-submits when the time is already up (TC-Quiz-02)" time="0.0554926">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; opening a finished attempt shows its result" time="0.0315834">
-        </testcase>
-        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; shows an error when the attempt cannot be loaded" time="0.0416714">
+        <testcase classname="src/components/materials.test.jsx" name="UploadMaterialPage (TC-Mat-01, TC-Sec-04) &gt; explains when the server cannot be reached" time="0.6505396">
         </testcase>
     </testsuite>
-    <testsuite name="src/components/reportsAdmin.test.jsx" timestamp="2026-11-17T16:34:46.376Z" hostname="Narendra" tests="11" failures="0" errors="0" skipped="0" time="2.3974191">
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Student performance page (TC-Rep-01) &gt; shows the overall average, the score per topic and the attempts" time="1.0872356">
+    <testsuite name="src/components/questionBank.test.jsx" timestamp="2026-11-19T02:49:38.070Z" hostname="Narendra" tests="12" failures="0" errors="0" skipped="0" time="5.1226014">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; is denied to anyone who is not a contributor" time="0.386055">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Student performance page (TC-Rep-01) &gt; says when there are no attempts yet" time="0.0527246">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-01: saves a question with four options, one correct answer, a topic and a difficulty" time="1.6940092">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Student performance page (TC-Rep-01) &gt; shows an error when the report cannot be loaded" time="0.0350155">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; shows the server message for an invalid question" time="1.1028685">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Student performance page (TC-Rep-01) &gt; is denied to admins" time="0.0213018">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; lists questions with the correct answer, tags and &quot;Yours&quot; only on own questions" time="0.0818185">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Contributor quiz statistics (TC-Rep-02) &gt; shows attempts, average, highest, lowest and the hardest questions for each own quiz" time="0.1329716">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-02: edits an own question with PUT and shows &quot;Question updated.&quot;" time="0.4449315">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Contributor quiz statistics (TC-Rep-02) &gt; says when the contributor has no quizzes" time="0.028748">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; cancelling an edit returns to the add form" time="0.222465">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; is denied to anyone who is not an admin" time="0.0232195">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-02: deletes an own question after confirmation" time="0.116366">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; lists materials and quizzes and removes each after confirmation" time="0.5408115">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-02: shows &quot;Question is in use&quot; when the question is in a published quiz" time="0.1080511">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; keeps an item and shows the error when removal fails" time="0.2429328">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; does not delete when the confirmation is cancelled" time="0.1210791">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; does nothing when the confirmation is cancelled" time="0.1847121">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; TC-QB-03: filters by topic and difficulty, then clears the filters" time="0.5282709">
         </testcase>
-        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; shows an error when the lists cannot be loaded" time="0.038936">
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; pages through the question bank" time="0.2333306">
+        </testcase>
+        <testcase classname="src/components/questionBank.test.jsx" name="QuestionBankPage &gt; shows load errors and connection failures" time="0.0776234">
         </testcase>
     </testsuite>
-    <testsuite name="src/shell.test.jsx" timestamp="2026-11-17T16:34:46.381Z" hostname="Narendra" tests="22" failures="0" errors="0" skipped="0" time="2.6058393">
-        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/materials shows the login page when logged out" time="0.731575">
+    <testsuite name="src/components/quizzes.test.jsx" timestamp="2026-11-19T02:49:38.077Z" hostname="Narendra" tests="16" failures="0" errors="0" skipped="0" time="2.1906342">
+        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; is denied to anyone who is not a student" time="0.3804505">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/questions shows the login page when logged out" time="0.1034433">
+        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; lists each published quiz with its title, question count and time limit" time="0.2060841">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/quizzes shows the login page when logged out" time="0.0696007">
+        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; says when there are no published quizzes" time="0.0354714">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/performance shows the login page when logged out" time="0.0671906">
+        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; shows an error when the list cannot be loaded" time="0.0376894">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/admin shows the login page when logged out" time="0.0685796">
+        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; starting a quiz opens the new attempt" time="0.1726597">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; opens the matching page for a logged-in user and follows hash changes" time="0.1916639">
+        <testcase classname="src/components/quizzes.test.jsx" name="Published quiz list (TC-Quiz-04) &gt; shows why a quiz could not be started" time="0.1183631">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; shows the home page for unknown routes" time="0.1424952">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; is denied to anyone who is not a student" time="0.0192952">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; logged-out visitors see only public links and no logout button" time="0.1139591">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; shows the questions and a countdown timer from the server time" time="0.2204918">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; a student sees only the links for that role" time="0.1182212">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; saves each answer as soon as it is chosen" time="0.2613249">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; a contributor sees only the links for that role" time="0.0840327">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; puts an answer back when it cannot be saved" time="0.2644732">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; a admin sees only the links for that role" time="0.0696283">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; TC-Quiz-03: submitting shows the score, percentage and correct answer to each question" time="0.1210815">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; marks the current page link" time="0.0613093">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; a repeated submit that returns 409 with the stored result still shows the result" time="0.1061861">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; logout revokes the token on the server and clears the session (TC-Auth-04)" time="0.1533684">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; a failed submit keeps the attempt open and explains the error" time="0.1230085">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; logout still clears the session when the server is unreachable" time="0.0820525">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; auto-submits when the time is already up (TC-Quiz-02)" time="0.048902">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Home page status badge (CSQ-NF-003) &gt; reports when all systems are operational" time="0.0689124">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; opening a finished attempt shows its result" time="0.0302298">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Home page status badge (CSQ-NF-003) &gt; reports when the service is unavailable" time="0.0371501">
+        <testcase classname="src/components/quizzes.test.jsx" name="Quiz attempt (TC-Quiz-02) &gt; shows an error when the attempt cannot be loaded" time="0.0382536">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="Home page status badge (CSQ-NF-003) &gt; reports unavailable when the request fails" time="0.0431866">
+    </testsuite>
+    <testsuite name="src/components/reportsAdmin.test.jsx" timestamp="2026-11-19T02:49:38.087Z" hostname="Narendra" tests="11" failures="0" errors="0" skipped="0" time="1.7063569">
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Student performance page (TC-Rep-01) &gt; shows the overall average, the score per topic and the attempts" time="0.7389537">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; shows uptime, database state and session availability" time="0.1052851">
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Student performance page (TC-Rep-01) &gt; says when there are no attempts yet" time="0.0314853">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; records a failed check and &quot;Check now&quot; runs another" time="0.1386812">
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Student performance page (TC-Rep-01) &gt; shows an error when the report cannot be loaded" time="0.0329221">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; formats 42 seconds of uptime as 42s" time="0.0498936">
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Student performance page (TC-Rep-01) &gt; is denied to admins" time="0.0166433">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; formats 125 seconds of uptime as 2m 5s" time="0.0481324">
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Contributor quiz statistics (TC-Rep-02) &gt; shows attempts, average, highest, lowest and the hardest questions for each own quiz" time="0.1255075">
         </testcase>
-        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; formats 90061 seconds of uptime as 1d 1h 1m" time="0.0492724">
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Contributor quiz statistics (TC-Rep-02) &gt; says when the contributor has no quizzes" time="0.027397">
+        </testcase>
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; is denied to anyone who is not an admin" time="0.0193236">
+        </testcase>
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; lists materials and quizzes and removes each after confirmation" time="0.3392716">
+        </testcase>
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; keeps an item and shows the error when removal fails" time="0.1802642">
+        </testcase>
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; does nothing when the confirmation is cancelled" time="0.1552365">
+        </testcase>
+        <testcase classname="src/components/reportsAdmin.test.jsx" name="Admin moderation page (TC-Adm-01) &gt; shows an error when the lists cannot be loaded" time="0.0330541">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/shell.test.jsx" timestamp="2026-11-19T02:49:38.093Z" hostname="Narendra" tests="22" failures="0" errors="0" skipped="0" time="1.8569899">
+        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/materials shows the login page when logged out" time="0.5493794">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/questions shows the login page when logged out" time="0.0798944">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/quizzes shows the login page when logged out" time="0.0442894">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/performance shows the login page when logged out" time="0.0547976">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; #/admin shows the login page when logged out" time="0.0663807">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; opens the matching page for a logged-in user and follows hash changes" time="0.1358314">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="App routing (TC-Auth-04) &gt; shows the home page for unknown routes" time="0.0668542">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; logged-out visitors see only public links and no logout button" time="0.0587992">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; a student sees only the links for that role" time="0.0603621">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; a contributor sees only the links for that role" time="0.0484866">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; a admin sees only the links for that role" time="0.0394964">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; marks the current page link" time="0.0460303">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; logout revokes the token on the server and clears the session (TC-Auth-04)" time="0.1074987">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Layout navigation (TC-Auth-03) &gt; logout still clears the session when the server is unreachable" time="0.0899033">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Home page status badge (CSQ-NF-003) &gt; reports when all systems are operational" time="0.0532999">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Home page status badge (CSQ-NF-003) &gt; reports when the service is unavailable" time="0.0390914">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="Home page status badge (CSQ-NF-003) &gt; reports unavailable when the request fails" time="0.0295178">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; shows uptime, database state and session availability" time="0.0876388">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; records a failed check and &quot;Check now&quot; runs another" time="0.100618">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; formats 42 seconds of uptime as 42s" time="0.0293965">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; formats 125 seconds of uptime as 2m 5s" time="0.0314995">
+        </testcase>
+        <testcase classname="src/shell.test.jsx" name="System status page (CSQ-NF-003) &gt; formats 90061 seconds of uptime as 1d 1h 1m" time="0.0297426">
         </testcase>
     </testsuite>
 </testsuites>
